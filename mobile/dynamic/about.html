@@ -1,0 +1,338 @@
+<basis core="dbsource" source="basiscore" name="db" mid="1" lid="1" usedforid="2381751">
+    <member typeid="159" propertyid="7249" name="3-articles" type="view"
+        postsql="select * from [db.3-articles] where TypeID in(250)" />
+</basis>
+
+<basis core="dbsource" source="basiscore" name="db" mid="1" lid="1" usedforid="2381754">
+    <member typeid="159" propertyid="7249" name="our-team" type="view" />
+</basis>
+<!DOCTYPE html>
+<html dir="rtl" lang="fa">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,shrink-to-fit=no,viewport-fit=cover" />
+    <title>[##cms.seo.title|(درباره ما)##]</title>
+    <meta name="description" content="[##cms.seo.description|(درباره ی ما)##]" />
+    <basis core="dbsource" source="hosting" name="tag" urlid="[##cms.seo.urlid##]">
+        <member type="list" name="list" request="taglist" preview=""></member>
+    </basis>
+    <basis core="print" datamembername="tag.list">
+        <face filter="key = 'canonical'">
+            <link rel="canonical" href="@value" />
+        </face>
+        <face>
+            <meta property="@key" content="@value" />
+        </face>
+    </basis>
+    <basis core="call" file="pwa.inc" />
+    <basis core="call" file="style.inc" />
+    <link rel="stylesheet" href="https://cdn.basiscore.net/basisfly.com/css/swiper-bundle.min.css" />
+</head>
+
+<body>
+    <basis core="call" file="header.inc" />
+
+    <main class="mt-32 mb-14 flex justify-center">
+
+        <section class="px-4 w-full relative     flex flex-col">
+            <div class="w-full linear1 h-[264px] rounded-3xl   overflow-hidden p-[4px]">
+                <div class="relative w-full h-full">
+                    <img loading="lazy" src="[##cms.cms.cdn##]/images/about-us-banner.png" alt="about-us-banner"
+                        class="w-full rounded-[20px] h-full z-0 object-cover">
+                    <span
+                        class="bg-[#0000008F] rounded-[20px] z-[2] flex justify-center items-center absolute w-full h-full top-0 left-0">
+                        <img loading="lazy" width="257" height="81" src="[##cms.cms.cdn##]/images/logo.png" alt="logo"
+                            class="w-[153px] mb-24" /></span>
+                </div>
+            </div>
+            <div class=" z-[20] mt-[-140px] w-full   px-[12px]">
+                <div class="w-full grid grid-cols-1 gap-[34px]">
+
+
+                    <basis core="list" datamembername="db.3-articles">
+                        <face>
+                            <article class="w-full h-[342px] linear1 rounded-2xl p-[1.4px]">
+                                <div
+                                    class="w-full px-[41px] h-full gap-[10px] bg-white  rounded-2xl flex flex-col justify-center items-center">
+                                    <img loading="lazy" src="[##cms.cms.cdn##]/images/@RowNumber-aboutus.svg"
+                                        alt="@text" width="121" height="121">
+                                    <p class="font-bold text-zinc-900"> @text</p>
+                                    <div class="text-center line-clamp-3 text-zinc-900 text-sm">
+                                        @largetext
+                                    </div>
+                                </div>
+                            </article>
+                        </face>
+                    </basis>
+                </div>
+            </div>
+
+            <div
+                class="w-full flex flex-col gap-6 px-[12px] py-[43px] mt-14 bg-zinc-50 border border-zinc-300 rounded-2xl">
+                <div class="flex justify-center">
+                    <basis core="list" datamembername="db.our-team">
+                        <face filter="TypeID=150">
+                            <h1
+                                class="font-bold p-3 text-base border-b-4 border-zinc-900 w-fit text-zinc-900 text-center">
+                                @text
+                            </h1>
+                        </face>
+                    </basis>
+
+                </div>
+                <basis core="list" datamembername="db.our-team">
+                    <face filter="TypeID=129">
+                        <div class="text-center text-sm text-zinc-900">
+                            @largetext
+                        </div>
+                    </face>
+                </basis>
+            </div>
+
+            <div class="w-full flex flex-col gap-5 mt-20 justify-center items-center">
+                <h2 class="font-bold pb-3 text-base border-b-4 border-zinc-900 w-fit text-zinc-900 text-center">
+                    ارتباط با ما
+                </h2>
+                <p class="text-center text-sm text-zinc-900">
+                    همکاران ما آماده پاسخگویی به پرسش‌ها، درخواست‌ها و نظرات
+                    ارزشمند شما هستند.</p>
+                <div class="flex flex-col-reverse w-full gap-6 mt-9 ">
+
+                    <div class="w-full linear1 h-[507px] p-[1.4px] rounded-3xl">
+                        <div class="w-full h-full py-[34px] px-6 bg-white rounded-[22.6px]">
+                            <div class="w-full flex items-center gap-2">
+                                <img loading="lazy" src="[##cms.cms.cdn##]/images/user.svg" alt="user" width="35"
+                                    height="35">
+                                <h3 class="font-bold text-zinc-900">ارتباط با کارشناسان</h3>
+                            </div>
+                            <p class="my-2 text-sm text-zinc-900">برای دریافت راهنما میتوانید با کارشناسان ما در ارتباط
+                                باشید</p>
+                            <div id="suggestion-form" class="flex flex-col gap-4 w-full">
+
+                                <basis core="schema" run="atclient"
+                                    schemaurl="/schema/domainform/00C622D6-CA2E-4BAF-9AD0-9B3881EC1170/6BF3D8FC-87F2-4A1F-9396-870728F5EB58/fa/ارتباط-با-ما"
+                                    displaymode="new" button="[data-btn-uploadSuggestion]"
+                                    resultsourceid="upload.datafooter" OnRendered="RenderFormSuggestion"></basis>
+                                <basis core="api" if="{##cms.uploadSuggestion.run|(false)##}" run="atclient"
+                                    url="/schema/domainform/00C622D6-CA2E-4BAF-9AD0-9B3881EC1170/fa/editobject"
+                                    method="post"
+                                    body="object_edit={##cms.uploadSuggestion.value##}&captcha={##cms.uploadSuggestion.captcha##}&captchaid={##cms.uploadSuggestion.captchaid##}"
+                                    content-type="application/x-www-form-urlencoded" triggers="cms.uploadSuggestion"
+                                    OnProcessed="OnProcessedEditObjectSuggestion"></basis>
+                                <basis core="callback" run="atclient" method="uploadDocumensuggestion"
+                                    triggers="upload.datafooter"></basis>
+                                <div class="captcha-button">
+                                    <div id="captchaContainer"
+                                        class="captchaContainerclass w-full captcha-sefaresh ml-2.5 max-xl:ml-0 max-xl:mb-[20px]"
+                                        data-bc-answer-container data-bc-schema-info-multi="0"
+                                        data-bc-schema-info-word="58" data-bc-schema-info-part="1"
+                                        data-bc-schema-info-part-0-type="text">
+                                        <basis core="dbsource" source="trust_login" name="captcha" run="atclient"
+                                            triggers="captcha.refreshFooter">
+                                            <member name="code1" type="scalar" request="captcha"></member>
+                                        </basis>
+                                        <basis datamembername="captcha.code1" core="print" run="atclient"
+                                            OnRendered="captchaRenderedSuggestion">
+                                            <face>
+                                                <script type="text/template">
+                                      <div class="flex w-full justify-between "><div class="flex lg:flex-row w-full items-center justify-between">
+
+                           <div class="float-right captcha-ctz relative w-full lg:w-fit">
+                            <label for="captcha-ctz">کد امنیت</label>
+                            <input id="captcha-ctz" type="text" class="contactUsInput codeinputm bg-white rounded-2xl p-3" 
+                            name="captcha" maxlength="4" placeholder="کد امنیتی"/>
+                            <input type="hidden" name="captchaid" value="@captcha@" />
+                        </div>
+                        <div class="float-right mt-7 lg:mt-0 bvgvkek h-fit leading-[65px] px-2 flex items-center  ">
+                         <img loading="lazy" src="/@captcha@" width="120" height="60" alt="captcha" />
+                         <span onclick="refreshCaptchaSuggestion()" >
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M13.7857 6L14.5807 8.00215C13.8273 7.57761 12.9442 7.33333 12 7.33333C9.23858 7.33333 7 9.42267 7 12C7 12.4149 7.058 12.8171 7.16686 13.2M10.2143 18L9.41931 15.9978C10.1727 16.4224 11.0558 16.6667 12 16.6667C14.7614 16.6667 17 14.5773 17 12C17 11.5851 16.942 11.1829 16.8331 10.8" stroke="#0C8ADE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="12" cy="12" r="10" stroke="#0C8ADE" stroke-width="1.5"/>
+</svg>
+
+                          </span>
+                         
+                             </div>
+
+                                                          </div></div>
+                      </script>
+                                            </face>
+                                        </basis>
+                                        <button
+                                            class="data-body-btn mt-3 w-full h-[44px] bg-primary-700 rounded-lg hover:bg-secondary-2-700 hover:text-white flex justify-center items-center"
+                                            type="button" data-btn-uploadSuggestion>
+                                            ارسال
+                                        </button>
+                                    </div>
+
+                                    <div
+                                        class="Loading_Form hidden data-body-btn w-[126px] h-12 px-4 py-2 rounded-2xl justify-center items-center gap-2.5 flex">
+                                        <div id="ballsWaveG" class="ext-zinc-50 text-base font-normal leading-normal">
+                                            <div id="ballsWaveG_1" class="ballsWaveG"></div>
+                                            <div id="ballsWaveG_2" class="ballsWaveG"></div>
+                                            <div id="ballsWaveG_3" class="ballsWaveG"></div>
+                                            <div id="ballsWaveG_4" class="ballsWaveG"></div>
+                                            <div id="ballsWaveG_5" class="ballsWaveG"></div>
+                                            <div id="ballsWaveG_6" class="ballsWaveG"></div>
+                                            <div id="ballsWaveG_7" class="ballsWaveG"></div>
+                                            <div id="ballsWaveG_8" class="ballsWaveG"></div>
+                                        </div>
+                                    </div>
+                                    <div class="message-api text-center mt-3"></div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="flex flex-col  gap-11 w-full">
+                        <div class="w-full flex flex-col-reverse gap-12">
+                            <div class="main w-full flex flex-col gap-12">
+                                <basis core="print" datamembername="db.info">
+                                    <face filter="TypeID=244">
+                                        <div class="w-full flex gap-3 items-center">
+                                            <img loading="lazy" src="[##cms.cms.cdn##]/images/loc.svg" alt="location"
+                                                width="48" height="48">
+                                            <div class="w-[calc(100%-48px)] text-sm text-zinc-900">
+                                                @largetext
+                                            </div>
+                                        </div>
+                                    </face>
+                                </basis>
+
+
+                                <basis core="print" datamembername="db.info">
+                                    <face filter="TypeID=240">
+                                        <div class="w-full flex gap-3 items-center">
+                                            <img loading="lazy" src="[##cms.cms.cdn##]/images/phone.svg" alt="phone"
+                                                width="48" height="48">
+                                            <a href="tel:@text"
+                                                class="hover:text-secondary-1-500 w-[calc(100%-48px)] text-sm text-zinc-900">
+                                                @text</a>
+                                        </div>
+                                    </face>
+                                </basis>
+
+                                <basis core="print" datamembername="db.info">
+                                    <face filter="TypeID=242">
+                                        <div class="w-full flex gap-3 items-center">
+                                            <img loading="lazy" src="[##cms.cms.cdn##]/images/email.svg" alt="email"
+                                                width="48" height="48">
+                                            <a href="mailto:@text"
+                                                class="hover:text-secondary-1-500 w-[calc(100%-48px)] text-sm text-zinc-900">
+                                                @text</a>
+                                        </div>
+                                    </face>
+                                </basis>
+                            </div>
+                            <basis core="print" datamembername="db.info">
+                                <face filter="TypeID=246">
+                                    <div class="w-full ">
+                                        <iframe defer="" title="bookazkoja"
+                                            class="inline w-full align-middle border-0 border-none rounded-3xl  "
+                                            height="350" loading="lazy" target="_blank" allowfullscreen=""
+                                            src="https://maps.google.com/maps?q=@largetext,@text&z=14&output=embed"></iframe>
+                                    </div>
+                                </face>
+                            </basis>
+                        </div>
+                        <div
+                            class="w-full flex flex-col px-[12px] h-[136px] gap-6 justify-center rounded-xl bg-primary-50">
+                            <p class="font-bold text-2xl">ما رو دنبال کنید</p>
+                            <div class="flex gap-3 w-full justify-between items-center">
+
+                                <basis core="print" datamembername="db.info">
+                                    <face filter="text in('یوتیوب')">
+                                        <a href="@largetext" target="_blank" rel="noopener" aria-label="@text"
+                                            class="w-[57px] h-[57px] group hover:border-secondary-1-500 rounded-full flex justify-center items-center bg-transparent border border-zinc-900">
+                                            <svg width="18" height="12" viewBox="0 0 18 12" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M17.55 1.82143C17.325 1.07143 16.7625 0.535714 15.975 0.321429C14.625 1.91586e-07 8.88749 0 8.88749 0C8.88749 0 3.26251 1.91586e-07 1.80001 0.321429C1.01251 0.535714 0.449997 1.07143 0.224997 1.82143C-3.43658e-06 3.21429 0 6 0 6C0 6 3.41982e-06 8.78571 0.337503 10.1786C0.562503 10.9286 1.125 11.4643 1.9125 11.6786C3.2625 12 9 12 9 12C9 12 14.625 12 16.0875 11.6786C16.875 11.4643 17.4375 10.9286 17.6625 10.1786C18 8.78571 18 6 18 6C18 6 18 3.21429 17.55 1.82143ZM7.19999 8.57143V3.42857L11.925 6L7.19999 8.57143Z"
+                                                    fill="#18181B" class="group-hover:fill-secondary-1-500" />
+                                            </svg>
+                                        </a>
+                                    </face>
+                                </basis>
+
+                                <basis core="print" datamembername="db.info">
+                                    <face filter="text in('فیسبوک')">
+                                        <a href="@largetext" target="_blank" rel="noopener" aria-label="@text"
+                                            class="w-[57px] h-[57px] group hover:border-secondary-1-500 rounded-full flex justify-center items-center bg-transparent border border-zinc-900">
+                                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                    d="M12.25 0H1.75C0.784875 0 0 0.784875 0 1.75V12.25C0 13.2151 0.784875 14 1.75 14H7V9.1875H5.25V7H7V5.25C7 4.55381 7.27656 3.88613 7.76884 3.39384C8.26113 2.90156 8.92881 2.625 9.625 2.625H11.375V4.8125H10.5C10.017 4.8125 9.625 4.767 9.625 5.25V7H11.8125L10.9375 9.1875H9.625V14H12.25C13.2151 14 14 13.2151 14 12.25V1.75C14 0.784875 13.2151 0 12.25 0Z"
+                                                    fill="#18181B" class="group-hover:fill-secondary-1-500" />
+                                            </svg>
+                                        </a>
+                                    </face>
+                                </basis>
+
+
+                                <basis core="print" datamembername="db.info">
+                                    <face filter="text in('اینستاگرام')">
+                                        <a href="@largetext" target="_blank" rel="noopener" aria-label="@text"
+                                            class="w-[57px] h-[57px] group hover:border-secondary-1-500 rounded-full flex justify-center items-center bg-transparent border border-zinc-900">
+                                            <svg width="25" height="27" viewBox="0 0 25 27" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                    d="M12.3448 11.0889C10.8268 11.0889 9.5918 12.3219 9.5918 13.8389C9.5918 15.3559 10.8268 16.5889 12.3448 16.5889C13.8628 16.5889 15.0968 15.3559 15.0968 13.8389C15.0968 12.3219 13.8628 11.0889 12.3448 11.0889Z"
+                                                    fill="#18181B" class="group-hover:fill-secondary-1-500" />
+                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                    d="M17.364 9.91779C16.794 9.91779 16.329 9.45579 16.329 8.88879C16.329 8.31979 16.794 7.85779 17.364 7.85779C17.934 7.85779 18.398 8.31979 18.398 8.88879C18.398 9.45579 17.934 9.91779 17.364 9.91779ZM12.344 18.0888C10 18.0888 8.092 16.1828 8.092 13.8388C8.092 11.4948 10 9.58879 12.344 9.58879C14.689 9.58879 16.596 11.4948 16.596 13.8388C16.596 16.1828 14.689 18.0888 12.344 18.0888ZM16.717 4.00879H8.282C5.123 4.00879 3 6.23079 3 9.53879V17.4788C3 20.7858 5.123 23.0088 8.282 23.0088H16.716C19.876 23.0088 22 20.7858 22 17.4788V9.53879C22 6.23079 19.877 4.00879 16.717 4.00879Z"
+                                                    fill="#18181B" class="group-hover:fill-secondary-1-500" />
+                                            </svg>
+
+                                        </a>
+                                    </face>
+                                </basis>
+
+                                <basis core="print" datamembername="db.info">
+                                    <face filter="text in('تلگرام')">
+                                        <a href="@largetext" target="_blank" rel="noopener" aria-label="@text"
+                                            class="w-[57px] h-[57px] group hover:border-secondary-1-500 rounded-full flex justify-center items-center bg-transparent border border-zinc-900">
+                                            <svg width="48" height="48" viewBox="0 0 48 48" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                    d="M24.5558 28.78L22.2518 30.921C21.9698 31.184 21.5108 30.968 21.5368 30.583C21.6088 29.495 21.7208 27.842 21.7958 26.923C21.8078 26.778 21.9298 26.616 22.0458 26.511C24.7368 24.071 27.4338 21.637 30.1298 19.201C30.2298 19.111 30.3478 18.889 30.2858 18.772C30.2158 18.64 29.8928 18.68 29.7588 18.764C26.3348 20.92 22.9108 23.075 19.4918 25.238C19.2818 25.37 19.0248 25.402 18.7888 25.326C17.3788 24.873 15.9608 24.444 14.5478 23.998C14.2228 23.895 13.8368 23.793 13.7998 23.39C13.7608 22.969 14.1218 22.769 14.4478 22.638C15.7618 22.108 17.0848 21.601 18.4058 21.091C23.1578 19.26 27.9098 17.43 32.6618 15.6C32.8208 15.539 33.0328 15.501 33.1988 15.468C33.6968 15.368 34.1448 15.618 34.1938 16.122C34.2308 16.491 34.1658 16.902 34.0888 17.267C33.0988 21.976 32.0958 26.683 31.0938 31.391C30.8238 32.663 30.1698 32.904 29.1168 32.127C27.7598 31.125 24.5558 28.78 24.5558 28.78Z"
+                                                    fill="#18181B" class="group-hover:fill-secondary-1-500"></path>
+                                            </svg>
+                                        </a>
+                                    </face>
+                                </basis>
+                                <basis core="print" datamembername="db.info">
+                                    <face filter="text in('واتس اپ')">
+                                        <a href="@largetext" target="_blank" rel="noopener" aria-label="@text"
+                                            class="w-[57px] h-[57px] group hover:border-secondary-1-500 rounded-full flex justify-center items-center bg-transparent border border-zinc-900">
+                                            <svg width="30" height="31" viewBox="0 0 30 31" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                    d="M18.1375 18.0519L18.0087 17.9667C17.7475 17.7915 17.3862 17.8143 17.17 18.0207L16.88 18.3015C16.5775 18.5967 16.1012 18.6531 15.73 18.4395C14.29 17.6067 13.5712 16.8027 12.6725 15.5199C12.4262 15.1671 12.47 14.6955 12.7787 14.3907L13.07 14.1027C13.2987 13.8783 13.3262 13.5435 13.14 13.2831C12.9412 13.0166 12.7475 12.749 12.5625 12.4934C12.455 12.347 12.2787 12.251 12.085 12.2354C12.0687 12.2342 12.05 12.233 12.0287 12.233C11.9112 12.233 11.7312 12.2642 11.5762 12.4142L11.42 12.5654L11.4162 12.569C10.0887 13.8471 11.5225 16.1343 13.3075 17.8491C15.07 19.5351 17.43 20.8887 18.7575 19.6119L18.9412 19.4463C19.1025 19.2891 19.1137 19.0791 19.1037 18.9711C19.0937 18.8619 19.045 18.6591 18.8312 18.5163C18.6012 18.3579 18.375 18.2091 18.1375 18.0519Z"
+                                                    fill="#18181B" class="group-hover:fill-secondary-1-500" />
+                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                    d="M20.2446 20.7405L20.0596 20.9085C19.3346 21.6009 18.4584 21.9429 17.4821 21.9429C15.8471 21.9429 13.9321 20.9877 11.9834 19.1229C8.88839 16.1517 8.16214 13.1541 10.0859 11.3001L10.2446 11.1465C10.7759 10.6353 11.5159 10.3761 12.2459 10.4421C12.9934 10.5045 13.6684 10.8765 14.0996 11.4645C14.2821 11.7177 14.4721 11.9781 14.6746 12.2493C15.3046 13.1253 15.2759 14.2665 14.6484 15.0933C15.0971 15.6801 15.5146 16.1133 16.1096 16.5273C16.9746 15.9069 18.1684 15.8805 19.0771 16.4877L19.2009 16.5681C19.4496 16.7337 19.6871 16.8897 19.9146 17.0481C20.5159 17.4489 20.9046 18.0945 20.9721 18.8097C21.0396 19.5273 20.7734 20.2305 20.2446 20.7405ZM26.6646 14.0073C25.7746 9.46285 21.9946 5.83525 17.2609 4.98325C13.7446 4.34845 10.1684 5.23405 7.44089 7.40605C4.69839 9.59005 3.12714 12.7881 3.12714 16.1817C3.12714 17.8881 3.53214 19.5837 4.32964 21.2169C4.39464 21.3585 4.41464 21.5013 4.38464 21.6333C4.18964 22.4841 3.78089 24.1965 3.48589 25.4205C3.36214 25.9377 3.52464 26.4657 3.91714 26.8317C4.30589 27.1941 4.85589 27.3369 5.38089 27.2037C6.56964 26.9157 8.19839 26.5329 9.22089 26.3037C9.35464 26.2737 9.50214 26.2917 9.65589 26.3649C11.3046 27.1617 13.1534 27.5817 15.0021 27.5817C18.5346 27.5817 21.8646 26.0733 24.1371 23.4441C26.4034 20.8245 27.3234 17.3841 26.6646 14.0073Z"
+                                                    fill="#18181B" class="group-hover:fill-secondary-1-500" />
+                                            </svg>
+
+                                        </a>
+                                    </face>
+                                </basis>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js "></script>
+    <basis core="call" file="footer.inc" />
+</body>
+
+
+
+</html>
