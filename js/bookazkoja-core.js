@@ -27,7 +27,9 @@ document.addEventListener("DOMContentLoaded", function () {
           if (this.readyState == 4 && this.status == 200) {
             const container = document.getElementById("search-box");
             container.innerHTML = xhrobj.responseText;
-           
+            document
+              .querySelector(".reservation-item .hotel-btn")
+              .classList.add("active-module");
 
             if (typeof changeLabels === "function") {
               changeLabels();
@@ -36,12 +38,10 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             const storedHotel = localStorage.getItem("selectedHotel");
-          
 
             if (storedHotel) {
               try {
                 const { id, name } = JSON.parse(storedHotel);
-             
 
                 const observer = new MutationObserver((mutations, obs) => {
                   const depInput = document.querySelector(
@@ -50,11 +50,11 @@ document.addEventListener("DOMContentLoaded", function () {
                   const idInput = document.querySelector(
                     "#r-hotel .departure-route .locationId"
                   );
- 
+
                   if (depInput && idInput) {
                     depInput.value = name;
                     idInput.value = id;
- 
+
                     depInput.dispatchEvent(
                       new Event("input", { bubbles: true })
                     );
@@ -68,13 +68,13 @@ document.addEventListener("DOMContentLoaded", function () {
                       new Event("change", { bubbles: true })
                     );
 
-                    setTimeout(() => {
-                      console.log(
-                        "Inputs after delay:",
-                        depInput.value,
-                        idInput.value
-                      );
-                    }, 1000);
+                    // setTimeout(() => {
+                    //   console.log(
+                    //     "Inputs after delay:",
+                    //     depInput.value,
+                    //     idInput.value
+                    //   );
+                    // }, 1000);
 
                     obs.disconnect();
                   } else {
@@ -96,7 +96,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (depInput && idInput) {
                   depInput.value = name;
                   idInput.value = id;
-                   
 
                   depInput.dispatchEvent(new Event("input", { bubbles: true }));
                   idInput.dispatchEvent(new Event("input", { bubbles: true }));
@@ -109,7 +108,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 console.error("Error parsing storedHotel:", e);
               }
             } else {
-              console.error("No data in localStorage for selectedHotel");
+              // console.error("No data in localStorage for selectedHotel");
             }
 
             const scripts = container.getElementsByTagName("script");
@@ -160,7 +159,7 @@ document.addEventListener("DOMContentLoaded", function () {
           );
 
           if (depInput && idInput) {
-             depInput.value = hotelName;
+            depInput.value = hotelName;
             idInput.value = hotelId;
 
             depInput.dispatchEvent(new Event("input", { bubbles: true }));
@@ -170,7 +169,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             target.scrollIntoView({ behavior: "smooth" });
           } else {
-             const hotelData = { id: hotelId, name: hotelName };
+            const hotelData = { id: hotelId, name: hotelName };
             localStorage.setItem("selectedHotel", JSON.stringify(hotelData));
             window.location.href = "/";
           }
@@ -211,7 +210,6 @@ if (document.querySelectorAll(".swiper-1").length > 0)
     spaceBetween: 12,
     grabCursor: !0,
     loop: 0,
-  
   });
 if (document.querySelectorAll(".swiper-5").length > 0)
   swiper = new Swiper(".swiper-5", {
@@ -221,7 +219,6 @@ if (document.querySelectorAll(".swiper-5").length > 0)
     spaceBetween: 12,
     grabCursor: !0,
     loop: 0,
-    
   });
 
 const headerMenu = document.querySelector(".header-menu");
@@ -275,7 +272,7 @@ document.addEventListener("DOMContentLoaded", function () {
 // ____________________
 // ____________________
 // ____________________
- 
+
 const scrollBtn = document.getElementById("scroll-to-top");
 
 scrollBtn?.addEventListener("click", () => {
