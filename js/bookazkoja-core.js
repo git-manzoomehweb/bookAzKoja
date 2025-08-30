@@ -31,6 +31,33 @@ document.addEventListener("DOMContentLoaded", function () {
               .querySelector(".reservation-item .hotel-btn")
               .classList.add("active-module");
 
+             if (document.querySelector(".hotel-elmentsssss")) {
+         
+             
+              if( localStorage.getItem("selectedHotel")){
+                 localStorage.removeItem("selectedHotel");
+              }
+
+
+  const hotelValue = document.querySelector(".hotel-elmentsssss").innerText;
+
+   const observer = new MutationObserver((mutationsList, observer) => {
+    const depInput = document.querySelector('.departure-route input.departure');
+    if (depInput) {
+      depInput.value = hotelValue;
+      depInput.dispatchEvent(new Event('input', { bubbles: true }));
+      depInput.dispatchEvent(new Event('change', { bubbles: true }));
+  
+    }
+  });
+
+ 
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true
+  });
+}
+
             if (typeof changeLabels === "function") {
               changeLabels();
             } else {
