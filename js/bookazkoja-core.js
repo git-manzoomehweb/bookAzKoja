@@ -138,13 +138,10 @@ document.addEventListener("DOMContentLoaded", function () {
                       new Event("change", { bubbles: true })
                     );
 
-                    // setTimeout(() => {
-                    //   console.log(
-                    //     "Inputs after delay:",
-                    //     depInput.value,
-                    //     idInput.value
-                    //   );
-                    // }, 1000);
+                    setTimeout(() => {
+                      depInput.value = name;
+                      idInput.value = id;
+                    }, 950);
 
                     obs.disconnect();
                   } else {
@@ -228,7 +225,11 @@ document.addEventListener("DOMContentLoaded", function () {
             "#r-hotel .departure-route .locationId"
           );
 
-          if (depInput && idInput) {
+          if (
+            depInput &&
+            idInput &&
+            !document.querySelector(".hotel-elmentsssss")
+          ) {
             depInput.value = hotelName;
             idInput.value = hotelId;
 
