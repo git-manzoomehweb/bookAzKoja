@@ -31,32 +31,75 @@ document.addEventListener("DOMContentLoaded", function () {
               .querySelector(".reservation-item .hotel-btn")
               .classList.add("active-module");
 
-             if (document.querySelector(".hotel-elmentsssss")) {
-         
-             
-              if( localStorage.getItem("selectedHotel")){
-                 localStorage.removeItem("selectedHotel");
+            if (document.querySelector(".hotel-elmentsssss")) {
+              // پاک کردن مقدار انتخاب قبلی اگر در localStorage وجود داشت
+              if (localStorage.getItem("selectedHotel")) {
+                localStorage.removeItem("selectedHotel");
               }
 
+              // گرفتن مقدار شهر و هتل
+              const cityValue =
+                document.querySelector(".city-elmentsssss")?.innerText || "";
+              const hotelValue =
+                document.querySelector(".hotel-elmentsssss")?.innerText || "";
 
-  const hotelValue = document.querySelector(".hotel-elmentsssss").innerText;
+              const observer = new MutationObserver(
+                (mutationsList, observer) => {
+                  const depInput = document.querySelector(
+                    ".departure-route input.departure"
+                  );
+                  const idInput = document.querySelector(
+                    "#r-hotel .departure-route .locationId"
+                  );
 
-   const observer = new MutationObserver((mutationsList, observer) => {
-    const depInput = document.querySelector('.departure-route input.departure');
-    if (depInput) {
-      depInput.value = hotelValue;
-      depInput.dispatchEvent(new Event('input', { bubbles: true }));
-      depInput.dispatchEvent(new Event('change', { bubbles: true }));
-  
-    }
-  });
+                  // فقط اگر همه چیز آماده بود مقدار ست کن
+                  if (depInput && idInput && hotelValue && cityValue) {
+                    depInput.value = hotelValue;
+                    idInput.value = cityValue;
 
- 
-  observer.observe(document.body, {
-    childList: true,
-    subtree: true
-  });
-}
+                    // تریگر رویدادها برای اینکه اسکریپت‌های دیگر متوجه تغییر بشن
+                    idInput.dispatchEvent(
+                      new Event("input", { bubbles: true })
+                    );
+                    idInput.dispatchEvent(
+                      new Event("change", { bubbles: true })
+                    );
+                    depInput.dispatchEvent(
+                      new Event("input", { bubbles: true })
+                    );
+                    depInput.dispatchEvent(
+                      new Event("change", { bubbles: true })
+                    );
+
+                    console.log(
+                      "✅ مقدار اولیه ست شد:",
+                      depInput.value,
+                      idInput.value
+                    );
+
+                    // فقط همین یک بار، observer رو قطع کن
+                    observer.disconnect();
+
+                    // برای تست بعد از کمی تأخیر دوباره لاگ بگیر
+                    setTimeout(() => {
+                      depInput.value = hotelValue;
+                      idInput.value = cityValue;
+                      console.log(
+                        "Inputs after delay:",
+                        depInput.value,
+                        idInput.value
+                      );
+                    }, 900);
+                  }
+                }
+              );
+
+              // شروع مشاهده تغییرات DOM
+              observer.observe(document.body, {
+                childList: true,
+                subtree: true,
+              });
+            }
 
             if (typeof changeLabels === "function") {
               changeLabels();

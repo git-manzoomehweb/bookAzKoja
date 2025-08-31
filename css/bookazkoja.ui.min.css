@@ -772,6 +772,9 @@ button.search-hotel span {
     width: 96px;
 }
 .w-\[calc\(100\%-230px\)\] {
+    width: calc(100% - 230px);
+}
+.w-\[calc\(100\%-240px\)\] {
     width: calc(100% - 240px);
 }
 .w-\[calc\(100\%-25px\)\] {

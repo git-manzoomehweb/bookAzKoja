@@ -1,8 +1,10 @@
+<basis core="dbsource" name="db" source="basiscore" lid="1" mid="1" usedforid="2381727">
+    <member typeid="159" name="about-us" type="view" />
+</basis>
 <!DOCTYPE html>
 <html dir="rtl" lang="fa">
 
 <head>
- <head>
     <title> هتل</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
@@ -21,507 +23,306 @@
     <link href="https://cdn.basiscore.net/basisfly.com/css/reservation_tem3_style_res.css" type="text/css"
         rel="stylesheet" />
     <basis core="call" file="style.inc" />
-        <link href="[##cms.cms.cdn##]/css/style_tem.css" type="text/css" rel="stylesheet" />
+    <link href="[##cms.cms.cdn##]/css/style_tem.css" type="text/css" rel="stylesheet" />
 </head>
-<body  onload="onloadFunc();">
-  <basis core="call" file="header.inc" />
 
-  <main class="mt-40 mb-14 flex flex-col   items-center">
-    <span class="hidden hotel-elmentsssss">[##cms.form.coHotel##]</span>
-    <div id="bg-popup" class="unvisible"></div>
-    <div class="message-box unvisible">
-                <i class="icon-message-box">
-                    <svg width="50pt" height="50pt" fill="#666" version="1.0" viewBox="0 0 512 512"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <g transform="translate(0 512) scale(.1 -.1)">
-                            <path
-                                d="m1958 5059c-518-43-1e3 -273-1362-649-741-772-795-1960-128-2804 30-39 105-121 166-181 338-337 774-546 1256-605 123-15 398-12 519 5 57 8 105 14 106 12 2-1 15-27 30-57 118-235 344-454 600-582 403-202 889-190 1280 32 141 81 174 132 120 185-32 33-60 31-115-6-25-16-83-50-130-73-388-197-846-171-1215 68-119 77-291 251-363 369-303 490-231 1110 175 1512 101 100 186 160 318 225 404 200 875 163 1242-96 87-62 225-200 286-285 222-314 284-722 166-1089-41-126-140-303-219-394-42-47-51-76-35-114 15-34 48-48 89-38 37 9 162 179 229 313 154 304 186 664 92 999-35 120-140 330-219 435-129 171-323 329-509 415l-85 39 5 170c16 517-142 993-465 1403-92 116-135 155-173 155-21 0-38-7-51-22-34-43-24-72 58-167 144-168 276-388 353-588 88-230 124-429 125-693 1-105-2-194-6-198s-44 0-90 9c-46 8-115 18-154 22l-71 6-6 187c-4 135-11 213-27 286-144 676-673 1185-1350 1302-64 11-153 17-270 17s-206-6-270-17c-683-118-1209-630-1352-1315-30-146-33-456-4-607 25-137 63-256 88-277 28-25 70-22 96 5 28 30 28 48-2 151-71 243-75 531-11 782 195 770 974 1261 1749 1103 144-29 233-60 381-134 414-206 703-586 801-1055 13-62 18-132 19-259v-175l-100-17c-410-73-756-315-963-674-90-157-156-367-169-537-3-47-9-91-12-97-3-5-61-15-129-21-334-31-681 63-976 263-127 85-303 264-396 402-71 104-77 110-112 113-27 2-43-3-57-17-36-36-27-71 48-183 342-509 932-786 1547-725l82 8 7-53c3-29 18-100 31-156 14-57 24-105 22-107-11-11-183-25-311-25-167 0-269 10-422 42-354 72-712 266-975 528-704 700-787 1795-197 2587 568 762 1591 1015 2445 603 119-57 248-136 341-206 26-20 55-34 72-34 39 0 69 32 69 74 0 41-31 71-171 163-307 201-630 311-1004 343-134 11-195 11-337-1z" />
-                            <path
-                                d="m2080 4260c-17-17-20-33-20-105s3-88 20-105c25-25 71-26 99-2 41 33 41 172 0 213-25 25-74 24-99-1z" />
-                            <path
-                                d="m1186 3889c-44-35-36-73 31-141 47-47 63-58 90-58 42 0 73 30 73 72 0 25-12 43-58 90-65 64-92 72-136 37z" />
-                            <path
-                                d="m2938 3852c-46-47-58-65-58-90 0-43 31-72 76-72 29 0 44 9 90 54 63 63 72 106 31 144-40 38-73 29-139-36z" />
-                            <path
-                                d="m2082 3670c-22-20-22-26-22-300 0-154-4-280-8-280s-37 30-72 66c-36 36-76 70-89 75-46 18-101-24-101-78 0-22 275-298 311-314 40-16 84 3 98 43 15 43 15 714 0 757-19 53-77 68-117 31z" />
-                            <path
-                                d="m810 2990c-30-30-27-83 6-109 22-17 41-21 101-21 65 0 77 3 98 25 30 30 32 64 4 99-19 24-26 26-105 26-71 0-87-3-104-20z" />
-                            <path
-                                d="m3245 2985c-14-13-25-36-25-50s11-37 25-50c21-22 33-25 94-25 39 0 81 5 95 11 49 23 53 104 7 128-11 6-54 11-96 11-67 0-79-3-100-25z" />
-                            <path
-                                d="m3653 2359c-48-23-89-67-110-116-10-26-13-136-13-533 0-490 0-501 21-546 35-73 118-124 204-124 81 0 157 47 198 124 22 40 22 48 25 516 2 324 0 491-8 526-13 63-67 129-124 155-56 26-140 25-193-2zm153-150c18-20 19-43 19-501v-480l-24-19c-31-25-69-24-98 3l-23 21v479c0 465 1 479 20 498 27 27 81 26 106-1z" />
-                            <path
-                                d="m1265 2172c-16-11-47-38-67-60-58-64-50-125 20-147 29-8 80 22 127 78 42 49 46 87 10 122-29 30-50 31-90 7z" />
-                            <path
-                                d="m2140 1813c-43-16-50-34-50-123 0-78 2-89 23-108 44-41 107-19 123 43 12 48-1 144-22 164-22 22-53 32-74 24z" />
-                            <path
-                                d="m3653 979c-91-45-123-109-123-249 0-115 20-174 74-215 123-94 281-63 347 68 27 51 36 175 20 245-15 62-69 128-125 153-56 26-140 25-193-2zm153-150c15-17 19-36 19-101 0-72-2-82-24-99-31-25-69-24-98 3-20 19-23 31-23 100 0 65 3 81 20 98 27 27 81 26 106-1z" />
-                        </g>
-                    </svg>
-                </i>
-                <div class="line-one font_20 font-weight">
-                    اعتبار نتایج به پایان رسید
-                </div>
-                <div class="line-two ">
-                    برای دریافت آخرین نرخ‌ها لطفا صفحه را مجددا بارگذاری کنید
-                </div>
-                <button class="background-color_2 color_white font_16 border-radius cursor-pointer"
-                    onclick="window.location='[##cms.Host.FA_redirect|(/)##]'">صفحه اصلی</button>
-                <button class="background-color_1 color_white font_16 border-radius cursor-pointer"
-                    onclick="location.reload()">جستجوی مجدد</button>
-            </div>
+<body onload="onloadFunc();">
+    <basis core="call" file="header.inc" />
 
-    
-    <section class="w-full flex justify-center">
-      <div class="px-4 w-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col gap-[30px]">
-        <img width="1280" height="200" src="[##cms.cms.cdn##]/images/search-bg.jpg" alt="search-bg"
-          class="w-full object-cover h-[200px] rounded-xl" />
-        <div class="w-full flex flex-col">
-          <img loading="lazy" src="[##cms.cms.cdn##]/images/polygan.svg" width="1280" height="81" alt="polygan"
-            class="w-full" />
-          <div class="w-full px-6 mt-[-210px] fa search-box-container">
-            <div class="w-full linear1 min-h-[207px] rounded-xl p-[4px]">
-              <div class="w-full min-h-[207px] bg-white rounded-xl justify-center px-4 flex flex-col gap-3">
-                <div class="w-full flex justify-between items-center">
-                  <div class="flex gap-3 items-center">
-                    <img loading="lazy" src="[##cms.cms.cdn##]/images/map1.svg" width="44" height="44" alt="map" />
-                    <p class="text-xl text-zinc-900 font-medium">
-                      تو بگو چی میخوای، من میگم از کجا بگیری؟
-                    </p>
-                  </div>
-                  <basis core="print" datamembername="db.info">
-                    <face filter="TypeID=240 and valueID=4181587">
-                      <a href="tel:@text"
-                        class="flex hover:shadow-lg text-secondary-2-700 group items-center text-sm hover:text-white hover:bg-secondary-2-700 rounded-md pl-2">
-                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <g opacity="0.4">
-                            <path
-                              d="M26.0178 18.5746C25.6211 18.5014 25.2568 18.7545 25.1813 19.1417C25.1057 19.529 25.3597 19.9071 25.7456 19.9828C26.9075 20.2093 27.8046 21.1087 28.032 22.2746C28.0968 22.6102 28.3922 22.855 28.7325 22.855C28.7781 22.855 28.8238 22.8509 28.8703 22.8425C29.2562 22.7651 29.5101 22.3879 29.4346 21.9998C29.0952 20.2585 27.7548 18.9136 26.0178 18.5746Z"
-                              fill="#0078CC" class="group-hover:fill-white" />
-                            <path
-                              d="M25.9665 15.6731C25.7806 15.6465 25.5938 15.7014 25.4453 15.8197C25.2926 15.9396 25.1971 16.1128 25.1764 16.3068C25.1324 16.6991 25.4154 17.0538 25.8071 17.098C28.5085 17.3994 30.6082 19.5038 30.9119 22.2136C30.9526 22.5767 31.2572 22.8507 31.6207 22.8507C31.6481 22.8507 31.6746 22.849 31.702 22.8457C31.8921 22.8249 32.0614 22.7308 32.1809 22.5809C32.2996 22.431 32.3535 22.2444 32.3319 22.0537C31.9535 18.6727 29.3368 16.0487 25.9665 15.6731Z"
-                              fill="#0078CC" class="group-hover:fill-white" />
-                          </g>
-                          <path fill-rule="evenodd" clip-rule="evenodd"
-                            d="M23.1944 24.8103C26.5187 28.1336 27.2728 24.2889 29.3893 26.404C31.4299 28.444 32.6027 28.8527 30.0173 31.4373C29.6935 31.6975 27.636 34.8286 20.4051 27.5997C13.1734 20.37 16.3026 18.3104 16.5629 17.9866C19.1545 15.3949 19.5562 16.5745 21.5967 18.6144C23.7133 20.7304 19.8702 21.487 23.1944 24.8103Z"
-                            fill="#0078CC" class="group-hover:fill-white" />
-                        </svg>
-                        تماس با پشتیبانی
-                      </a>
-                    </face>
-                  </basis>
-                </div>
-                <div id="search-box" class="w-full min-h-[100px] flex justify-center">
-                  <div class="loader"></div>
-                </div>
-              </div>
+    <main class="mt-40 mb-14 flex flex-col   items-center">
+        <span class="hidden hotel-elmentsssss">[##cms.form.coHotel##]</span>
+        <span class="hidden city-elmentsssss">[##cms.form.cityid##]</span>
+        <div id="bg-popup" class="unvisible"></div>
+        <div class="message-box unvisible">
+            <i class="icon-message-box">
+                <svg width="50pt" height="50pt" fill="#666" version="1.0" viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <g transform="translate(0 512) scale(.1 -.1)">
+                        <path
+                            d="m1958 5059c-518-43-1e3 -273-1362-649-741-772-795-1960-128-2804 30-39 105-121 166-181 338-337 774-546 1256-605 123-15 398-12 519 5 57 8 105 14 106 12 2-1 15-27 30-57 118-235 344-454 600-582 403-202 889-190 1280 32 141 81 174 132 120 185-32 33-60 31-115-6-25-16-83-50-130-73-388-197-846-171-1215 68-119 77-291 251-363 369-303 490-231 1110 175 1512 101 100 186 160 318 225 404 200 875 163 1242-96 87-62 225-200 286-285 222-314 284-722 166-1089-41-126-140-303-219-394-42-47-51-76-35-114 15-34 48-48 89-38 37 9 162 179 229 313 154 304 186 664 92 999-35 120-140 330-219 435-129 171-323 329-509 415l-85 39 5 170c16 517-142 993-465 1403-92 116-135 155-173 155-21 0-38-7-51-22-34-43-24-72 58-167 144-168 276-388 353-588 88-230 124-429 125-693 1-105-2-194-6-198s-44 0-90 9c-46 8-115 18-154 22l-71 6-6 187c-4 135-11 213-27 286-144 676-673 1185-1350 1302-64 11-153 17-270 17s-206-6-270-17c-683-118-1209-630-1352-1315-30-146-33-456-4-607 25-137 63-256 88-277 28-25 70-22 96 5 28 30 28 48-2 151-71 243-75 531-11 782 195 770 974 1261 1749 1103 144-29 233-60 381-134 414-206 703-586 801-1055 13-62 18-132 19-259v-175l-100-17c-410-73-756-315-963-674-90-157-156-367-169-537-3-47-9-91-12-97-3-5-61-15-129-21-334-31-681 63-976 263-127 85-303 264-396 402-71 104-77 110-112 113-27 2-43-3-57-17-36-36-27-71 48-183 342-509 932-786 1547-725l82 8 7-53c3-29 18-100 31-156 14-57 24-105 22-107-11-11-183-25-311-25-167 0-269 10-422 42-354 72-712 266-975 528-704 700-787 1795-197 2587 568 762 1591 1015 2445 603 119-57 248-136 341-206 26-20 55-34 72-34 39 0 69 32 69 74 0 41-31 71-171 163-307 201-630 311-1004 343-134 11-195 11-337-1z" />
+                        <path
+                            d="m2080 4260c-17-17-20-33-20-105s3-88 20-105c25-25 71-26 99-2 41 33 41 172 0 213-25 25-74 24-99-1z" />
+                        <path
+                            d="m1186 3889c-44-35-36-73 31-141 47-47 63-58 90-58 42 0 73 30 73 72 0 25-12 43-58 90-65 64-92 72-136 37z" />
+                        <path
+                            d="m2938 3852c-46-47-58-65-58-90 0-43 31-72 76-72 29 0 44 9 90 54 63 63 72 106 31 144-40 38-73 29-139-36z" />
+                        <path
+                            d="m2082 3670c-22-20-22-26-22-300 0-154-4-280-8-280s-37 30-72 66c-36 36-76 70-89 75-46 18-101-24-101-78 0-22 275-298 311-314 40-16 84 3 98 43 15 43 15 714 0 757-19 53-77 68-117 31z" />
+                        <path
+                            d="m810 2990c-30-30-27-83 6-109 22-17 41-21 101-21 65 0 77 3 98 25 30 30 32 64 4 99-19 24-26 26-105 26-71 0-87-3-104-20z" />
+                        <path
+                            d="m3245 2985c-14-13-25-36-25-50s11-37 25-50c21-22 33-25 94-25 39 0 81 5 95 11 49 23 53 104 7 128-11 6-54 11-96 11-67 0-79-3-100-25z" />
+                        <path
+                            d="m3653 2359c-48-23-89-67-110-116-10-26-13-136-13-533 0-490 0-501 21-546 35-73 118-124 204-124 81 0 157 47 198 124 22 40 22 48 25 516 2 324 0 491-8 526-13 63-67 129-124 155-56 26-140 25-193-2zm153-150c18-20 19-43 19-501v-480l-24-19c-31-25-69-24-98 3l-23 21v479c0 465 1 479 20 498 27 27 81 26 106-1z" />
+                        <path
+                            d="m1265 2172c-16-11-47-38-67-60-58-64-50-125 20-147 29-8 80 22 127 78 42 49 46 87 10 122-29 30-50 31-90 7z" />
+                        <path
+                            d="m2140 1813c-43-16-50-34-50-123 0-78 2-89 23-108 44-41 107-19 123 43 12 48-1 144-22 164-22 22-53 32-74 24z" />
+                        <path
+                            d="m3653 979c-91-45-123-109-123-249 0-115 20-174 74-215 123-94 281-63 347 68 27 51 36 175 20 245-15 62-69 128-125 153-56 26-140 25-193-2zm153-150c15-17 19-36 19-101 0-72-2-82-24-99-31-25-69-24-98 3-20 19-23 31-23 100 0 65 3 81 20 98 27 27 81 26 106-1z" />
+                    </g>
+                </svg>
+            </i>
+            <div class="line-one font_20 font-weight">
+                اعتبار نتایج به پایان رسید
             </div>
-          </div>
+            <div class="line-two ">
+                برای دریافت آخرین نرخ‌ها لطفا صفحه را مجددا بارگذاری کنید
+            </div>
+            <button class="background-color_2 color_white font_16 border-radius cursor-pointer"
+                onclick="window.location='[##cms.Host.FA_redirect|(/)##]'">صفحه اصلی</button>
+            <button class="background-color_1 color_white font_16 border-radius cursor-pointer"
+                onclick="location.reload()">جستجوی مجدد</button>
         </div>
-      </div>
-    </section>
-
-    <!-- <section class="w-full flex justify-center mt-12">
-      <div class="px-4 w-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex gap-[13px] justify-between">
-
-        <div class="w-[calc(100%-270px-270px)] flex flex-col gap-3">
-          <div class="flex items-center gap-[36px]">
-            <span class="text-sm text-zinc-400">مرتب سازی بر اساس:</span>
-            <ul class="clicker-list sort-by flex gap-3 items-center">
-              <li
-                class="h-12 text-zinc-500 bg-zinc-50 border rounded-[50px] border-zinc-400 w-[114px] flex justify-center items-center cursor-pointer hover:bg-primary-100 hover:border-primary-400 hover:text-zinc-900 gap-2">
-                پیش فرض
-              </li>
-
-              <li
-                class="h-12 text-zinc-500 group bg-zinc-50 border rounded-[50px] border-zinc-400 w-[114px] flex justify-center items-center cursor-pointer hover:bg-primary-100 hover:border-primary-400 hover:text-zinc-900 gap-2">
-                <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" clip-rule="evenodd"
-                    d="M7.74792 6.47656C7.94741 6.47656 8.13867 6.55602 8.27942 6.69738L11.3304 9.7616C11.6226 10.0551 11.6216 10.53 11.3281 10.8223C11.0345 11.1145 10.5597 11.1135 10.2674 10.82L8.49794 9.04279V14.8227C8.49794 15.2369 8.16216 15.5727 7.74794 15.5727C7.33373 15.5727 6.99794 15.2369 6.99794 14.8227V9.04291L5.22877 10.8199C4.93652 11.1135 4.46165 11.1145 4.16811 10.8223C3.87457 10.53 3.87352 10.0552 4.16576 9.76162L7.21644 6.69741C7.35718 6.55604 7.54844 6.47657 7.74792 6.47656Z"
-                    fill="#71717A" class="group-hover:fill-zinc-900" />
-                  <path fill-rule="evenodd" clip-rule="evenodd"
-                    d="M13.2931 7.74219C13.2931 7.32797 13.6289 6.99219 14.0431 6.99219H20.4993C20.9135 6.99219 21.2493 7.32797 21.2493 7.74219C21.2493 8.1564 20.9135 8.49219 20.4993 8.49219H14.0431C13.6289 8.49219 13.2931 8.1564 13.2931 7.74219ZM13.2931 13.618C13.2931 13.2038 13.6289 12.868 14.0431 12.868H20.4993C20.9135 12.868 21.2493 13.2038 21.2493 13.618C21.2493 14.0322 20.9135 14.368 20.4993 14.368H14.0431C13.6289 14.368 13.2931 14.0322 13.2931 13.618ZM3.75 19.303C3.75 18.8888 4.08579 18.553 4.5 18.553H20.5C20.9142 18.553 21.25 18.8888 21.25 19.303C21.25 19.7172 20.9142 20.053 20.5 20.053H4.5C4.08579 20.053 3.75 19.7172 3.75 19.303Z"
-                    fill="#71717A" class="group-hover:fill-zinc-900" />
-                </svg>
-                قیمت
-              </li>
-
-              <li
-                class="h-12 text-zinc-500 group bg-zinc-50 border rounded-[50px] border-zinc-400 w-[114px] flex justify-center items-center cursor-pointer hover:bg-primary-100 hover:border-primary-400 hover:text-zinc-900 gap-2">
-                <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" clip-rule="evenodd"
-                    d="M16.2521 18.5234C16.0526 18.5234 15.8613 18.444 15.7206 18.3026L12.6696 15.2384C12.3774 14.9449 12.3784 14.47 12.6719 14.1777C12.9655 13.8855 13.4403 13.8865 13.7326 14.18L15.5021 15.9572L15.5021 10.1773C15.5021 9.7631 15.8378 9.4273 16.2521 9.4273C16.6663 9.4273 17.0021 9.7631 17.0021 10.1773L17.0021 15.9571L18.7712 14.1801C19.0635 13.8865 19.5384 13.8855 19.8319 14.1777C20.1254 14.47 20.1265 14.9448 19.8342 15.2384L16.7836 18.3026C16.6428 18.444 16.4516 18.5234 16.2521 18.5234Z"
-                    fill="#71717A" class="group-hover:fill-zinc-900" />
-                  <path fill-rule="evenodd" clip-rule="evenodd"
-                    d="M10.7069 17.2578C10.7069 17.672 10.3711 18.0078 9.9569 18.0078L3.5007 18.0078C3.0865 18.0078 2.7507 17.672 2.7507 17.2578C2.7507 16.8436 3.0865 16.5078 3.5007 16.5078L9.9569 16.5078C10.3711 16.5078 10.7069 16.8436 10.7069 17.2578ZM10.7069 11.382C10.7069 11.7962 10.3711 12.132 9.9569 12.132L3.5007 12.132C3.0865 12.132 2.7507 11.7962 2.7507 11.382C2.7507 10.9678 3.0865 10.632 3.5007 10.632L9.9569 10.632C10.3711 10.632 10.7069 10.9678 10.7069 11.382ZM20.25 5.697C20.25 6.1112 19.9142 6.447 19.5 6.447L3.5 6.447C3.0858 6.447 2.75 6.1112 2.75 5.697C2.75 5.2828 3.0858 4.947 3.5 4.947L19.5 4.947C19.9142 4.947 20.25 5.2828 20.25 5.697Z"
-                    fill="#71717A" class="group-hover:fill-zinc-900" />
-                </svg>
-
-                درجه
-              </li>
-            </ul>
-          </div>
-          <div class="w-full grid grid-cols-1 gap-3">
-            <article class="w-full hotelCard flex gap-2 bg-zinc-50 p-3 h-[254px] rounded-xl border border-zinc-300">
-              <div class="rounded-xl w-[230px] linear2 h-[230px] p-[4px]">
-                <div class="w-full h-full bg-white rounded-[11px] p-2">
-                  <img loading="lazy" src="[##cms.cms.cdn##]/images/sw1.jpg" alt="" class="rounded-xl w-full h-full shadow-2 object-cover" />
-                </div>
-              </div>
-              <div
-                class="rounded-xl border border-zinc-200 p-4 flex flex-col justify-between w-[calc(100%-230px)] h-[230px] bg-white">
-                <p class="font-bold text-zinc-900">Hotel White Monarch Hotel Istanbul</p>
-                <div class="flex items-center gap-[34px]">
-                  <div class="flex items-center text-zinc-900 text-sm gap-2">
-                    <img loading="lazy" src="[##cms.cms.cdn##]/images/Star.svg" alt="star" width="30" height="30">
-                    4 ستاره
-                  </div>
-                  <div class="flex items-center text-zinc-900 text-sm gap-2">
-                    <img loading="lazy" src="[##cms.cms.cdn##]/images/Hot Drink.svg" alt="Hot Drink" width="30" height="30">
-                    B.B
-                  </div>
-                </div>
-                <ul class="flex flex-col gap-2">
-                  <li class="set-before-2 text-zinc-900 flex items-center gap-[5px]">کابانا استاندارد دو نفره(B.B )</li>
-                  <li class="set-before-2 text-zinc-900 flex items-center gap-[5px]">available</li>
-                </ul>
-                <div class="w-full flex items-center justify-between">
-                  <div class="flex flex-col">
-                    <span class="text-sm text-zinc-900">قیمت از شبی:</span>
-                    <p class="font-bold text-zinc-900">12/000/000 تومان</p>
-                  </div>
-                  <button type="button"
-                    class="w-[150px] show-list h-11 flex justify-center items-center rounded-lg border border-primary-700 bg-primary-700 text-sm hover:bg-transparent hover:border-secondary-2-600 hover:text-secondary-2-700 hover:font-bold"
-                    aria-label="show-list">لیست تامین کننده ها</button>
-                </div>
-              </div>
-              <div
-                class="bg-[#0404049C] hidden popup  fixed justify-center items-center z-[60] w-screen h-screen top-0 left-0">
-                <div class="bg-white w-[706px] h-[85vh] p-4 !overflow-hidden rounded-xl text-zinc-900">
-                  <img loading="lazy" src="[##cms.cms.cdn##]/images/adv7.jpg" alt="adv7" class="w-full h-[114px] object-cover rounded-xl">
-                  <div class="w-full flex items-center my-4 justify-between">
-                    <p class="font-bold text-zinc-900">لیست اتاق ها</p>
-                    <button class="group" aria-label="close-popup" type="button" id="close-popup">
-                      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M26.6455 21.6294L21.8535 26.4214" stroke="#71717A" stroke-width="1.5"
-                          stroke-linecap="square" class="group-hover:stroke-secondary-1-700" />
-                        <path d="M26.6456 26.4244L21.8496 21.6274" stroke="#71717A" stroke-width="1.5"
-                          stroke-linecap="square" class="group-hover:stroke-secondary-1-700" />
-                        <path fill-rule="evenodd" clip-rule="evenodd"
-                          d="M24.25 33.2847C29.3586 33.2847 33.5 29.1433 33.5 24.0347C33.5 18.926 29.3586 14.7847 24.25 14.7847C19.1414 14.7847 15 18.926 15 24.0347C15 29.1433 19.1414 33.2847 24.25 33.2847Z"
-                          stroke="#71717A" stroke-width="1.5" stroke-linecap="round"
-                          class="group-hover:stroke-secondary-1-700" />
-                      </svg>
-                    </button>
-                  </div>
-                  <div class="w-full overflow-y-auto h-[52vh]">
-                    <div class="w-full flex flex-col gap-3">
-                      <article   class="w-full hotel-element relative h-[184px] p-[2px] rounded-xl">
-                        <div class="z-10   relative p-3 flex flex-col gap-3 justify-between h-full">
-                          <div class="w-full flex items-center justify-between">
-                            <div class="flex items-center gap-2">
-                              <div class=" pl-2 border-l border-zinc-600">
-                                <img loading="lazy" src="[##cms.cms.cdn##]/images/eqamat.png" alt="tamin-logo" class="w-[82px]">
-                              </div>
-                              <div class="flex items-center">
-                                <span class="text-sm text-zinc-600">تامین کننده :</span>
-                                <p class="font-bold text-zinc-900">اقامت 24</p>
-                              </div>
+        <section class="w-full flex justify-center">
+            <div class="px-4 w-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col gap-[30px]">
+                <img width="1280" height="200" src="[##cms.cms.cdn##]/images/search-bg.jpg" alt="search-bg"
+                    class="w-full object-cover h-[200px] rounded-xl" />
+                <div class="w-full flex flex-col">
+                    <img loading="lazy" src="[##cms.cms.cdn##]/images/polygan.svg" width="1280" height="81"
+                        alt="polygan" class="w-full" />
+                    <div class="w-full px-6 mt-[-210px] fa search-box-container">
+                        <div class="w-full linear1 min-h-[207px] rounded-xl p-[4px]">
+                            <div
+                                class="w-full min-h-[207px] bg-white rounded-xl justify-center px-4 flex flex-col gap-3">
+                                <div class="w-full flex justify-between items-center">
+                                    <div class="flex gap-3 items-center">
+                                        <img loading="lazy" src="[##cms.cms.cdn##]/images/map1.svg" width="44"
+                                            height="44" alt="map" />
+                                        <p class="text-xl text-zinc-900 font-medium">
+                                            تو بگو چی میخوای، من میگم از کجا بگیری؟
+                                        </p>
+                                    </div>
+                                    <basis core="print" datamembername="db.info">
+                                        <face filter="TypeID=240 and valueID=4181587">
+                                            <a href="tel:@text"
+                                                class="flex hover:shadow-lg text-secondary-2-700 group items-center text-sm hover:text-white hover:bg-secondary-2-700 rounded-md pl-2">
+                                                <svg width="48" height="48" viewBox="0 0 48 48" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <g opacity="0.4">
+                                                        <path
+                                                            d="M26.0178 18.5746C25.6211 18.5014 25.2568 18.7545 25.1813 19.1417C25.1057 19.529 25.3597 19.9071 25.7456 19.9828C26.9075 20.2093 27.8046 21.1087 28.032 22.2746C28.0968 22.6102 28.3922 22.855 28.7325 22.855C28.7781 22.855 28.8238 22.8509 28.8703 22.8425C29.2562 22.7651 29.5101 22.3879 29.4346 21.9998C29.0952 20.2585 27.7548 18.9136 26.0178 18.5746Z"
+                                                            fill="#0078CC" class="group-hover:fill-white" />
+                                                        <path
+                                                            d="M25.9665 15.6731C25.7806 15.6465 25.5938 15.7014 25.4453 15.8197C25.2926 15.9396 25.1971 16.1128 25.1764 16.3068C25.1324 16.6991 25.4154 17.0538 25.8071 17.098C28.5085 17.3994 30.6082 19.5038 30.9119 22.2136C30.9526 22.5767 31.2572 22.8507 31.6207 22.8507C31.6481 22.8507 31.6746 22.849 31.702 22.8457C31.8921 22.8249 32.0614 22.7308 32.1809 22.5809C32.2996 22.431 32.3535 22.2444 32.3319 22.0537C31.9535 18.6727 29.3368 16.0487 25.9665 15.6731Z"
+                                                            fill="#0078CC" class="group-hover:fill-white" />
+                                                    </g>
+                                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                                        d="M23.1944 24.8103C26.5187 28.1336 27.2728 24.2889 29.3893 26.404C31.4299 28.444 32.6027 28.8527 30.0173 31.4373C29.6935 31.6975 27.636 34.8286 20.4051 27.5997C13.1734 20.37 16.3026 18.3104 16.5629 17.9866C19.1545 15.3949 19.5562 16.5745 21.5967 18.6144C23.7133 20.7304 19.8702 21.487 23.1944 24.8103Z"
+                                                        fill="#0078CC" class="group-hover:fill-white" />
+                                                </svg>
+                                                تماس با پشتیبانی
+                                            </a>
+                                        </face>
+                                    </basis>
+                                </div>
+                                <div id="search-box" class="w-full min-h-[100px] flex justify-center">
+                                    <div class="loader"></div>
+                                </div>
                             </div>
-                            <a href=""
-                              class="flex items-center gap-2 text-sm text-secondary-1-500 group hover:text-zinc-500">
-                              <img loading="lazy" class="group-hover:grayscale" src="[##cms.cms.cdn##]/images/Board menu.svg" alt="BoardMenu"
-                                width="24" height="24">
-                              شرایط و قوانین
-                            </a>
-                          </div>
-                          <ul class="flex flex-col gap-2">
-                            <li class="set-before-3 flex gap-2 items-center text-sm">
-                              کابانا استاندارد دو نفره(B.B )
-                            </li>
-                            <li class="set-before-3 flex gap-2 items-center text-sm">available</li>
-                          </ul>
-                          <div class="w-full flex justify-between items-center">
-                            <div class="flex items-center gap-1">
-                              <span class="text-sm text-secondary-2-600">مبلغ قابل پرداخت:</span>
-                              <b>21,156,000 ریال</b>
-                            </div>
-                            <a href=""
-                              class="w-[117px]  h-11 flex justify-center items-center rounded-lg border border-primary-700 bg-primary-700 text-sm hover:bg-transparent hover:border-secondary-2-600 hover:text-secondary-2-700 hover:font-bold">رزرو
-                              اتاق</a>
-                          </div>
                         </div>
-                      </article>
-                      <article   class="w-full hotel-element relative h-[184px] p-[2px] rounded-xl">
-                        <div class="z-10   relative p-3 flex flex-col gap-3 justify-between h-full">
-                          <div class="w-full flex items-center justify-between">
-                            <div class="flex items-center gap-2">
-                              <div class=" pl-2 border-l border-zinc-600">
-                                <img loading="lazy" src="[##cms.cms.cdn##]/images/eqamat.png" alt="tamin-logo" class="w-[82px]">
-                              </div>
-                              <div class="flex items-center">
-                                <span class="text-sm text-zinc-600">تامین کننده :</span>
-                                <p class="font-bold text-zinc-900">اقامت 24</p>
-                              </div>
-                            </div>
-                            <a href=""
-                              class="flex items-center gap-2 text-sm text-secondary-1-500 group hover:text-zinc-500">
-                              <img loading="lazy" class="group-hover:grayscale" src="[##cms.cms.cdn##]/images/Board menu.svg" alt="BoardMenu"
-                                width="24" height="24">
-                              شرایط و قوانین
-                            </a>
-                          </div>
-                          <ul class="flex flex-col gap-2">
-                            <li class="set-before-3 flex gap-2 items-center text-sm">
-                              کابانا استاندارد دو نفره(B.B )
-                            </li>
-                            <li class="set-before-3 flex gap-2 items-center text-sm">available</li>
-                          </ul>
-                          <div class="w-full flex justify-between items-center">
-                            <div class="flex items-center gap-1">
-                              <span class="text-sm text-secondary-2-600">مبلغ قابل پرداخت:</span>
-                              <b>21,156,000 ریال</b>
-                            </div>
-                            <a href=""
-                              class="w-[117px]  h-11 flex justify-center items-center rounded-lg border border-primary-700 bg-primary-700 text-sm hover:bg-transparent hover:border-secondary-2-600 hover:text-secondary-2-700 hover:font-bold">رزرو
-                              اتاق</a>
-                          </div>
-                        </div>
-                      </article>
-                      <article   class="w-full hotel-element relative h-[184px] p-[2px] rounded-xl">
-                        <div class="z-10   relative p-3 flex flex-col gap-3 justify-between h-full">
-                          <div class="w-full flex items-center justify-between">
-                            <div class="flex items-center gap-2">
-                              <div class=" pl-2 border-l border-zinc-600">
-                                <img loading="lazy" src="[##cms.cms.cdn##]/images/eqamat.png" alt="tamin-logo" class="w-[82px]">
-                              </div>
-                              <div class="flex items-center">
-                                <span class="text-sm text-zinc-600">تامین کننده :</span>
-                                <p class="font-bold text-zinc-900">اقامت 24</p>
-                              </div>
-                            </div>
-                            <a href=""
-                              class="flex items-center gap-2 text-sm text-secondary-1-500 group hover:text-zinc-500">
-                              <img loading="lazy" class="group-hover:grayscale" src="[##cms.cms.cdn##]/images/Board menu.svg" alt="BoardMenu"
-                                width="24" height="24">
-                              شرایط و قوانین
-                            </a>
-                          </div>
-                          <ul class="flex flex-col gap-2">
-                            <li class="set-before-3 flex gap-2 items-center text-sm">
-                              کابانا استاندارد دو نفره(B.B )
-                            </li>
-                            <li class="set-before-3 flex gap-2 items-center text-sm">available</li>
-                          </ul>
-                          <div class="w-full flex justify-between items-center">
-                            <div class="flex items-center gap-1">
-                              <span class="text-sm text-secondary-2-600">مبلغ قابل پرداخت:</span>
-                              <b>21,156,000 ریال</b>
-                            </div>
-                            <a href=""
-                              class="w-[117px]  h-11 flex justify-center items-center rounded-lg border border-primary-700 bg-primary-700 text-sm hover:bg-transparent hover:border-secondary-2-600 hover:text-secondary-2-700 hover:font-bold">رزرو
-                              اتاق</a>
-                          </div>
-                        </div>
-                      </article>
-                      <article   class="w-full hotel-element relative h-[184px] p-[2px] rounded-xl">
-                        <div class="z-10   relative p-3 flex flex-col gap-3 justify-between h-full">
-                          <div class="w-full flex items-center justify-between">
-                            <div class="flex items-center gap-2">
-                              <div class=" pl-2 border-l border-zinc-600">
-                                <img loading="lazy" src="[##cms.cms.cdn##]/images/eqamat.png" alt="tamin-logo" class="w-[82px]">
-                              </div>
-                              <div class="flex items-center">
-                                <span class="text-sm text-zinc-600">تامین کننده :</span>
-                                <p class="font-bold text-zinc-900">اقامت 24</p>
-                              </div>
-                            </div>
-                            <a href=""
-                              class="flex items-center gap-2 text-sm text-secondary-1-500 group hover:text-zinc-500">
-                              <img loading="lazy" class="group-hover:grayscale" src="[##cms.cms.cdn##]/images/Board menu.svg" alt="BoardMenu"
-                                width="24" height="24">
-                              شرایط و قوانین
-                            </a>
-                          </div>
-                          <ul class="flex flex-col gap-2">
-                            <li class="set-before-3 flex gap-2 items-center text-sm">
-                              کابانا استاندارد دو نفره(B.B )
-                            </li>
-                            <li class="set-before-3 flex gap-2 items-center text-sm">available</li>
-                          </ul>
-                          <div class="w-full flex justify-between items-center">
-                            <div class="flex items-center gap-1">
-                              <span class="text-sm text-secondary-2-600">مبلغ قابل پرداخت:</span>
-                              <b>21,156,000 ریال</b>
-                            </div>
-                            <a href=""
-                              class="w-[117px]  h-11 flex justify-center items-center rounded-lg border border-primary-700 bg-primary-700 text-sm hover:bg-transparent hover:border-secondary-2-600 hover:text-secondary-2-700 hover:font-bold">رزرو
-                              اتاق</a>
-                          </div>
-                        </div>
-                      </article>
                     </div>
-                  </div>
                 </div>
-              </div>
-            </article>
-          </div>
+            </div>
+        </section>
+        <div class="waiting-search hotel_stracture">
+            <div class="loading-container">
+                <div class="loading"></div>
+                <div class="loading-img"><img src="[##cms.Host.loading-logo|(/images/logo.png)##]" width="" height=""
+                        alt="logo" /></div>
+            </div>
+            <p class="loading-text">در حال جستجوی بهترین هتل ها ...</p>
+            <div class="w-full flex justify-center">
+                <div class="flex px-4 w-full gap-3 lg:px-4 xl:!w-[1280px] xl:!px-0  ">
+                    <div class="waiting-content w-[270px] float-right">
+                        <div class="stract-filters float-right width_95 ">
+                            <div class="stract-filter stract-effect">
+                                <div class="stract-filter-head"></div>
+                                <div class="stract-filter-row">
+                                    <div class="stract-filter-item"></div>
+                                    <div class="stract-filter-item"></div>
+                                </div>
+                                <div class="clr"></div>
+                            </div>
+                            <div class="stract-filter stract-effect">
+                                <div class="stract-filter-head"></div>
+                                <div class="stract-filter-row">
+                                    <div class="stract-filter-item"></div>
+                                    <div class="stract-filter-item"></div>
+                                </div>
+                                <div class="clr"></div>
+                            </div>
+                            <div class="stract-filter stract-effect">
+                                <div class="stract-filter-head"></div>
+                                <div class="stract-filter-row">
+                                    <div class="stract-filter-item"></div>
+                                    <div class="stract-filter-item"></div>
+                                </div>
+                                <div class="clr"></div>
+                            </div>
+                            <div class="stract-filter stract-effect">
+                                <div class="stract-filter-head"></div>
+                                <div class="stract-filter-row">
+                                    <div class="stract-filter-item"></div>
+                                    <div class="stract-filter-item"></div>
+                                </div>
+                                <div class="clr"></div>
+                            </div>
+                        </div>
+                        <div class="flex w-[270px] flex-col gap-3">
+                            <div class="stract-img-item h-[186px] rounded-xl w-full"></div>
+                            <div class="stract-img-item h-[186px] rounded-xl w-full"></div>
+                            <div class="stract-img-item h-[186px] rounded-xl w-full"></div>
+                            <div class="stract-img-item h-[186px] rounded-xl w-full"></div>
+                            <div class="stract-img-item h-[186px] rounded-xl w-full"></div>
+
+                        </div>
+                    </div>
+                    <div class="waiting-content w-[calc(100%-270px-270px)] float-left ">
+                        <div class="stract-sort-box">
+                            <div class="stract-sort-title float-right stract-effect"></div>
+                            <ul class="stract-sort-items gap-3 flex border-radius  ">
+                                <li class="p-relative width_33 float-left stract-effect"></li>
+                                <li class="p-relative width_33 float-left stract-effect"></li>
+                                <li class="p-relative width_33 float-left stract-effect"></li>
+                            </ul>
+                        </div>
+                        <div class="stract-result-item stract-effect">
+                            <div class="stract-result-info p-relative">
+                                <div class="stract-first-col width_70 float-right p-relative">
+                                    <div class="stract-d-flex">
+                                        <div class="stract-img-item"></div>
+                                        <div class="stract-infoes-item ">
+                                            <div class="stract-info-title"></div>
+                                            <div class="stract-info-item"></div>
+                                            <div class="stract-info-item"></div>
+                                            <div class="stract-info-item"></div>
+                                        </div>
+                                        <div class="clr"></div>
+                                    </div>
+                                </div>
+                                <div class="width_30 float-left">
+                                    <div class="stract-cost-item middle">
+                                        <div class="stract-cost"></div>
+                                        <div class="stract-btn-item has-margin"></div>
+                                    </div>
+                                </div>
+                                <div class="clr"></div>
+                            </div>
+                        </div>
+                        <div class="stract-result-item stract-effect">
+                            <div class="stract-result-info p-relative">
+                                <div class="stract-first-col width_70 float-right p-relative">
+                                    <div class="stract-d-flex">
+                                        <div class="stract-img-item"></div>
+                                        <div class="stract-infoes-item ">
+                                            <div class="stract-info-title"></div>
+                                            <div class="stract-info-item"></div>
+                                            <div class="stract-info-item"></div>
+                                            <div class="stract-info-item"></div>
+                                        </div>
+                                        <div class="clr"></div>
+                                    </div>
+                                </div>
+                                <div class="width_30 float-left">
+                                    <div class="stract-cost-item middle">
+                                        <div class="stract-cost"></div>
+                                        <div class="stract-btn-item has-margin"></div>
+                                    </div>
+                                </div>
+                                <div class="clr"></div>
+                            </div>
+                        </div>
+                        <div class="stract-result-item stract-effect">
+                            <div class="stract-result-info p-relative">
+                                <div class="stract-first-col width_70 float-right p-relative">
+                                    <div class="stract-d-flex">
+                                        <div class="stract-img-item"></div>
+                                        <div class="stract-infoes-item ">
+                                            <div class="stract-info-title"></div>
+                                            <div class="stract-info-item"></div>
+                                            <div class="stract-info-item"></div>
+                                            <div class="stract-info-item"></div>
+                                        </div>
+                                        <div class="clr"></div>
+                                    </div>
+                                </div>
+                                <div class="width_30 float-left">
+                                    <div class="stract-cost-item middle">
+                                        <div class="stract-cost"></div>
+                                        <div class="stract-btn-item has-margin"></div>
+                                    </div>
+                                </div>
+                                <div class="clr"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex w-[270px] flex-col gap-3">
+                        <div class="stract-img-item h-[561px] rounded-xl w-full"></div>
+                        <div class="stract-img-item h-[349px] rounded-xl w-full"></div>
+                        <div class="stract-img-item h-[349px] rounded-xl w-full"></div>
+                        <div class="stract-img-item h-[349px] rounded-xl w-full"></div>
+                        <div class="stract-img-item h-[349px] rounded-xl w-full"></div>
+                        <div class="stract-img-item h-[349px] rounded-xl w-full"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="clr"></div>
         </div>
 
-        <aside class="w-[270px]">
-          <a href="" class="w-full hover:shadow-lg flex h-[561px] rounded-xl overflow-hidden">
-            <img loading="lazy" src="[##cms.cms.cdn##]/images/adv5.jpg" alt="adv5" class="w-full h-full object-cover" />
-          </a>
-          <a href="" class="w-full hover:shadow-lg mt-3 flex h-[349px] rounded-xl overflow-hidden">
-            <img loading="lazy" src="[##cms.cms.cdn##]/images/adv6.jpg" alt="adv6" class="w-full h-full object-cover" />
-          </a>
-          <a href="" class="w-full hover:shadow-lg mt-3 flex h-[349px] rounded-xl overflow-hidden">
-            <img loading="lazy" src="[##cms.cms.cdn##]/images/adv6.jpg" alt="adv6" class="w-full h-full object-cover" />
-          </a>
-        </aside>
-      </div>
-    </section> -->
+        <div id="app" class="unvisible px-4 w-full lg:px-4 xl:!w-[1280px] xl:!px-0  "></div>
 
-    <div class="waiting-search hotel_stracture">
-                        <div class="loading-container">
-                            <div class="loading"></div>
-                            <div class="loading-img"><img src="[##cms.Host.loading-logo|(/images/logo.png)##]" width=""
-                                    height="" alt="logo" /></div>
+        <section class="w-full flex justify-center mt-20">
+            <div class="px-4 border-t border-primary-600 w-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col">
+                <div class="w-full flex mt-[-64px] justify-center">
+                    <img loading="lazy" width="257" height="81" src="[##cms.cms.cdn##]/images/logo.png"
+                        alt="bookazkoja-logo" class="w-[383px] px-3 bg-white" />
+                </div>
+                <div class="w-full mt-9 linear2 p-[4px] rounded-2xl min-h-[364px]">
+                    <div class="w-full p-6 rounded-2xl flex gap-6 min-h-[364px] bg-white">
+                        <basis core="print" datamembername="db.about-us">
+                            <face filter="TypeID=159">
+                                <img width="316" height="295" loading="lazy" src="@text" alt="about-us"
+                                    class="h-[316px] object-cover rounded-2xl w-[295px]" />
+                            </face>
+                        </basis>
+                        <div class="w-[calc(100%-295px)] flex flex-col justify-between">
+                            <div class="flex items-center justify-between w-full">
+                                <div class="flex items-center gap-3">
+                                    <img loading="lazy" src="[##cms.cms.cdn##]/images/Building office.svg"
+                                        alt="Building" width="40" height="42" />
+                                    <basis core="print" datamembername="db.about-us">
+                                        <face filter="TypeID=150">
+                                            <h2 class="font-bold text-2xl text-zinc-900">
+                                                @text
+                                            </h2>
+                                        </face>
+                                    </basis>
+                                </div>
+                                <img loading="lazy" width="257" height="81" src="[##cms.cms.cdn##]/images/logo.png"
+                                    alt="bookazkoja-logo" class="!w-[130px]" />
+                            </div>
+                            <basis core="print" datamembername="db.about-us">
+                                <face filter="TypeID=129">
+                                    <div class="text-sm line-clamp-[13] text-zinc-900">
+                                        @largetext
+                                    </div>
+                                </face>
+                            </basis>
+                            <a href="/درباره-ما" class="text-sm text-secondary-2-600">مطالعه بیشتر...</a>
                         </div>
-                        <p class="loading-text">در حال جستجوی بهترین هتل ها ...</p>
-                        <div class="w-full flex justify-center">
-                          <div class="flex px-4 w-full lg:px-4 xl:!w-[1280px] xl:!px-0  ">
-                            <div class="waiting-content w-[270px] float-right">
-                            <div class="stract-filters float-right width_95 ">
-                                <div class="stract-filter stract-effect">
-                                    <div class="stract-filter-head"></div>
-                                    <div class="stract-filter-row">
-                                        <div class="stract-filter-item"></div>
-                                        <div class="stract-filter-item"></div>
-                                    </div>
-                                    <div class="clr"></div>
-                                </div>
-                                <div class="stract-filter stract-effect">
-                                    <div class="stract-filter-head"></div>
-                                    <div class="stract-filter-row">
-                                        <div class="stract-filter-item"></div>
-                                        <div class="stract-filter-item"></div>
-                                    </div>
-                                    <div class="clr"></div>
-                                </div>
-                                <div class="stract-filter stract-effect">
-                                    <div class="stract-filter-head"></div>
-                                    <div class="stract-filter-row">
-                                        <div class="stract-filter-item"></div>
-                                        <div class="stract-filter-item"></div>
-                                    </div>
-                                    <div class="clr"></div>
-                                </div>
-                                <div class="stract-filter stract-effect">
-                                    <div class="stract-filter-head"></div>
-                                    <div class="stract-filter-row">
-                                        <div class="stract-filter-item"></div>
-                                        <div class="stract-filter-item"></div>
-                                    </div>
-                                    <div class="clr"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="waiting-content w-[calc(100%-270px-270px)] float-left ">
-                            <div class="stract-sort-box">
-                                <div class="stract-sort-title float-right stract-effect"></div>
-                                <ul class="stract-sort-items d-flex border-radius  float-left stract-effect">
-                                    <li class="p-relative width_33"></li>
-                                    <li class="p-relative width_33"></li>
-                                    <li class="p-relative width_33"></li>
-                                </ul>
-                            </div>
-                            <div class="stract-result-item stract-effect">
-                                <div class="stract-result-info p-relative">
-                                    <div class="stract-first-col width_70 float-right p-relative">
-                                        <div class="stract-d-flex">
-                                            <div class="stract-img-item"></div>
-                                            <div class="stract-infoes-item ">
-                                                <div class="stract-info-title"></div>
-                                                <div class="stract-info-item"></div>
-                                                <div class="stract-info-item"></div>
-                                                <div class="stract-info-item"></div>
-                                            </div>
-                                            <div class="clr"></div>
-                                        </div>
-                                    </div>
-                                    <div class="width_30 float-left">
-                                        <div class="stract-cost-item middle">
-                                            <div class="stract-cost"></div>
-                                            <div class="stract-btn-item has-margin"></div>
-                                        </div>
-                                    </div>
-                                    <div class="clr"></div>
-                                </div>
-                            </div>
-                            <div class="stract-result-item stract-effect">
-                                <div class="stract-result-info p-relative">
-                                    <div class="stract-first-col width_70 float-right p-relative">
-                                        <div class="stract-d-flex">
-                                            <div class="stract-img-item"></div>
-                                            <div class="stract-infoes-item ">
-                                                <div class="stract-info-title"></div>
-                                                <div class="stract-info-item"></div>
-                                                <div class="stract-info-item"></div>
-                                                <div class="stract-info-item"></div>
-                                            </div>
-                                            <div class="clr"></div>
-                                        </div>
-                                    </div>
-                                    <div class="width_30 float-left">
-                                        <div class="stract-cost-item middle">
-                                            <div class="stract-cost"></div>
-                                            <div class="stract-btn-item has-margin"></div>
-                                        </div>
-                                    </div>
-                                    <div class="clr"></div>
-                                </div>
-                            </div>
-                            <div class="stract-result-item stract-effect">
-                                <div class="stract-result-info p-relative">
-                                    <div class="stract-first-col width_70 float-right p-relative">
-                                        <div class="stract-d-flex">
-                                            <div class="stract-img-item"></div>
-                                            <div class="stract-infoes-item ">
-                                                <div class="stract-info-title"></div>
-                                                <div class="stract-info-item"></div>
-                                                <div class="stract-info-item"></div>
-                                                <div class="stract-info-item"></div>
-                                            </div>
-                                            <div class="clr"></div>
-                                        </div>
-                                    </div>
-                                    <div class="width_30 float-left">
-                                        <div class="stract-cost-item middle">
-                                            <div class="stract-cost"></div>
-                                            <div class="stract-btn-item has-margin"></div>
-                                        </div>
-                                    </div>
-                                    <div class="clr"></div>
-                                </div>
-                            </div>
-                        </div>
-                          </div>
-                        </div>
-                        <div class="clr"></div>
                     </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="[##cms.cms.cdn##]/_js/jquery/jquery-3.6.3.min.js" type="text/javascript"></script>
+    <basis core="call" file="footer.inc" />
 
 
-     <div id="app" class="unvisible px-4 w-full lg:px-4 xl:!w-[1280px] xl:!px-0  "></div>
 
-   
-  </main>
-
-  <script src="[##cms.cms.cdn##]/_js/jquery/jquery-3.6.3.min.js" type="text/javascript"></script>
-  <basis core="call" file="footer.inc" />
-
-
- 
     <script type="text/javascript">
         $(document).ready(function () {
             fetch("/Client_Hotel_Json.bc", {
@@ -531,7 +332,7 @@
                 let Maindata = JSON.parse(text.replace(/\'/g, '"'));
 
                 if (Maindata.length !== undefined) {
-                 
+
                     if (Maindata.some(item => item.hotelinfo.hotelsearch?.countryid === 1002236)) {
                         Maindata.sort((a, b) => (b.hotelinfo.hotelsearch?.star || 0) - (a.hotelinfo.hotelsearch?.star || 0));
                     } else {
@@ -609,7 +410,7 @@
                     this.handleReset = this.handleReset.bind(this);
                 }
                 componentDidMount() {
-                  console.log("Current state1:", this.state);
+
                     this.setState(state => ({
                         ...state,
                         data: load_data
@@ -669,7 +470,7 @@
                     }
                 }
                 componentDidUpdate() {
-                  console.log("Current state2:", this.state);
+
                     $(".unit_content").each(function () {
                         if ($(this).text() == 'ریالريال' || $(this).text() == 'ريالریال') {
                             $(this).text('ریال')
@@ -1067,28 +868,28 @@
                                             <div className="img-item text-center">
                                                 {this.renderImgHotel(item)}
                                             </div>
-                                            <div className="infoes-item rounded-xl border border-zinc-200 p-4 flex flex-col justify-between w-[calc(100%-230px)] h-[230px] bg-white">
+                                            <div className="infoes-item rounded-xl border border-zinc-200 p-4 flex flex-col justify-between w-[calc(100%-240px)] h-[230px] bg-white">
                                                 <span className="title font-bold text-zinc-900">{item.hotelinfo.name}</span>
                                                 <div class="flex w-full items-center gap-[34px]">
-                                                  <div class="flex items-center text-zinc-900 text-sm gap-2">
-                                                    <img loading='lazy' src="[##cms.cms.cdn##]/images/Star.svg" alt="star" width="30" height="30" />
-                                                       {item.hotelinfo.hotelsearch.star} ستاره
-                                                           </div>
-                                                           <div class="flex items-center text-zinc-900 text-sm gap-2">
-                                                           <img loading='lazy' src="[##cms.cms.cdn##]/images/Hot Drink.svg" alt="Hot Drink" width="30" height="30" />
-                                                               {this.renderservicesFirst(item)}
-                                                                  </div>
-                                                         </div>
-                                                 
+                                                    <div class="flex items-center text-zinc-900 text-sm gap-2">
+                                                        <img loading='lazy' src="[##cms.cms.cdn##]/images/Star.svg" alt="star" width="30" height="30" />
+                                                        {item.hotelinfo.hotelsearch.star} ستاره
+                                                    </div>
+                                                    <div class="flex items-center text-zinc-900 text-sm gap-2">
+                                                        <img loading='lazy' src="[##cms.cms.cdn##]/images/Hot Drink.svg" alt="Hot Drink" width="30" height="30" />
+                                                        {this.renderservicesFirst(item)}
+                                                    </div>
+                                                </div>
+
                                                 <ul className="brief-info">
-                                                  <li>
-                                                    <div className="hotel-location 
+                                                    <li>
+                                                        <div className="hotel-location 
                                                     ">
-                                                 
-                                                  <span>{item.hotelinfo.hotelsearch.countryname}</span><span>
-                                                    ,</span><span>{item.hotelinfo.hotelsearch.cityname}</span></div></li>
+
+                                                            <span>{item.hotelinfo.hotelsearch.countryname}</span><span>
+                                                                ,</span><span>{item.hotelinfo.hotelsearch.cityname}</span></div></li>
                                                     <li>{this.renderRoomtypeFirst(item)}
-                                                      <span className="answer-services"></span></li>
+                                                        <span className="answer-services"></span></li>
                                                     <li>{this.renderavailabFirst(item)}</li>
                                                     {this.renderviewnameFirst(item.hotelinfo.information.viewname)}
                                                     {this.renderArea(item.hotelinfo.hotelsearch)}
@@ -1096,19 +897,19 @@
                                                     {this.renderSupplierName(item)}
                                                 </ul>
                                                 <div class="w-full flex items-center justify-between">
-                                                  <div class="flex flex-col">
-                                                      <div class="text-sm text-zinc-900"> {this.renderCommission(item, i)} </div>
-                                                      <div class="font-bold text-zinc-900">   {this.renderEnablePoint(item)} </div>
-                                                 </div>
-                                                 <button data-active={`${this.state.state_active_btn[i] ? "1" : "0"}`}
-                                                    onClick={e => this.select_room(e, item, i)} type="button" class="w-[150px] show-list h-11 flex justify-center items-center rounded-lg border border-primary-700 bg-primary-700 text-sm hover:bg-transparent hover:border-secondary-2-600 hover:text-secondary-2-700 hover:font-bold" aria-label="show-list">لیست تامین کننده ها</button>
-                                                 </div>
+                                                    <div class="flex flex-col">
+                                                        <div class="text-sm text-zinc-900"> {this.renderCommission(item, i)} </div>
+                                                        <div class="font-bold text-zinc-900">   {this.renderEnablePoint(item)} </div>
+                                                    </div>
+                                                    <button data-active={`${this.state.state_active_btn[i] ? "1" : "0"}`}
+                                                        onClick={e => this.select_room(e, item, i)} type="button" class="w-[150px] show-list h-11 flex justify-center items-center rounded-lg border border-primary-700 bg-primary-700 text-sm hover:bg-transparent hover:border-secondary-2-600 hover:text-secondary-2-700 hover:font-bold" aria-label="show-list">لیست تامین کننده ها</button>
+                                                </div>
                                                 <div className="clr"></div>
                                             </div>
                                         </div>
                                     </div>
 
-                                     
+
                                     <div className="clr"></div>
                                     <div key={i} className={`room-loading ${!this.state.loadingVisible[i] ? "unvisible" : "visible"}`}>
                                         <div id="ballsWaveG">
@@ -1123,23 +924,23 @@
                                         </div>
                                     </div>
                                     <div key={i} className={`details-row fixed justify-center items-center z-[60] w-screen h-screen top-0 left-0 bg-[#0404049C] ${!this.state.visibleRoom[i] ? "unvisible" : "visible"}`}>
-                                        <div className="details-item bg-white w-[706px] h-[85vh] p-4 !overflow-hidden rounded-xl text-zinc-900" >
-                                           <img loading="lazy" src="[##cms.cms.cdn##]/images/adv7.jpg" alt="adv7" class="w-full h-[114px] object-cover rounded-xl" />
+                                        <div className="details-item bg-white w-[706px] h-[87vh] p-4 !overflow-hidden rounded-xl text-zinc-900" >
+                                            <img loading="lazy" src="[##cms.cms.cdn##]/images/adv7.jpg" alt="adv7" class="w-full h-[114px] object-cover rounded-xl" />
                                             <div class="w-full flex items-center my-4 justify-between">
-                    <p class="font-bold text-zinc-900">لیست اتاق ها</p>
-                    <button class="group close-btn"  onClick={() => this.closeRooms(i)}   type="button"  >
-                      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M26.6455 21.6294L21.8535 26.4214" stroke="#71717A" stroke-width="1.5" stroke-linecap="square" class="group-hover:stroke-secondary-1-700"></path>
-                        <path d="M26.6456 26.4244L21.8496 21.6274" stroke="#71717A" stroke-width="1.5" stroke-linecap="square" class="group-hover:stroke-secondary-1-700"></path>
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M24.25 33.2847C29.3586 33.2847 33.5 29.1433 33.5 24.0347C33.5 18.926 29.3586 14.7847 24.25 14.7847C19.1414 14.7847 15 18.926 15 24.0347C15 29.1433 19.1414 33.2847 24.25 33.2847Z" stroke="#71717A" stroke-width="1.5" stroke-linecap="round" class="group-hover:stroke-secondary-1-700"></path>
-                      </svg>
-                    </button>
-                  </div>
+                                                <p class="font-bold text-zinc-900">لیست اتاق ها</p>
+                                                <button class="group close-btn" onClick={() => this.closeRooms(i)} type="button"  >
+                                                    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M26.6455 21.6294L21.8535 26.4214" stroke="#71717A" stroke-width="1.5" stroke-linecap="square" class="group-hover:stroke-secondary-1-700"></path>
+                                                        <path d="M26.6456 26.4244L21.8496 21.6274" stroke="#71717A" stroke-width="1.5" stroke-linecap="square" class="group-hover:stroke-secondary-1-700"></path>
+                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M24.25 33.2847C29.3586 33.2847 33.5 29.1433 33.5 24.0347C33.5 18.926 29.3586 14.7847 24.25 14.7847C19.1414 14.7847 15 18.926 15 24.0347C15 29.1433 19.1414 33.2847 24.25 33.2847Z" stroke="#71717A" stroke-width="1.5" stroke-linecap="round" class="group-hover:stroke-secondary-1-700"></path>
+                                                    </svg>
+                                                </button>
+                                            </div>
                                             <div className="clr"></div>
                                             <div class="w-full overflow-y-auto h-[52vh]">
-                                              {
-                                              this.show_rooms(i, item)}</div>
-                                            
+                                                {
+                                                    this.show_rooms(i, item)}</div>
+
                                             <form method="post" action='/Client_Hotel_Information.bc?lid=1' className="text-center more-rooms--content" target="_blank">
                                                 {this.renderproviderid_hotelInfo(item)}
                                                 <input type="hidden" value={item.families[0].optionId} name="optionId-hotel" />
@@ -1152,7 +953,7 @@
                                                 {this.renderpassengerscount(item)}
                                                 {this.hotel_information_moneytype(item)}
                                                 <input type="hidden" value="" name="chagencyuser" />
-                                                <button type="submit" className="cursor-pointer more-rooms-link" >نمایش تمامی اتاق ها</button>
+                                                <button type="submit" className="cursor-pointer more-rooms-link  " >نمایش تمامی اتاق ها</button>
                                             </form>
                                             <div className="clr"></div>
                                         </div>
@@ -1182,138 +983,178 @@
                                 <div className="currency-selected cursor-pointer" data-active="0" onClick={() => this.currency_selected_list()}><span>{this.localStorage_getCurrency()}{this.localStorage_expire()}</span></div>
                                 {this.renderCurrencyRate()}
                             </div>
-                           <div class="flex gap-3">
-                             <aside className="sidebar-content w-[270px]">
-                                <div className="filters-container float-right w-full linear2 p-[4px] rounded-2xl ">
-                                    <div class="flex w-full flex-col gap-5 bg-primary-50 py-[19px] px-[11px] rounded-[14px]">
-                                      <p><span className="font-weight result-count">{this.renderCount()}</span> هتل پیدا شد.</p>
-                                    <p className="section-timer">مدت زمان باقی مانده : <span id="timer" className="text-[#3DDD37]">00:00:00</span></p>
-                                    <div className="filter-container rounded-xl bg-white w-full p-3 flex flex-col gap-4">
-                                        <p className="filter-head"><span className="font-bold text-zinc-900">نام هتل</span>
-                                            <div className="clr"></div>
-                                        </p>
-                                        <div className="filter-row">
-                                            <ul className="filter-body  text-center font_13">
-                                                <li className="width_100">
-                                                    <input value={this.state.filterName} onChange={((e) => this.handleFilterName(e))} placeholder="نام هتل مورد نظر را وارد نمائید" className="inner  filter-name-hotel truncate focus:border-2 focus:border-primary-800 !outline-none line-clamp-1 h-12 border border-zinc-600 rounded-lg px-3 placeholder:text-zinc-500"
-                                                    />
-                                                </li>
-                                                <div className="clr"></div>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div className="filter-container filter-star rounded-xl bg-white w-full p-3 flex flex-col gap-4">
-                                        <p className="filter-head"><span className="font-bold text-zinc-900"> چند ستاره</span>
-                                            <div className="clr"></div>
-                                        </p>
-                                        <div className="filter-row">
-                                            <ul className="filter-body flex items-center w-full justify-between">
-                                                <li className="w-[51.5px] cursor-pointer h-12 flex justify-center items-center border border-zinc-600 rounded-lg">
-                                                    <div className="inner p-relative flex w-full h-full justify-center items-center">
-                                                        <input type="checkbox" value="0,1,2" className="checkbox-click" data-filter="stars" onChange={((e) => this.handleChange(e))} defaultChecked={this.props.defaultChecked} />
-                                                        <label>
-                                                            <div className="icon hidden"><i className="fa fa-star"></i><i className="fa fa-star"></i></div>
-                                                            <div className="text">
-                                                                <p>کمتر از 3 </p>
-                                                            </div>
-                                                        </label>
+                            <div class="flex gap-3">
+                                <div class="w-[270px] flex flex-col gap-4">
+                                    <aside className="sidebar-content w-full">
+                                        <div className="filters-container float-right w-full linear2 p-[4px] rounded-2xl ">
+                                            <div class="flex w-full flex-col gap-5 bg-primary-50 py-[19px] px-[11px] rounded-[14px]">
+                                                <p><span className="font-weight result-count">{this.renderCount()}</span> هتل پیدا شد.</p>
+                                                <p className="section-timer">مدت زمان باقی مانده : <span id="timer" className="text-[#3DDD37]">00:00:00</span></p>
+                                                <div className="filter-container rounded-xl bg-white w-full p-3 flex flex-col gap-4">
+                                                    <p className="filter-head"><span className="font-bold text-zinc-900">نام هتل</span>
+                                                        <div className="clr"></div>
+                                                    </p>
+                                                    <div className="filter-row">
+                                                        <ul className="filter-body  text-center font_13">
+                                                            <li className="width_100">
+                                                                <input value={this.state.filterName} onChange={((e) => this.handleFilterName(e))} placeholder="نام هتل مورد نظر را وارد نمائید" className="inner  filter-name-hotel truncate focus:border-2 focus:border-primary-800 !outline-none line-clamp-1 h-12 border border-zinc-600 rounded-lg px-3 placeholder:text-zinc-500"
+                                                                />
+                                                            </li>
+                                                            <div className="clr"></div>
+                                                        </ul>
                                                     </div>
-                                                </li>
-                                                <li className="w-[51.5px] cursor-pointer h-12 flex justify-center items-center border border-zinc-600 rounded-lg">
-                                                    <div className="inner p-relative  flex w-full h-full justify-center items-center">
-                                                        <input type="checkbox" value="3" className="checkbox-click" data-filter="stars" onChange={((e) => this.handleChange(e))} defaultChecked={this.props.defaultChecked} />
-                                                        <label>
-                                                            <div className="icon hidden"><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i></div>
-                                                            <div className="text">
-                                                                <p>  3 </p>
-                                                            </div>
-                                                        </label>
-                                                    </div>
-                                                </li>
-                                                <li className="w-[51.5px] cursor-pointer h-12 flex justify-center items-center border border-zinc-600 rounded-lg">
-                                                    <div className="inner p-relative  flex w-full h-full justify-center items-center">
-                                                        <input type="checkbox" value="4" className="checkbox-click" data-filter="stars" onChange={((e) => this.handleChange(e))} defaultChecked={this.props.defaultChecked} />
-                                                        <label>
-                                                            <div className="icon hidden"><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i></div>
-                                                            <div className="text">
-                                                                <p>  4 </p>
-                                                            </div>
-                                                        </label>
-                                                    </div>
-                                                </li>
-                                                <li className="w-[51.5px] cursor-pointer h-12 flex justify-center items-center border border-zinc-600 rounded-lg">
-                                                    <div className="inner p-relative  flex w-full h-full justify-center items-center">
-                                                        <input type="checkbox" value="5" className="checkbox-click" data-filter="stars" onChange={((e) => this.handleChange(e))} defaultChecked={this.props.defaultChecked} />
-                                                        <label>
-                                                            <div className="icon hidden"><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i></div>
-                                                            <div className="text">
-                                                                <p>  5 </p>
-                                                            </div>
-                                                        </label>
-                                                    </div>
-                                                </li>
-                                                <div className="clr"></div>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    {this.ShowFilterHotel()}
-                                    <div className="filter-container rounded-xl bg-white w-full p-3 flex flex-col gap-4">
-                                        <p className="filter-head"><span className="font-bold text-zinc-900">بازه قیمت</span>
-                                            <div className="clr"></div>
-                                        </p>
-                                        <div className="content-filter p-relative">
-                                            <div className="range-distance">
-                                                <div>
-                                                    <div className="inverse-right"></div>
-                                                    <div className="inverse-left"></div>
-                                                    <div className="range-length background-color_1"></div>
-                                                    <span className="thumb-range thumb-range1"></span>
-                                                    <span className="thumb-range thumb-range2"></span>
-                                                    <div class="rangevalFirst_2 p-absolute font_11">{defaultRangeTotalF}<span class="font_10 unit_content">{this.ShowUnit_filter()}</span></div>
-                                                    <div class="rangevalSecond_2 p-absolute font_11">{defaultRangeTotalS}<span class="font_10 unit_content">{this.ShowUnit_filter()}</span></div>
                                                 </div>
-                                                <input type="range" defaultValue={this.renderMinTotal() || 0} max={this.renderMaxTotal() || 999999999} min={this.renderMinTotal() || 0} step="1" onInput={this.handleMinFilterTotal} onChange={this.handleFilterTotal} data-key="1" data-value="1_T" />
-                                                <input type="range" defaultValue={this.renderMaxTotal() || 999999999} max={this.renderMaxTotal() || 999999999} min={this.renderMinTotal() || 0} step="1" onInput={this.handleMaxFilterTotal} onChange={this.handleFilterTotal} data-key="2" data-value="2_T" />
-                                            </div>
+                                                <div className="filter-container filter-star rounded-xl bg-white w-full p-3 flex flex-col gap-4">
+                                                    <p className="filter-head"><span className="font-bold text-zinc-900"> چند ستاره</span>
+                                                        <div className="clr"></div>
+                                                    </p>
+                                                    <div className="filter-row">
+                                                        <ul className="filter-body flex items-center w-full justify-between">
+                                                            <li className="w-[51.5px] cursor-pointer h-12 flex justify-center items-center border border-zinc-600 rounded-lg">
+                                                                <div className="inner p-relative flex w-full h-full justify-center items-center">
+                                                                    <input type="checkbox" value="0,1,2" className="checkbox-click" data-filter="stars" onChange={((e) => this.handleChange(e))} defaultChecked={this.props.defaultChecked} />
+                                                                    <label>
+                                                                        <div className="icon hidden"><i className="fa fa-star"></i><i className="fa fa-star"></i></div>
+                                                                        <div className="text">
+                                                                            <p>کمتر از 3 </p>
+                                                                        </div>
+                                                                    </label>
+                                                                </div>
+                                                            </li>
+                                                            <li className="w-[51.5px] cursor-pointer h-12 flex justify-center items-center border border-zinc-600 rounded-lg">
+                                                                <div className="inner p-relative  flex w-full h-full justify-center items-center">
+                                                                    <input type="checkbox" value="3" className="checkbox-click" data-filter="stars" onChange={((e) => this.handleChange(e))} defaultChecked={this.props.defaultChecked} />
+                                                                    <label>
+                                                                        <div className="icon hidden"><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i></div>
+                                                                        <div className="text">
+                                                                            <p>  3 </p>
+                                                                        </div>
+                                                                    </label>
+                                                                </div>
+                                                            </li>
+                                                            <li className="w-[51.5px] cursor-pointer h-12 flex justify-center items-center border border-zinc-600 rounded-lg">
+                                                                <div className="inner p-relative  flex w-full h-full justify-center items-center">
+                                                                    <input type="checkbox" value="4" className="checkbox-click" data-filter="stars" onChange={((e) => this.handleChange(e))} defaultChecked={this.props.defaultChecked} />
+                                                                    <label>
+                                                                        <div className="icon hidden"><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i></div>
+                                                                        <div className="text">
+                                                                            <p>  4 </p>
+                                                                        </div>
+                                                                    </label>
+                                                                </div>
+                                                            </li>
+                                                            <li className="w-[51.5px] cursor-pointer h-12 flex justify-center items-center border border-zinc-600 rounded-lg">
+                                                                <div className="inner p-relative  flex w-full h-full justify-center items-center">
+                                                                    <input type="checkbox" value="5" className="checkbox-click" data-filter="stars" onChange={((e) => this.handleChange(e))} defaultChecked={this.props.defaultChecked} />
+                                                                    <label>
+                                                                        <div className="icon hidden"><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i></div>
+                                                                        <div className="text">
+                                                                            <p>  5 </p>
+                                                                        </div>
+                                                                    </label>
+                                                                </div>
+                                                            </li>
+                                                            <div className="clr"></div>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                {this.ShowFilterHotel()}
+                                                <div className="filter-container rounded-xl bg-white w-full p-3 flex flex-col gap-4">
+                                                    <p className="filter-head"><span className="font-bold text-zinc-900">بازه قیمت</span>
+                                                        <div className="clr"></div>
+                                                    </p>
+                                                    <div className="content-filter p-relative">
+                                                        <div className="range-distance">
+                                                            <div>
+                                                                <div className="inverse-right"></div>
+                                                                <div className="inverse-left"></div>
+                                                                <div className="range-length background-color_1"></div>
+                                                                <span className="thumb-range thumb-range1"></span>
+                                                                <span className="thumb-range thumb-range2"></span>
+                                                                <div class="rangevalFirst_2 p-absolute font_11">{defaultRangeTotalF}<span class="font_10 unit_content">{this.ShowUnit_filter()}</span></div>
+                                                                <div class="rangevalSecond_2 p-absolute font_11">{defaultRangeTotalS}<span class="font_10 unit_content">{this.ShowUnit_filter()}</span></div>
+                                                            </div>
+                                                            <input type="range" defaultValue={this.renderMinTotal() || 0} max={this.renderMaxTotal() || 999999999} min={this.renderMinTotal() || 0} step="1" onInput={this.handleMinFilterTotal} onChange={this.handleFilterTotal} data-key="1" data-value="1_T" />
+                                                            <input type="range" defaultValue={this.renderMaxTotal() || 999999999} max={this.renderMaxTotal() || 999999999} min={this.renderMinTotal() || 0} step="1" onInput={this.handleMaxFilterTotal} onChange={this.handleFilterTotal} data-key="2" data-value="2_T" />
+                                                        </div>
+                                                    </div>
+                                                </div></div>
                                         </div>
-                                    </div></div>
-                                </div>
-                            </aside>
+                                    </aside>
 
-                            <div className="result-content w-[calc(100%-270px-270px)] flex flex-col gap-3 ">
-                                <div className="sort-box hotel flex items-center gap-[36px]">
-                                    <span className="sort-title whitespace-nowrap">مرتب سازی براساس :</span>
-                                    <ul className="sort-items  clicker-list sort-by flex gap-3 items-center">
-                                        <li className={`h-12 text-zinc-500 bg-zinc-50 border rounded-[50px] border-zinc-400 w-[114px] flex justify-center items-center cursor-pointer hover:bg-primary-100 hover:border-primary-400 hover:text-zinc-900 gap-2 after-notactive ${this.state.activedefault}`} data-type="default" data-key="0" onClick={((e) => this.handleChange(e))}> پیشفرض</li>
-                                        <li className={`h-12 text-zinc-500 group bg-zinc-50 border rounded-[50px] border-zinc-400 w-[114px] flex justify-center items-center cursor-pointer hover:bg-primary-100 hover:border-primary-400 hover:text-zinc-900 gap-2 ${this.state.activeprice} ${!this.state.priceS[0] ? "after-notactive" : "after-active"}`} data-type="price" data-key={this.state.checkkeyprice} onClick={((e) => this.handleChange(e))}> قیمت</li>
-                                        <li className={`h-12 text-zinc-500 group bg-zinc-50 border rounded-[50px] border-zinc-400 w-[114px] flex justify-center items-center cursor-pointer hover:bg-primary-100 hover:border-primary-400 hover:text-zinc-900 gap-2 ${this.state.activestar} ${!this.state.starSort[0] ? "after-notactive" : "after-active"} `} data-type="star" data-key={this.state.checkkeystar} onClick={((e) => this.handleChange(e))}> درجه</li>
-                                    </ul>
+                                    <a href="[##cms.host.advertisement-r1##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[186px] rounded-xl overflow-hidden">
+                                        <img src="[##cms.cms.cdn##]/images/advertisement-r1.jpg" className="w-full h-full object-cover" alt="advertisement-r1" />
+                                    </a>
+                                    <a href="[##cms.host.advertisement-r2##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[186px] rounded-xl overflow-hidden">
+                                        <img src="[##cms.cms.cdn##]/images/advertisement-r2.jpg" className="w-full h-full object-cover" alt="advertisement-r2" />
+                                    </a>
+                                    <a href="[##cms.host.advertisement-r3##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[186px] rounded-xl overflow-hidden">
+                                        <img src="[##cms.cms.cdn##]/images/advertisement-r3.jpg" className="w-full h-full object-cover" alt="advertisement-r3" />
+                                    </a>
+                                    <a href="[##cms.host.advertisement-r4##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[186px] rounded-xl overflow-hidden">
+                                        <img src="[##cms.cms.cdn##]/images/advertisement-r4.jpg" className="w-full h-full object-cover" alt="advertisement-r4" />
+                                    </a>
+                                    <a href="[##cms.host.advertisement-r5##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[186px] rounded-xl overflow-hidden">
+                                        <img src="[##cms.cms.cdn##]/images/advertisement-r5.jpg" className="w-full h-full object-cover" alt="advertisement-r5" />
+                                    </a>
+                                </div>
+                                <div className="result-content w-[calc(100%-270px-270px)] flex flex-col gap-3 ">
+                                    <div className="sort-box hotel flex items-center gap-[36px]">
+                                        <span className="sort-title whitespace-nowrap">مرتب سازی براساس :</span>
+                                        <ul className="sort-items  clicker-list sort-by flex gap-3 items-center">
+                                            <li className={`h-12 text-zinc-500 bg-zinc-50 border rounded-[50px] border-zinc-400 w-[114px] flex justify-center items-center cursor-pointer hover:bg-primary-100 hover:border-primary-400 hover:text-zinc-900 gap-2 after-notactive ${this.state.activedefault}`} data-type="default" data-key="0" onClick={((e) => this.handleChange(e))}> پیشفرض</li>
+                                            <li className={`h-12 text-zinc-500 group bg-zinc-50 border rounded-[50px] border-zinc-400 w-[114px] flex justify-center items-center cursor-pointer hover:bg-primary-100 hover:border-primary-400 hover:text-zinc-900 gap-2 ${this.state.activeprice} ${!this.state.priceS[0] ? "after-notactive" : "after-active"}`} data-type="price" data-key={this.state.checkkeyprice} onClick={((e) => this.handleChange(e))}> قیمت</li>
+                                            <li className={`h-12 text-zinc-500 group bg-zinc-50 border rounded-[50px] border-zinc-400 w-[114px] flex justify-center items-center cursor-pointer hover:bg-primary-100 hover:border-primary-400 hover:text-zinc-900 gap-2 ${this.state.activestar} ${!this.state.starSort[0] ? "after-notactive" : "after-active"} `} data-type="star" data-key={this.state.checkkeystar} onClick={((e) => this.handleChange(e))}> درجه</li>
+                                        </ul>
+                                        <div className="clr"></div>
+                                    </div>
+
                                     <div className="clr"></div>
+                                    <div className="result-items hotel">
+                                        {this.renderLibrary()}
+                                        <ul id="page-numbers">
+                                            <li className="nexprev">
+                                                {currentPage !== 1 && (
+                                                    <button onClick={this.previousPage}><i className="fa fa-backward"></i></button>
+                                                )}
+                                            </li>
+                                            <li className="controls-active background-color_2 font-weight">{this.state.currentPage}</li>
+                                            {(this.state.currentPage2 < maxPage) && (<li className="controls" onClick={this.nextPage}>{this.state.currentPage2}</li>
+                                            )}
+                                            {(this.state.currentPage3 < maxPage) && (<li className="controls" onClick={this.nextPage3}>{this.state.currentPage3}</li>
+                                            )}
+                                            <li className="restControls">...</li>
+                                            <li className="controls">{this.state.maxPage}</li>
+                                            <li className="nexprev">
+                                                {(this.state.currentPage < maxPage) && (<button onClick={this.nextPage}><i className="fa fa-forward"></i></button>
+                                                )}
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="w-[270px] flex flex-col gap-4">
+                                    <a href="[##cms.host.advertisement-l1##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[561px] rounded-xl overflow-hidden">
+                                        <img src="[##cms.cms.cdn##]/images/advertisement-l1.jpg" className="w-full h-full object-cover" alt="advertisement-l1" />
+                                    </a>
+
+                                    <a href="[##cms.host.advertisement-l2##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[349px] rounded-xl overflow-hidden">
+                                        <img src="[##cms.cms.cdn##]/images/advertisement-l2.jpg" className="w-full h-full object-cover" alt="advertisement-l2" />
+                                    </a>
+                                    <a href="[##cms.host.advertisement-l3##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[349px] rounded-xl overflow-hidden">
+                                        <img src="[##cms.cms.cdn##]/images/advertisement-l3.jpg" className="w-full h-full object-cover" alt="advertisement-l3" />
+                                    </a>
+                                    <a href="[##cms.host.advertisement-l4##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[349px] rounded-xl overflow-hidden">
+                                        <img src="[##cms.cms.cdn##]/images/advertisement-l4.jpg" className="w-full h-full object-cover" alt="advertisement-l4" />
+                                    </a>
+                                    <a href="[##cms.host.advertisement-l5##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[349px] rounded-xl overflow-hidden">
+                                        <img src="[##cms.cms.cdn##]/images/advertisement-l5.jpg" className="w-full h-full object-cover" alt="advertisement-l5" />
+                                    </a>
+                                    <a href="[##cms.host.advertisement-l6##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[349px] rounded-xl overflow-hidden">
+                                        <img src="[##cms.cms.cdn##]/images/advertisement-l6.jpg" className="w-full h-full object-cover" alt="advertisement-l6" />
+                                    </a>
                                 </div>
 
-                                <div className="clr"></div>
-                                <div className="result-items hotel">
-                                    {this.renderLibrary()}
-                                    <ul id="page-numbers">
-                                        <li className="nexprev">
-                                            {currentPage !== 1 && (
-                                                <button onClick={this.previousPage}><i className="fa fa-backward"></i></button>
-                                            )}
-                                        </li>
-                                        <li className="controls-active background-color_2 font-weight">{this.state.currentPage}</li>
-                                        {(this.state.currentPage2 < maxPage) && (<li className="controls" onClick={this.nextPage}>{this.state.currentPage2}</li>
-                                        )}
-                                        {(this.state.currentPage3 < maxPage) && (<li className="controls" onClick={this.nextPage3}>{this.state.currentPage3}</li>
-                                        )}
-                                        <li className="restControls">...</li>
-                                        <li className="controls">{this.state.maxPage}</li>
-                                        <li className="nexprev">
-                                            {(this.state.currentPage < maxPage) && (<button onClick={this.nextPage}><i className="fa fa-forward"></i></button>
-                                            )}
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div></div>
+                            </div>
 
                         </div>
                     )
@@ -1355,18 +1196,18 @@
                     let element = this.state.data;
                     if (!element) return null;
                     return <div>
-                      <div className="filter-container filter-service rounded-xl bg-white w-full p-3 flex flex-col gap-4">
-                        <p className="filter-head"><span className="font-bold text-zinc-900">خدمات هتل</span>
-                            <div className="clr"></div>
-                        </p>
-                        <div className="filter-row">
-                            <ul className="filter-body stop-items flex flex-col gap-3">
-                                {this.renderservice(element)}
+                        <div className="filter-container filter-service rounded-xl bg-white w-full p-3 flex flex-col gap-4">
+                            <p className="filter-head"><span className="font-bold text-zinc-900">خدمات هتل</span>
                                 <div className="clr"></div>
-                            </ul>
-                        </div>
+                            </p>
+                            <div className="filter-row">
+                                <ul className="filter-body stop-items flex flex-col gap-3">
+                                    {this.renderservice(element)}
+                                    <div className="clr"></div>
+                                </ul>
+                            </div>
 
-                    </div>
+                        </div>
                         <div className="filter-container unvisible hotel-area rounded-xl bg-white w-full p-3  flex-col gap-4">
                             <p className="filter-head"><span className="font-bold text-zinc-900">منطقه هتل</span>
                                 <div className="clr"></div>
@@ -1406,7 +1247,7 @@
                                 <div className="inner p-relative">
                                     <input type="checkbox" value={s} className="checkbox-click" data-filter="services" onChange={(e) => this.handleChange(e)} defaultChecked={this.props.defaultChecked} />
                                     <label>
-                                      <div className="text"> {this.renderserviceNameFilter(s)}</div> </label> </div> </li></React.Fragment>);
+                                        <div className="text"> {this.renderserviceNameFilter(s)}</div> </label> </div> </li></React.Fragment>);
                         let output = singleSentence
                         return (
                             output
@@ -1415,7 +1256,7 @@
                 }
                 renderserviceNameFilter(element) {
                     if (element == 'R.O' || element == 'RO') {
-                        return <p className="has-not"><div className="icon"><i className="fa fa-coffee"></i><i className="far fa-spoon"></i></div>بدون وعده غذایی</p>
+                        return <p className="has-not"><div className="icon hidden"><i className="fa fa-coffee"></i><i className="far fa-spoon"></i></div>بدون وعده غذایی</p>
                     } else if (element == 'B.B' || element == 'BB') {
                         return <p><div className="icon hidden"><i className="fa fa-coffee"></i></div>با صبحانه</p>
                     } else if (element == 'H.B' || element == 'HB') {
@@ -1611,76 +1452,76 @@
                             let stingS = numS.toString();
                             index = stingF + stingS
                             indents.push(<div className="item-details-hotel hotel-element relative   p-[2px] rounded-xl">
-                              <form method="post" action="/Client_Show_Hotel_ver.2.bc?lid=1" className='z-10   relative p-3 flex flex-col gap-3 justify-between  '>
-                                <input type="hidden" value={this.state.state_currency_unit} name="rate-unit" className="rate-unit" />
-                                <input type="hidden" value={this.state.state_currency_cost} name="rate-cost" className="rate-cost" />
-                                <input type="hidden" value={this.state.state_floatdigit} name="rate-floatdigit" className="rate-floatdigit" />
-                                {this.renderOptionId(element[j])}
-                                {this.renderadults(element[j])}
-                                {this.renderchildwithbed(element[j])}
-                                {this.renderchildwithoutbed(element[j])}
-                                {this.renderinfant(element[j])}
-                                {this.renderroomid(element[j])}
-                                {this.renderid(element[j])}
-                                {this.renderproviderId(element[j].id)}
-                                {this.renderprovider(element[j])}
-                                {this.renderhotelidRooms(element[j])}
-                                {this.rendernightsRooms(element[j])}
-                                {this.rendersupplierRooms(element[j])}
-                                <input type="hidden" value="[##cms.form.cityid##]" name="cityid" />
-                                <input type="hidden" value="[##cms.form.coHotel##]" name="coHotel" />
-                                <input type="hidden" value="[##cms.form.hotelname##]" name="hotelname" />
-                                <input type="hidden" value='[##cms.json.header|cms.form.roomSearch##]' name="roomSearch" className="roomSearch" />
-                                <input type="hidden" value="[##cms.form.fdate##]" name="fdate" />
-                                <input type="hidden" value="[##cms.form.tdate##]" name="tdate" />
-                                <input type="hidden" value={element[j].totalPrice} name="amount" />
-                                <div className="d-flex w-full flex-col  gap-4">
-                                  <div class="w-full flex items-center justify-between">
-                            <div class="flex items-center gap-2">
-                              <div class=" pl-2 border-l border-zinc-600">
-                                <img src="[##cms.cms.cdn##]/images/eqamat.png" alt="tamin-logo" class="w-[82px]" />
-                              </div>
-                              <div class="flex items-center">
-                                <span class="text-sm text-zinc-600">تامین کننده :</span>
-                                <p class="font-bold text-zinc-900">اقامت 24</p>
-                              </div>
-                            </div>
+                                <form method="post" action="/Client_Show_Hotel_ver.2.bc?lid=1" className='z-10   relative p-3 flex flex-col gap-3 justify-between  '>
+                                    <input type="hidden" value={this.state.state_currency_unit} name="rate-unit" className="rate-unit" />
+                                    <input type="hidden" value={this.state.state_currency_cost} name="rate-cost" className="rate-cost" />
+                                    <input type="hidden" value={this.state.state_floatdigit} name="rate-floatdigit" className="rate-floatdigit" />
+                                    {this.renderOptionId(element[j])}
+                                    {this.renderadults(element[j])}
+                                    {this.renderchildwithbed(element[j])}
+                                    {this.renderchildwithoutbed(element[j])}
+                                    {this.renderinfant(element[j])}
+                                    {this.renderroomid(element[j])}
+                                    {this.renderid(element[j])}
+                                    {this.renderproviderId(element[j].id)}
+                                    {this.renderprovider(element[j])}
+                                    {this.renderhotelidRooms(element[j])}
+                                    {this.rendernightsRooms(element[j])}
+                                    {this.rendersupplierRooms(element[j])}
+                                    <input type="hidden" value="[##cms.form.cityid##]" name="cityid" />
+                                    <input type="hidden" value="[##cms.form.coHotel##]" name="coHotel" />
+                                    <input type="hidden" value="[##cms.form.hotelname##]" name="hotelname" />
+                                    <input type="hidden" value='[##cms.json.header|cms.form.roomSearch##]' name="roomSearch" className="roomSearch" />
+                                    <input type="hidden" value="[##cms.form.fdate##]" name="fdate" />
+                                    <input type="hidden" value="[##cms.form.tdate##]" name="tdate" />
+                                    <input type="hidden" value={element[j].totalPrice} name="amount" />
+                                    <div className="d-flex w-full flex-col  gap-4">
+                                        <div class="w-full flex items-center justify-between">
+                                            <div class="flex items-center gap-2">
+                                                <div class=" pl-2 border-l border-zinc-600">
+                                                    <img src="[##cms.cms.cdn##]/images/eqamat.png" alt="tamin-logo" class="w-[82px]" />
+                                                </div>
+                                                <div class="flex items-center">
+                                                    <span class="text-sm text-zinc-600">تامین کننده :</span>
+                                                    <p class="font-bold text-zinc-900">اقامت 24</p>
+                                                </div>
+                                            </div>
 
-                                  <div class=''>
-                                    <span className="details-btn text-secondary-1-500 group hover:text-zinc-500 flex items-center gap-2  
-                                    cursor-pointer btn-rule" 
-                                    key={index} 
-                                    onClick={e => this.handleruleRoom(e, element[j], index)}>
-                                     <img class="group-hover:grayscale" src="[##cms.cms.cdn##]/images/Board menu.svg" alt="BoardMenu" width="24" height="24" />
-                                    شرایط و قوانین</span>
+                                            <div class=''>
+                                                <span className="details-btn text-secondary-1-500 group hover:text-zinc-500 flex items-center gap-2  
+                                    cursor-pointer btn-rule"
+                                                    key={index}
+                                                    onClick={e => this.handleruleRoom(e, element[j], index)}>
+                                                    <img class="group-hover:grayscale" src="[##cms.cms.cdn##]/images/Board menu.svg" alt="BoardMenu" width="24" height="24" />
+                                                    شرایط و قوانین</span>
+                                            </div>
+
+                                        </div>
+                                        <div className="col-details-row width_40 font_12">
+                                            <ul>
+                                                <li>{this.renderRoomtype(element[j])}<span className="answer-services">({this.renderserviceName(element[j].services)})</span></li>
+                                                <li>{this.renderavailability(element[j])}</li>
+                                                {this.renderviewnameRooms(element[j])}
+                                                {this.renderProviderName(element[j])}
+                                                {this.renderSupplierNameRooms(element[j])}
+                                                {this.renderEnablePointRooms(element[j])}
+                                            </ul>
+                                        </div>
+                                        <div class="w-full flex justify-between">
+                                            <div class="flex items-center gap-1">
+                                                <span class="text-sm text-secondary-2-600">مبلغ قابل پرداخت:</span>
+                                                <b>{new Intl.NumberFormat('en-US').format(this.renderTotal(element[j].totalCom, this.state.state_currency_cost, this.state.state_floatdigit))}</b>
+                                                <b>{this.renderUnit(item.moneytype, this.state.state_currency_unit)}</b>
+                                            </div>
+
+                                            <a href="" class="w-[117px]  h-11 flex justify-center items-center rounded-lg border border-primary-700 bg-primary-700 text-sm hover:bg-transparent hover:border-secondary-2-600 hover:text-secondary-2-700 hover:font-bold">رزرو
+                                                اتاق</a></div>
                                     </div>
-                           
-                          </div>
-                                    <div className="col-details-row width_40 font_12">
-                                        <ul>
-                                            <li>{this.renderRoomtype(element[j])}<span className="answer-services">({this.renderserviceName(element[j].services)})</span></li>
-                                            <li>{this.renderavailability(element[j])}</li>
-                                            {this.renderviewnameRooms(element[j])}
-                                            {this.renderProviderName(element[j])}
-                                            {this.renderSupplierNameRooms(element[j])}
-                                            {this.renderEnablePointRooms(element[j])}
-                                        </ul>
-                                    </div>
-                                   <div class="w-full flex justify-between">
-                                    <div class="flex items-center gap-1">
-                              <span class="text-sm text-secondary-2-600">مبلغ قابل پرداخت:</span>
-                              <b>{new Intl.NumberFormat('en-US').format(this.renderTotal(element[j].totalCom, this.state.state_currency_cost, this.state.state_floatdigit))}</b>
-                              <b>{this.renderUnit(item.moneytype, this.state.state_currency_unit)}</b>
-                            </div>
-                                    
-                                    <a href="" class="w-[117px]  h-11 flex justify-center items-center rounded-lg border border-primary-700 bg-primary-700 text-sm hover:bg-transparent hover:border-secondary-2-600 hover:text-secondary-2-700 hover:font-bold">رزرو
-                              اتاق</a></div>
-                                </div>
-                                
 
 
 
-                            </form>
+
+                                </form>
                                 <div className="clr"></div>
                                 <div key={index} className={`${!this.state.loadingVisible[index] ? "unvisible" : "visible"}`}>
                                     <div id="ballsWaveG">
@@ -1733,13 +1574,13 @@
                                 {this.renderpassengerscount(element)}
                                 {this.hotel_information_moneytype(element)}
                                 <input type="hidden" value="" name="chagencyuser" />
-                                <button type="submit"  class=' cursor-pointer rounded-xl w-[230px] linear2 h-[230px] p-[4px]'>
-                                  <div class="w-full h-full bg-white rounded-[11px] p-2">
-                                    <img src={imghotel_ws} width="190" height="190" alt="" class="rounded-xl w-full h-full shadow-2 object-cover"/>
-                                  <div className="overlay p-absolute"><span className="expand p-absolute">+</span>
-                                    </div></div>
-                                  
-                                    </button>
+                                <button type="submit" class=' cursor-pointer rounded-xl w-[230px] linear2 h-[230px] p-[4px]'>
+                                    <div class="w-full h-full bg-white rounded-[11px] p-2">
+                                        <img src={imghotel_ws} width="190" height="190" alt="" class="rounded-xl w-full h-full shadow-2 object-cover" />
+                                        <div className="overlay p-absolute"><span className="expand p-absolute">+</span>
+                                        </div></div>
+
+                                </button>
                             </form>
                         </div>
                     } else {
@@ -1756,15 +1597,15 @@
                                 {this.renderpassengerscount(element)}
                                 {this.hotel_information_moneytype(element)}
                                 <input type="hidden" value="" name="chagencyuser" />
-                                <button type="submit"   class=' cursor-pointer rounded-xl w-[230px] linear2 h-[230px] p-[4px]'>
-                                  <div class="w-full h-full bg-white rounded-[11px] p-2">
-                                    <img src={imghotel_garanti} width="190" height="190" alt="" class="rounded-xl w-full h-full shadow-2 object-cover" />
-                                  <div className="overlay p-absolute">
-                                    <span className="expand p-absolute">+</span>
+                                <button type="submit" class=' cursor-pointer rounded-xl w-[230px] linear2 h-[230px] p-[4px]'>
+                                    <div class="w-full h-full bg-white rounded-[11px] p-2">
+                                        <img src={imghotel_garanti} width="190" height="190" alt="" class="rounded-xl w-full h-full shadow-2 object-cover" />
+                                        <div className="overlay p-absolute">
+                                            <span className="expand p-absolute">+</span>
+                                        </div>
                                     </div>
-                                    </div>
-                                  
-                                    </button>
+
+                                </button>
                             </form>
                         </div>
                     }
@@ -1889,7 +1730,7 @@
                 }
                 renderEnablePointRooms(element) {
                     if (element.enable_point == '1') {
-                        return <li style={{marginTop:'0.5rem'}}><span className="club_point font_10 text-center  border-radius"><span style={{marginLeft:'0.3rem'}}>امتیاز باشگاه</span><span>{element.club_point}</span></span></li>
+                        return <li style={{ marginTop: '0.5rem' }}><span className="club_point font_10 text-center  border-radius"><span style={{ marginLeft: '0.3rem' }}>امتیاز باشگاه</span><span>{element.club_point}</span></span></li>
                     }
                 }
                 renderCommissionRooms(element, moneytype) {
@@ -2223,8 +2064,8 @@
                                         className="color_gray font_11 unit">{this.renderUnit(element.moneytype, this.state.state_currency_unit)}</span></div>
 
                             <div className="btn-item has-margin_">
-                                
-                              
+
+
                             </div>
                             <div className="clr"></div>
                         </div>;
@@ -2256,7 +2097,7 @@
                         return <div className="club_point font_10 text-center p-absolute border-radius"><span>{element.club_point}</span><span>امتیاز باشگاه</span></div>
                     }
                 }
-        
+
                 handleClick(event) {
                     window.scrollTo({
                         top: 0,
@@ -2372,6 +2213,6 @@
         }
     </script>
 </body>
- 
+
 
 </html>
