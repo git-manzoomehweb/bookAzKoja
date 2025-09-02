@@ -30,8 +30,11 @@
     <basis core="call" file="header.inc" />
 
     <main class="mt-32 mb-14 flex flex-col   items-center">
-        <span class="hidden hotel-elmentsssss">[##cms.form.coHotel##]</span>
+   <span class="hidden hotel-elmentsssss">[##cms.form.coHotel##]</span>
         <span class="hidden city-elmentsssss">[##cms.form.cityid##]</span>
+         <span class="hidden fdate-elmentsssss">[##cms.form.fdate##]</span>
+         <span class="hidden tdate-elmentsssss">[##cms.form.tdate##]</span>
+         <span class="hidden passengers-container-s">[##cms.json.header|cms.form.roomSearch##]</span>
         <div id="bg-popup" class="unvisible"></div>
         <div class="message-box unvisible">
             <i class="icon-message-box">
@@ -827,7 +830,7 @@
                                             <div className="infoes-item rounded-xl border border-zinc-200 p-2 flex flex-col justify-between w-full h-[254px] bg-white">
                                                 <span className="title font-bold text-zinc-900">{item.hotelinfo.name}</span>
                                                 <div class="flex w-full items-center gap-[34px]">
-                                                    <div class="flex items-center text-zinc-900 text-sm gap-2">
+                                                    <div class="flex whitespace-nowrap items-center text-zinc-900 text-sm gap-2">
                                                         <img loading='lazy' src="[##cms.cms.cdn##]/images/Star.svg" alt="star" width="30" height="30" />
                                                         {item.hotelinfo.hotelsearch.star} ستاره
                                                     </div>
@@ -1096,38 +1099,38 @@
                                     </div>
                                 </div>
                                 <div class="w-full px-4 flex flex-col gap-4">
-                                    <a href="[##cms.host.advertisement-r1##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[186px] rounded-xl overflow-hidden">
+                                    <a  target="_blank"   href="[##cms.host.advertisement-r1##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[186px] rounded-xl overflow-hidden">
                                         <img src="[##cms.cms.cdn##]/images/advertisement-r1.jpg" alt="advertisement-r1" />
                                     </a>
-                                    <a href="[##cms.host.advertisement-r2##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[186px] rounded-xl overflow-hidden">
+                                    <a  target="_blank"   href="[##cms.host.advertisement-r2##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[186px] rounded-xl overflow-hidden">
                                         <img src="[##cms.cms.cdn##]/images/advertisement-r2.jpg" alt="advertisement-r2" />
                                     </a>
-                                    <a href="[##cms.host.advertisement-r3##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[186px] rounded-xl overflow-hidden">
+                                    <a  target="_blank"   href="[##cms.host.advertisement-r3##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[186px] rounded-xl overflow-hidden">
                                         <img src="[##cms.cms.cdn##]/images/advertisement-r3.jpg" alt="advertisement-r3" />
                                     </a>
-                                    <a href="[##cms.host.advertisement-r4##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[186px] rounded-xl overflow-hidden">
+                                    <a  target="_blank"   href="[##cms.host.advertisement-r4##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[186px] rounded-xl overflow-hidden">
                                         <img src="[##cms.cms.cdn##]/images/advertisement-r4.jpg" alt="advertisement-r4" />
                                     </a>
-                                    <a href="[##cms.host.advertisement-r5##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[186px] rounded-xl overflow-hidden">
+                                    <a  target="_blank"   href="[##cms.host.advertisement-r5##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[186px] rounded-xl overflow-hidden">
                                         <img src="[##cms.cms.cdn##]/images/advertisement-r5.jpg" alt="advertisement-r5" />
                                     </a>
-                                    <a href="[##cms.host.advertisement-l1##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[561px] rounded-xl overflow-hidden">
+                                    <a  target="_blank"   href="[##cms.host.advertisement-l1##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[561px] rounded-xl overflow-hidden">
                                         <img src="[##cms.cms.cdn##]/images/advertisement-l1.jpg" alt="advertisement-l1" />
                                     </a>
 
-                                    <a href="[##cms.host.advertisement-l2##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[349px] rounded-xl overflow-hidden">
+                                    <a  target="_blank"   href="[##cms.host.advertisement-l2##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[349px] rounded-xl overflow-hidden">
                                         <img src="[##cms.cms.cdn##]/images/advertisement-l2.jpg" alt="advertisement-l2" />
                                     </a>
-                                    <a href="[##cms.host.advertisement-l3##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[349px] rounded-xl overflow-hidden">
+                                    <a  target="_blank"   href="[##cms.host.advertisement-l3##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[349px] rounded-xl overflow-hidden">
                                         <img src="[##cms.cms.cdn##]/images/advertisement-l3.jpg" alt="advertisement-l3" />
                                     </a>
-                                    <a href="[##cms.host.advertisement-l4##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[349px] rounded-xl overflow-hidden">
+                                    <a  target="_blank"   href="[##cms.host.advertisement-l4##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[349px] rounded-xl overflow-hidden">
                                         <img src="[##cms.cms.cdn##]/images/advertisement-l4.jpg" alt="advertisement-l4" />
                                     </a>
-                                    <a href="[##cms.host.advertisement-l5##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[349px] rounded-xl overflow-hidden">
+                                    <a  target="_blank"   href="[##cms.host.advertisement-l5##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[349px] rounded-xl overflow-hidden">
                                         <img src="[##cms.cms.cdn##]/images/advertisement-l5.jpg" alt="advertisement-l5" />
                                     </a>
-                                    <a href="[##cms.host.advertisement-l6##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[349px] rounded-xl overflow-hidden">
+                                    <a  target="_blank"   href="[##cms.host.advertisement-l6##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[349px] rounded-xl overflow-hidden">
                                         <img src="[##cms.cms.cdn##]/images/advertisement-l6.jpg" alt="advertisement-l6" />
                                     </a>
                                 </div>

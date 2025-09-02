@@ -4,6 +4,103 @@ function changeLabels() {
   document.querySelector("#r-hotel .label-passengers-hotel span").innerHTML =
     "مسافران";
 }
+function buildPassengerRooms() {
+  const dataEl = document.querySelector(".hidden.passengers-container-s");
+  if (!dataEl) return;
+  const data = JSON.parse(dataEl.textContent.trim());
+  const rooms = data.rooms;
+
+  const totalRooms = rooms.length;
+  let totalAdults = 0;
+  let totalChildren = 0;
+
+  rooms.forEach(room => {
+    totalAdults += parseInt(room.adultcount, 10);
+    if (room.childcountandage && room.childcountandage !== "0") {
+      const firstChild = parseInt(room.childcountandage.split(",")[0], 10);
+      totalChildren += firstChild;
+    }
+  });
+
+  // بخش بالایی
+  document.querySelector(".passenger-counts.room-count .count").textContent = totalRooms;
+  document.querySelector(".passenger-counts.adult-count .count").textContent = totalAdults;
+  document.querySelector(".passenger-counts.child-count .count").textContent = totalChildren;
+
+  // نمایش یا مخفی کردن کودک
+  const childCountEl = document.querySelector(".passenger-counts.child-count");
+  const childCountVal = parseInt(document.querySelector(".passenger-counts.child-count .count").textContent, 10);
+  if (childCountVal > 0) {
+    childCountEl.classList.remove("hidden");
+  } else {
+    childCountEl.classList.add("hidden");
+  }
+
+  // input تعداد اتاق
+  const roomCountInput = document.querySelector("#passenger-roomcount1");
+  if (roomCountInput) {
+    roomCountInput.value = totalRooms;
+
+  }
+
+  // گرفتن template اولیه
+  const roomsContainer = document.querySelector(".Rooms");
+  if (!roomsContainer) return;
+
+  const templateRoom = roomsContainer.querySelector(".contentRoom");
+  if (!templateRoom) return;
+
+  // خالی کردن container برای ساخت داینامیک
+  roomsContainer.innerHTML = "";
+
+  // ساخت اتاق‌ها
+  rooms.forEach((roomData, index) => {
+    const roomClone = templateRoom.cloneNode(true);
+    const roomIndex = index + 1;
+
+    // شماره اتاق
+    const roomNumberEl = roomClone.querySelector(".numberOfRoom");
+    if (roomNumberEl) {
+      roomNumberEl.textContent = `اتاق ${roomIndex}`;
+    }
+
+    // بزرگسال
+    const adultInput = roomClone.querySelector(".adult-passenger-item input.adultcount");
+    if (adultInput) {
+      adultInput.value = roomData.adultcount;
+      adultInput.name = `_root.rooms__${roomIndex}.adultcount`;
+      adultInput.id = `passenger-room-adultcount${roomIndex}`;
+    }
+
+    // کودک → فقط عدد اول
+    const childInput = roomClone.querySelector(".child-passenger-item input.childcount");
+    let childCount = 0;
+    if (roomData.childcountandage && roomData.childcountandage !== "0") {
+      childCount = parseInt(roomData.childcountandage.split(",")[0], 10);
+    }
+    if (childInput) {
+      childInput.value = childCount;
+      childInput.name = `_root.rooms__${roomIndex}.childcount`;
+      childInput.id = `passenger-room-childcount${roomIndex}`;
+    }
+
+    // hidden input childcountandage
+    const childAgeInput = roomClone.querySelector("input.childcountandage");
+    if (childAgeInput) {
+      childAgeInput.value = roomData.childcountandage;
+      childAgeInput.name = `_root.rooms__${roomIndex}.childcountandage`;
+      childAgeInput.id = `passenger-room-childcountandage${roomIndex}`;
+    }
+
+    // اضافه کردن clone به DOM
+    roomsContainer.appendChild(roomClone);
+  });
+
+  // console.log("تمام contentRoomها با داده‌های JSON ساخته شدند (با name و id یونیک).");
+}
+
+
+
 
 document.addEventListener("DOMContentLoaded", function () {
   const requiredFiles = ["bookazkoja.ui.min.css"];
@@ -31,6 +128,10 @@ document.addEventListener("DOMContentLoaded", function () {
               .querySelector(".reservation-item .hotel-btn")
               .classList.add("active-module");
 
+
+               
+
+
             if (document.querySelector(".hotel-elmentsssss")) {
               // پاک کردن مقدار انتخاب قبلی اگر در localStorage وجود داشت
               if (localStorage.getItem("selectedHotel")) {
@@ -47,6 +148,25 @@ document.addEventListener("DOMContentLoaded", function () {
               const tDateValue =
                 document.querySelector(".tdate-elmentsssss")?.innerText || "";
 
+
+
+                buildPassengerRooms()
+              
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
               const observer = new MutationObserver(
                 (mutationsList, observer) => {
                   const depInput = document.querySelector(
@@ -102,15 +222,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     setTimeout(() => {
                       depInput.value = hotelValue;
                       idInput.value = cityValue;
-                       fDateInput.value=fDateValue;
-                    tDateInput.value=tDateValue;
-                      console.log(
-                        "Inputs after delay:",
-                        depInput.value,
-                        idInput.value,
-                         fDateInput.value,
-                    tDateInput.value
-                      );
+                      fDateInput.value=fDateValue;
+                      tDateInput.value=tDateValue;
+                      
                     }, 900);
                   }
                 }
