@@ -1367,6 +1367,7 @@ button.search-hotel span {
     background: repeating-conic-gradient(#0000 0 5%, var(--secondary-2-600), #0000 20% 50%);
     animation: 1.5s linear infinite l2;
 }
+
 @keyframes l2 {
     to {
         rotate: 1turn;

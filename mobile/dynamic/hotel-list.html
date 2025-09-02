@@ -213,7 +213,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="flex w-[270px] flex-col gap-3">
+                    <div class="flex w-full flex-col gap-3">
                         <div class="stract-img-item h-[561px] rounded-xl w-full"></div>
                         <div class="stract-img-item h-[349px] rounded-xl w-full"></div>
                         <div class="stract-img-item h-[349px] rounded-xl w-full"></div>
@@ -880,7 +880,7 @@
                                         </div>
                                     </div>
                                     <div key={i} className={`details-row fixed justify-center items-end z-[60] w-screen h-screen top-0 left-0 bg-[#0404049C] ${!this.state.visibleRoom[i] ? "unvisible" : "visible"}`}>
-                                        <div className="details-item pb-[35px] bg-white w-full h-[80vh] p-4 !overflow-hidden rounded-t-xl text-zinc-900" >
+                                        <div className="details-item pb-[35px] bg-white w-full h-[83vh] p-4 !overflow-hidden rounded-t-xl text-zinc-900" >
                                             <img loading="lazy" src="[##cms.cms.cdn##]/images/adv7.jpg" alt="adv7" class="w-full h-[114px] object-cover rounded-xl" />
                                             <div class="w-full flex items-center my-4 justify-between">
                                                 <p class="font-bold text-zinc-900">لیست اتاق ها</p>
@@ -1298,10 +1298,13 @@
                     }
                 }
                 handleChange = (event) => {
-                    window.scrollTo({
-                        top: 0,
-                        behavior: 'smooth'
-                    });
+                     const sElement = document.querySelector("#app");
+  if (sElement) {
+    window.scrollTo({
+      top: sElement.offsetTop,
+      behavior: "smooth",
+    });
+  }
                     this.handleReset(event);
                     let checktype = event.target.getAttribute("data-type")
                     let checkkey = event.target.getAttribute("data-key")

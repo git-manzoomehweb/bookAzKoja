@@ -1912,39 +1912,8 @@ li:has(input[name="star"]:checked) label {
 .set-before-3::before {
   background: var(--primary-700);
 }
-
-.hotel-element::after,
-.hotel-element::before {
-  content: "";
-  position: absolute;
-  border-radius: 12px;
-}
-
-.hotel-element::before {
-  inset: 0;
-  padding: 2px;
-  background: linear-gradient(270deg, #ffc700, #0c8ade);
-  -webkit-mask: repeating-linear-gradient(
-      90deg,
-      #000 0 4px,
-      transparent 4px 7px
-    ),
-    repeating-linear-gradient(0deg, #000 0 4px, transparent 4px 7px),
-    linear-gradient(#000 0 0);
-  -webkit-mask-composite: destination-out;
-  mask-composite: exclude;
-  background-clip: padding-box;
-  -webkit-background-clip: padding-box;
-  pointer-events: none;
-}
-
-.hotel-element::after {
-  width: calc(100% - 1.5px);
-  height: calc(100% - 1.5px);
-  top: 0.75px;
-  left: 0.75px;
-  background-color: #fff;
-}
+ 
+ 
 
 .placeholder\:text-zinc-500::-moz-placeholder {
   color: var(--zinc-500);

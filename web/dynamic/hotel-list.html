@@ -1320,10 +1320,13 @@
                     }
                 }
                 handleChange = (event) => {
-                    window.scrollTo({
-                        top: 0,
-                        behavior: 'smooth'
-                    });
+                    const sElement = document.querySelector("#search-box");
+  if (sElement) {
+    window.scrollTo({
+      top: sElement.offsetTop,
+      behavior: "smooth",
+    });
+  }
                     this.handleReset(event);
                     let checktype = event.target.getAttribute("data-type")
                     let checkkey = event.target.getAttribute("data-key")
@@ -1737,9 +1740,9 @@
                     if (element.commissioncost !== 0) {
                         return <span><span className="commission-rooms"><span className="color_gray font_12">قیمت برای {element.nights} شب اقامت :</span>
                             <span className="font_14">{new Intl.NumberFormat('en-US').format(this.renderTotal(element.totalPrice, this.state.state_currency_cost, this.state.state_floatdigit))}</span><span
-                                className="color_gray font_11 unit">{this.renderUnit(moneytype, this.state.state_currency_unit)}</span></span><span className="commission-rooms">-</span><span className="commission-rooms"><span className="color_gray font_12">کمیسیون :</span>
+                                className="color_gray font-bold unit">{this.renderUnit(moneytype, this.state.state_currency_unit)}</span></span><span className="commission-rooms">-</span><span className="commission-rooms"><span className="color_gray font_12">کمیسیون :</span>
                                 <span className="font_14">{new Intl.NumberFormat('en-US').format(this.renderTotal(element.commissioncost, this.state.state_currency_cost, this.state.state_floatdigit))}</span><span
-                                    className="color_gray font_11 unit">{this.renderUnit(moneytype, this.state.state_currency_unit)}</span></span></span>;
+                                    className="color_gray font-bold unit">{this.renderUnit(moneytype, this.state.state_currency_unit)}</span></span></span>;
                     }
                 }
 
@@ -2061,7 +2064,7 @@
                                 <div className="color_gray font_11">قیمت برای {element.nights} شب اقامت :</div>
                                 <span
                                     className="item-cost color_5 font_20 font-weight">{new Intl.NumberFormat('en-US').format(this.renderTotal(element.total, this.state.state_currency_cost, this.state.state_floatdigit))}</span><span
-                                        className="color_gray font_11 unit">{this.renderUnit(element.moneytype, this.state.state_currency_unit)}</span></div>
+                                        className="color_gray font-bold unit">{this.renderUnit(element.moneytype, this.state.state_currency_unit)}</span></div>
 
                             <div className="btn-item has-margin_">
 
@@ -2075,14 +2078,14 @@
                                 <div className="color_gray font_11">قیمت برای {element.nights} شب اقامت :</div>
                                 <span
                                     className="item-cost color_5 font_20 font-weight">{new Intl.NumberFormat('en-US').format(this.renderTotal(element.total, this.state.state_currency_cost, this.state.state_floatdigit))}</span><span
-                                        className="color_gray font_11 unit">{this.renderUnit(element.moneytype, this.state.state_currency_unit)}</span></div>
+                                        className="color_gray font-bold unit">{this.renderUnit(element.moneytype, this.state.state_currency_unit)}</span></div>
                             <div>
                                 <span className="color_gray font_11">کمیسیون :</span><span
                                     className="item-cost color_5 font_20 font-weight">{new Intl.NumberFormat('en-US').format(this.renderTotal(element.commissioncost, this.state.state_currency_cost, this.state.state_floatdigit))}</span><span
-                                        className="color_gray font_11 unit">{this.renderUnit(element.moneytype, this.state.state_currency_unit)}</span></div><div>
+                                        className="color_gray font-bold unit">{this.renderUnit(element.moneytype, this.state.state_currency_unit)}</span></div><div>
                                 <span className="color_gray font_11">مبلغ قابل پرداخت :</span><span
                                     className="item-cost color_5 font_20 font-weight">{new Intl.NumberFormat('en-US').format(this.renderTotal(element.totalCom, this.state.state_currency_cost, this.state.state_floatdigit))}</span><span
-                                        className="color_gray font_11 unit">{this.renderUnit(element.moneytype, this.state.state_currency_unit)}</span></div>
+                                        className="color_gray font-bold unit">{this.renderUnit(element.moneytype, this.state.state_currency_unit)}</span></div>
 
                             <div className="btn-item has-margin_">
                                 <button type="button" data-active={`${this.state.state_active_btn[i] ? "1" : "0"}`} onClick={e => this.select_room(e, element, i)}

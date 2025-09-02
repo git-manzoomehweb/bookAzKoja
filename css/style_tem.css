@@ -552,6 +552,9 @@ body:has(.hotel-elmentsssss) .searchHistory-content {
   display: flex !important;
   backdrop-filter: blur(4px);
 }
+.filter-popup{
+    backdrop-filter: blur(4px);
+}
 .details-item .close-btn {
   background: transparent !important;
   font-size: 14px;
@@ -696,7 +699,24 @@ body:has(.filter-popup.flex) {
   border-left: none !important;
   padding-left: 0 !important;
 }
+.hotel-element .answer-info::before{
+background-color: var(--primary) !important;
+}
 @media not all and (min-width: 1024px) {
+  .filter-popup.flex,.details-row.fixed.visible {
+    transition: all 0.6s ease-in-out;
+     animation: 0.6s linear goUp;
+}
+ @keyframes goUp {
+  from {
+    opacity: 0;
+    transform: translateY(1000vh);
+  }
+  to {
+    opacity: 1;
+      transform: translateY(0);
+  }
+}
   .hotel_stracture .stract-img-item,
   .hotel_stracture .stract-infoes-item {
     width: 100% !important;
