@@ -32,6 +32,11 @@
     <main class="mt-40 mb-14 flex flex-col   items-center">
         <span class="hidden hotel-elmentsssss">[##cms.form.coHotel##]</span>
         <span class="hidden city-elmentsssss">[##cms.form.cityid##]</span>
+         <span class="hidden fdate-elmentsssss">[##cms.form.fdate##]</span>
+         <span class="hidden tdate-elmentsssss">[##cms.form.tdate##]</span>
+         <span class="hidden passengers-container-s">[##cms.json.header|cms.form.roomSearch##]</span>
+       
+ 
         <div id="bg-popup" class="unvisible"></div>
         <div class="message-box unvisible">
             <i class="icon-message-box">
@@ -988,7 +993,7 @@
                                     <aside className="sidebar-content w-full">
                                         <div className="filters-container float-right w-full linear2 p-[4px] rounded-2xl ">
                                             <div class="flex w-full flex-col gap-5 bg-primary-50 py-[19px] px-[11px] rounded-[14px]">
-                                                <p><span className="font-weight result-count">{this.renderCount()}</span> هتل پیدا شد.</p>
+                                                <p><span className="font-weight result-count text-[#3DDD37]">{this.renderCount()}</span> هتل پیدا شد.</p>
                                                 <p className="section-timer">مدت زمان باقی مانده : <span id="timer" className="text-[#3DDD37]">00:00:00</span></p>
                                                 <div className="filter-container rounded-xl bg-white w-full p-3 flex flex-col gap-4">
                                                     <p className="filter-head"><span className="font-bold text-zinc-900">نام هتل</span>

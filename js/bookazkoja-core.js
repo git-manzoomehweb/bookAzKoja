@@ -42,6 +42,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 document.querySelector(".city-elmentsssss")?.innerText || "";
               const hotelValue =
                 document.querySelector(".hotel-elmentsssss")?.innerText || "";
+              const fDateValue =
+                document.querySelector(".fdate-elmentsssss")?.innerText || "";
+              const tDateValue =
+                document.querySelector(".tdate-elmentsssss")?.innerText || "";
 
               const observer = new MutationObserver(
                 (mutationsList, observer) => {
@@ -51,11 +55,14 @@ document.addEventListener("DOMContentLoaded", function () {
                   const idInput = document.querySelector(
                     "#r-hotel .departure-route .locationId"
                   );
-
+                  const fDateInput=document.querySelector("#r-hotel .Basis_Date_Box .departure-date input.Basis_Date");
+                  const tDateInput=document.querySelector("#r-hotel .Basis_Date_Box .return-date input.Basis_Date");
                   // فقط اگر همه چیز آماده بود مقدار ست کن
-                  if (depInput && idInput && hotelValue && cityValue) {
+                  if (depInput && idInput && hotelValue && cityValue && fDateInput &&tDateInput) {
                     depInput.value = hotelValue;
                     idInput.value = cityValue;
+                    fDateInput.value=fDateValue;
+                    tDateInput.value=tDateValue;
 
                     // تریگر رویدادها برای اینکه اسکریپت‌های دیگر متوجه تغییر بشن
                     idInput.dispatchEvent(
@@ -71,11 +78,22 @@ document.addEventListener("DOMContentLoaded", function () {
                       new Event("change", { bubbles: true })
                     );
 
-                    console.log(
-                      "✅ مقدار اولیه ست شد:",
-                      depInput.value,
-                      idInput.value
+
+                    fDateInput.dispatchEvent(
+                      new Event("input", { bubbles: true })
                     );
+                    fDateInput.dispatchEvent(
+                      new Event("change", { bubbles: true })
+                    );
+
+                    tDateInput.dispatchEvent(
+                      new Event("input", { bubbles: true })
+                    );
+                    tDateInput.dispatchEvent(
+                      new Event("change", { bubbles: true })
+                    );
+
+                   
 
                     // فقط همین یک بار، observer رو قطع کن
                     observer.disconnect();
@@ -84,10 +102,14 @@ document.addEventListener("DOMContentLoaded", function () {
                     setTimeout(() => {
                       depInput.value = hotelValue;
                       idInput.value = cityValue;
+                       fDateInput.value=fDateValue;
+                    tDateInput.value=tDateValue;
                       console.log(
                         "Inputs after delay:",
                         depInput.value,
-                        idInput.value
+                        idInput.value,
+                         fDateInput.value,
+                    tDateInput.value
                       );
                     }, 900);
                   }
