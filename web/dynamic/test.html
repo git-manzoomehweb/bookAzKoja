@@ -481,7 +481,7 @@
 
                 }
                 return library[currentPage - 1].map((item, i) => (
-                    <div className="result-item w-full  flex gap-2 bg-zinc-50 p-3 h-[254px] rounded-xl border border-zinc-300">
+                    <div className="result-item w-full   flex flex-col gap-2 bg-zinc-50 p-3   rounded-xl border border-zinc-300">
                         <form class='w-full' method="post" action="/Client_Show_Hotel_ver.2.bc?lid=1" key={item._id}>
                             <input type="hidden" value={this.state.state_currency_unit} name="rate-unit" className="rate-unit" />
                             <input type="hidden" value={this.state.state_currency_cost} name="rate-cost" className="rate-cost" />
@@ -508,11 +508,11 @@
                             {this.renderroomidFirst(item)}
                             <div className="result-info p-relative w-full">
                                 <div className="first-col w-full">
-                                    <div className="flex justify-between gap-2">
+                                    <div className="flex flex-col gap-2">
                                         <div className="img-item text-center">
                                             {this.renderImgHotel(item)}
                                         </div>
-                                        <div className="infoes-item rounded-xl border border-zinc-200 p-4 flex flex-col justify-between w-[calc(100%-240px)] h-[230px] bg-white">
+                                        <div className="infoes-item rounded-xl border border-zinc-200 p-2 flex flex-col justify-between w-full   bg-white">
                                             <span className="title font-bold text-zinc-900">{item.hotelinfo.name}</span>
                                             <div className="flex w-full items-center gap-[34px]">
                                                 <div className="flex whitespace-nowrap items-center text-zinc-900 text-sm gap-2">
@@ -528,11 +528,9 @@
                                             <ul className="brief-info">
                                                 <li>
                                                     <div className="hotel-location 
-                                                    ">
-
-                                                        <span>{item.hotelinfo.hotelsearch.countryname}</span><span>
+                                                    "><span>{item.hotelinfo.hotelsearch.countryname}</span><span>
                                                             ,</span><span>{item.hotelinfo.hotelsearch.cityname}</span></div></li>
-                                                <li>{this.renderRoomtypeFirst(item)}
+                                                <li className="flex flex-col">{this.renderRoomtypeFirst(item)}
                                                     <span className="answer-services"></span></li>
                                                 <li>{this.renderavailabFirst(item)}</li>
                                                 {this.renderviewnameFirst(item.hotelinfo.information.viewname)}
@@ -540,13 +538,13 @@
                                                 {this.renderProviderName(item)}
                                                 {this.renderSupplierName(item)}
                                             </ul>
-                                            <div className="w-full flex items-center justify-between">
+                                            <div className="w-full flex flex-col  justify-between">
                                                 <div className="flex flex-col">
                                                     <div className="text-sm text-zinc-900"> {this.renderCommission(item, i)} </div>
                                                     <div className="font-bold text-zinc-900">   {this.renderEnablePoint(item)} </div>
                                                 </div>
                                                 <button data-active={`${this.state.state_active_btn[i] ? "1" : "0"}`}
-                                                    onClick={e => this.select_room(e, item, i)} type="button" className="w-[150px] show-list h-11 flex justify-center items-center rounded-lg border border-primary-700 bg-primary-700 text-sm hover:bg-transparent hover:border-secondary-2-600 hover:text-secondary-2-700 hover:font-bold" aria-label="show-list">لیست تامین کننده ها</button>
+                                                    onClick={e => this.select_room(e, item, i)} type="button" className="w-full show-list h-11 flex justify-center items-center rounded-lg border border-primary-700 bg-primary-700 text-sm hover:bg-transparent hover:border-secondary-2-600 hover:text-secondary-2-700 hover:font-bold" aria-label="show-list">لیست تامین کننده ها</button>
                                             </div>
                                             <div className="clr"></div>
                                         </div>
@@ -567,8 +565,8 @@
                                         <div id="ballsWaveG_8" className="ballsWaveG"></div>
                                     </div>
                                 </div>
-                                <div key={i} className={`details-row fixed justify-center items-center z-[60] w-screen h-screen top-0 left-0 bg-[#0404049C] ${!this.state.visibleRoom[i] ? "unvisible" : "visible"}`}>
-                                    <div className="details-item bg-white w-[706px] h-[87vh] p-4 !overflow-hidden rounded-xl text-zinc-900" >
+                                <div key={i} className={`details-row fixed justify-center items-end z-[60] w-screen h-screen top-0 left-0 bg-[#0404049C] ${!this.state.visibleRoom[i] ? "unvisible" : "visible"}`}>
+                                    <div className="details-item pb-[35px] bg-white w-full h-[83vh] p-4 !overflow-hidden rounded-t-xl text-zinc-900" >
                                         <img loading="lazy" src="[##cms.cms.cdn##]/images/adv7.jpg" alt="adv7" className="w-full h-[114px] object-cover rounded-xl" />
                                         <div className="w-full flex items-center my-4 justify-between">
                                             <p className="font-bold text-zinc-900">لیست اتاق ها</p>
@@ -581,7 +579,7 @@
                                             </button>
                                         </div>
                                         <div className="clr"></div>
-                                        <div className="w-full overflow-y-auto h-[52vh]">
+                                        <div className="w-full overflow-y-auto h-[37vh]">
                                             {
                                                 this.show_rooms(i, item)}</div>
 
@@ -627,123 +625,130 @@
                             <div className="currency-selected cursor-pointer" data-active="0" onClick={() => this.currency_selected_list()}><span>{this.localStorage_getCurrency()}{this.localStorage_expire()}</span></div>
                             {this.renderCurrencyRate()}
                         </div>
-                        <div className="flex gap-3">
-                            <div className="w-[270px] flex flex-col gap-4">
-                                <aside className="sidebar-content w-full">
-                                    <div className="filters-container float-right w-full linear2 p-[4px] rounded-2xl ">
-                                        <div className="flex w-full flex-col gap-5 bg-primary-50 py-[19px] px-[11px] rounded-[14px]">
-                                            <p><span className="font-weight result-count text-[#3DDD37]">{this.renderCount()}</span> هتل پیدا شد.</p>
-                                            <p className="section-timer">مدت زمان باقی مانده : <span id="timer" className="text-[#3DDD37]">00:00:00</span></p>
-                                            <div className="filter-container rounded-xl bg-white w-full p-3 flex flex-col gap-4">
-                                                <p className="filter-head"><span className="font-bold text-zinc-900">نام هتل</span>
-                                                    <div className="clr"></div>
-                                                </p>
-                                                <div className="filter-row">
-                                                    <ul className="filter-body  text-center font_13">
-                                                        <li className="width_100">
-                                                            <input value={this.state.filterName} onChange={((e) => this.handleFilterName(e))} placeholder="نام هتل مورد نظر را وارد نمائید" className="inner  filter-name-hotel truncate focus:border-2 focus:border-primary-800 !outline-none line-clamp-1 h-12 border border-zinc-600 rounded-lg px-3 placeholder:text-zinc-500"
-                                                            />
-                                                        </li>
-                                                        <div className="clr"></div>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div className="filter-container filter-star rounded-xl bg-white w-full p-3 flex flex-col gap-4">
-                                                <p className="filter-head"><span className="font-bold text-zinc-900"> چند ستاره</span>
-                                                    <div className="clr"></div>
-                                                </p>
-                                                <div className="filter-row">
-                                                    <ul className="filter-body flex items-center w-full justify-between">
-                                                        <li className="w-[51.5px] cursor-pointer h-12 flex justify-center items-center border border-zinc-600 rounded-lg">
-                                                            <div className="inner p-relative flex w-full h-full justify-center items-center">
-                                                                <input type="checkbox" value="0,1,2" className="checkbox-click" data-filter="stars" onChange={((e) => this.handleChange(e))} defaultChecked={this.props.defaultChecked} />
-                                                                <label>
-                                                                    <div className="icon hidden"><i className="fa fa-star"></i><i className="fa fa-star"></i></div>
-                                                                    <div className="text">
-                                                                        <p>کمتر از 3 </p>
-                                                                    </div>
-                                                                </label>
-                                                            </div>
-                                                        </li>
-                                                        <li className="w-[51.5px] cursor-pointer h-12 flex justify-center items-center border border-zinc-600 rounded-lg">
-                                                            <div className="inner p-relative  flex w-full h-full justify-center items-center">
-                                                                <input type="checkbox" value="3" className="checkbox-click" data-filter="stars" onChange={((e) => this.handleChange(e))} defaultChecked={this.props.defaultChecked} />
-                                                                <label>
-                                                                    <div className="icon hidden"><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i></div>
-                                                                    <div className="text">
-                                                                        <p>  3 </p>
-                                                                    </div>
-                                                                </label>
-                                                            </div>
-                                                        </li>
-                                                        <li className="w-[51.5px] cursor-pointer h-12 flex justify-center items-center border border-zinc-600 rounded-lg">
-                                                            <div className="inner p-relative  flex w-full h-full justify-center items-center">
-                                                                <input type="checkbox" value="4" className="checkbox-click" data-filter="stars" onChange={((e) => this.handleChange(e))} defaultChecked={this.props.defaultChecked} />
-                                                                <label>
-                                                                    <div className="icon hidden"><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i></div>
-                                                                    <div className="text">
-                                                                        <p>  4 </p>
-                                                                    </div>
-                                                                </label>
-                                                            </div>
-                                                        </li>
-                                                        <li className="w-[51.5px] cursor-pointer h-12 flex justify-center items-center border border-zinc-600 rounded-lg">
-                                                            <div className="inner p-relative  flex w-full h-full justify-center items-center">
-                                                                <input type="checkbox" value="5" className="checkbox-click" data-filter="stars" onChange={((e) => this.handleChange(e))} defaultChecked={this.props.defaultChecked} />
-                                                                <label>
-                                                                    <div className="icon hidden"><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i></div>
-                                                                    <div className="text">
-                                                                        <p>  5 </p>
-                                                                    </div>
-                                                                </label>
-                                                            </div>
-                                                        </li>
-                                                        <div className="clr"></div>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            {this.ShowFilterHotel()}
-                                            <div className="filter-container rounded-xl bg-white w-full p-3 flex flex-col gap-4">
-                                                <p className="filter-head"><span className="font-bold text-zinc-900">بازه قیمت</span>
-                                                    <div className="clr"></div>
-                                                </p>
-                                                <div className="content-filter p-relative">
-                                                    <div className="range-distance">
-                                                        <div>
-                                                            <div className="inverse-right"></div>
-                                                            <div className="inverse-left"></div>
-                                                            <div className="range-length background-color_1"></div>
-                                                            <span className="thumb-range thumb-range1"></span>
-                                                            <span className="thumb-range thumb-range2"></span>
-                                                            <div className="rangevalFirst_2 p-absolute font_11">{defaultRangeTotalF}<span className="font_10 unit_content">{this.ShowUnit_filter()}</span></div>
-                                                            <div className="rangevalSecond_2 p-absolute font_11">{defaultRangeTotalS}<span className="font_10 unit_content">{this.ShowUnit_filter()}</span></div>
-                                                        </div>
-                                                        <input type="range" defaultValue={this.renderMinTotal() || 0} max={this.renderMaxTotal() || 999999999} min={this.renderMinTotal() || 0} step="1" onInput={this.handleMinFilterTotal} onChange={this.handleFilterTotal} data-key="1" data-value="1_T" />
-                                                        <input type="range" defaultValue={this.renderMaxTotal() || 999999999} max={this.renderMaxTotal() || 999999999} min={this.renderMinTotal() || 0} step="1" onInput={this.handleMaxFilterTotal} onChange={this.handleFilterTotal} data-key="2" data-value="2_T" />
-                                                    </div>
-                                                </div>
-                                            </div></div>
-                                    </div>
-                                </aside>
+                        <div className="flex   flex-col gap-3">
+                            <div className="w-full px-4 sticky-element flex items-center justify-between ">
+                                <p><span className="font-weight result-count text-zinc-400">{this.renderCount()}</span> مورد پیدا شد.</p>
+                                <button onClick={() => this.handleClickPopUp()} type="button" aria-label="filter" id="filter-section" className="flex justify-center gap1 items-center bg-zinc-50 border border-zinc-400 text-zinc-500 w-[106px] h-12 rounded-[50px]">
+                                    <img src="[##cms.cms.cdn##]/images/filter.svg" alt="filter" width="48" height="48" />
 
-                                <a target="_blank" href="[##cms.host.advertisement-r1##]" rel="nofollow" className="w-full hover:shadow-lg flex h-[186px] rounded-xl overflow-hidden">
-                                    <img src="[##cms.cms.cdn##]/images/advertisement-r1.jpg" className="w-full h-full object-cover" alt="advertisement-r1" />
-                                </a>
-                                <a target="_blank" href="[##cms.host.advertisement-r2##]" rel="nofollow" className="w-full hover:shadow-lg flex h-[186px] rounded-xl overflow-hidden">
-                                    <img src="[##cms.cms.cdn##]/images/advertisement-r2.jpg" className="w-full h-full object-cover" alt="advertisement-r2" />
-                                </a>
-                                <a target="_blank" href="[##cms.host.advertisement-r3##]" rel="nofollow" className="w-full hover:shadow-lg flex h-[186px] rounded-xl overflow-hidden">
-                                    <img src="[##cms.cms.cdn##]/images/advertisement-r3.jpg" className="w-full h-full object-cover" alt="advertisement-r3" />
-                                </a>
-                                <a target="_blank" href="[##cms.host.advertisement-r4##]" rel="nofollow" className="w-full hover:shadow-lg flex h-[186px] rounded-xl overflow-hidden">
-                                    <img src="[##cms.cms.cdn##]/images/advertisement-r4.jpg" className="w-full h-full object-cover" alt="advertisement-r4" />
-                                </a>
-                                <a target="_blank" href="[##cms.host.advertisement-r5##]" rel="nofollow" className="w-full hover:shadow-lg flex h-[186px] rounded-xl overflow-hidden">
-                                    <img src="[##cms.cms.cdn##]/images/advertisement-r5.jpg" className="w-full h-full object-cover" alt="advertisement-r5" />
-                                </a>
+                                    فیلتر
+
+                                </button>
                             </div>
-                            <div className="result-content w-[calc(100%-270px-270px)] flex flex-col gap-3 ">
-                                <div className="sort-box hotel flex items-center gap-[36px]">
+
+                            <div className="bg-[#0404049C] filter-popup fixed justify-end items-end z-[60] w-screen h-screen top-0 left-0 hidden">
+                                <div className="w-full h-[83vh] overflow-hidden">
+                                    <div className="w-full linear2 p-[4px] rounded-t-2xl">
+                                        <aside className="sidebar-content flex w-full flex-col gap-5 bg-primary-50  overflow-y-auto h-[83vh] py-[19px] px-[11px] rounded-[14px]">
+                                            <div className="filters-container ">
+                                                <div className="flex w-full flex-col gap-5  py-[19px] px-[11px] rounded-[14px]">
+                                                    <div className="w-full flex items-center justify-between">
+                                                        <span className="text-sm text-zinc-900">فیلتر </span>
+                                                        <p className='hidden'><span className="font-weight result-count">{this.renderCount()}</span> هتل پیدا شد.</p>
+                                                        <button type="button" onClick={() => this.closeFilterPopUp()} aria-label="close-filterbox">
+                                                            <img src="[##cms.cms.cdn##]/images/close.svg" alt="close" width="48" height="48" />
+                                                        </button>
+
+                                                    </div>
+                                                    <p className="section-timer">مدت زمان باقی مانده : <span id="timer" className="text-[#3DDD37]">00:00:00</span></p>
+                                                    <div className="filter-container rounded-xl bg-white w-full p-3 flex flex-col gap-4">
+                                                        <p className="filter-head"><span className="font-bold text-zinc-900">نام هتل</span>
+                                                            <div className="clr"></div>
+                                                        </p>
+                                                        <div className="filter-row">
+                                                            <ul className="filter-body  text-center font_13">
+                                                                <li className="width_100">
+                                                                    <input value={this.state.filterName} onChange={((e) => this.handleFilterName(e))} placeholder="نام هتل مورد نظر را وارد نمائید" className="inner  filter-name-hotel truncate focus:border-2 focus:border-primary-800 !outline-none line-clamp-1 h-12 border border-zinc-600 rounded-lg px-3 placeholder:text-zinc-500"
+                                                                    />
+                                                                </li>
+                                                                <div className="clr"></div>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div className="filter-container filter-star rounded-xl bg-white w-full p-3 flex flex-col gap-4">
+                                                        <p className="filter-head"><span className="font-bold text-zinc-900"> چند ستاره</span>
+                                                            <div className="clr"></div>
+                                                        </p>
+                                                        <div className="filter-row">
+                                                            <ul className="filter-body flex items-center w-full justify-between">
+                                                                <li className="w-[24%] cursor-pointer h-12 flex justify-center items-center border border-zinc-600 rounded-lg">
+                                                                    <div className="inner p-relative flex w-full h-full justify-center items-center">
+                                                                        <input type="checkbox" value="0,1,2" className="checkbox-click" data-filter="stars" onChange={((e) => this.handleChange(e))} defaultChecked={this.props.defaultChecked} />
+                                                                        <label>
+                                                                            <div className="icon hidden"><i className="fa fa-star"></i><i className="fa fa-star"></i></div>
+                                                                            <div className="text">
+                                                                                <p>کمتر از 3 </p>
+                                                                            </div>
+                                                                        </label>
+                                                                    </div>
+                                                                </li>
+                                                                <li className="w-[24%] cursor-pointer h-12 flex justify-center items-center border border-zinc-600 rounded-lg">
+                                                                    <div className="inner p-relative  flex w-full h-full justify-center items-center">
+                                                                        <input type="checkbox" value="3" className="checkbox-click" data-filter="stars" onChange={((e) => this.handleChange(e))} defaultChecked={this.props.defaultChecked} />
+                                                                        <label>
+                                                                            <div className="icon hidden"><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i></div>
+                                                                            <div className="text">
+                                                                                <p>  3 </p>
+                                                                            </div>
+                                                                        </label>
+                                                                    </div>
+                                                                </li>
+                                                                <li className="w-[24%] cursor-pointer h-12 flex justify-center items-center border border-zinc-600 rounded-lg">
+                                                                    <div className="inner p-relative  flex w-full h-full justify-center items-center">
+                                                                        <input type="checkbox" value="4" className="checkbox-click" data-filter="stars" onChange={((e) => this.handleChange(e))} defaultChecked={this.props.defaultChecked} />
+                                                                        <label>
+                                                                            <div className="icon hidden"><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i></div>
+                                                                            <div className="text">
+                                                                                <p>  4 </p>
+                                                                            </div>
+                                                                        </label>
+                                                                    </div>
+                                                                </li>
+                                                                <li className="w-[24%] cursor-pointer h-12 flex justify-center items-center border border-zinc-600 rounded-lg">
+                                                                    <div className="inner p-relative  flex w-full h-full justify-center items-center">
+                                                                        <input type="checkbox" value="5" className="checkbox-click" data-filter="stars" onChange={((e) => this.handleChange(e))} defaultChecked={this.props.defaultChecked} />
+                                                                        <label>
+                                                                            <div className="icon hidden"><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i></div>
+                                                                            <div className="text">
+                                                                                <p>  5 </p>
+                                                                            </div>
+                                                                        </label>
+                                                                    </div>
+                                                                </li>
+                                                                <div className="clr"></div>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    {this.ShowFilterHotel()}
+                                                    <div className="filter-container rounded-xl bg-white w-full p-3 flex flex-col gap-4">
+                                                        <p className="filter-head"><span className="font-bold text-zinc-900">بازه قیمت</span>
+                                                            <div className="clr"></div>
+                                                        </p>
+                                                        <div className="content-filter p-relative">
+                                                            <div className="range-distance">
+                                                                <div>
+                                                                    <div className="inverse-right"></div>
+                                                                    <div className="inverse-left"></div>
+                                                                    <div className="range-length background-color_1"></div>
+                                                                    <span className="thumb-range thumb-range1"></span>
+                                                                    <span className="thumb-range thumb-range2"></span>
+                                                                    <div className="rangevalFirst_2 p-absolute font_11">{defaultRangeTotalF}<span className="font_10 unit_content">{this.ShowUnit_filter()}</span></div>
+                                                                    <div className="rangevalSecond_2 p-absolute font_11">{defaultRangeTotalS}<span className="font_10 unit_content">{this.ShowUnit_filter()}</span></div>
+                                                                </div>
+                                                                <input type="range" defaultValue={this.renderMinTotal() || 0} max={this.renderMaxTotal() || 999999999} min={this.renderMinTotal() || 0} step="1" onInput={this.handleMinFilterTotal} onChange={this.handleFilterTotal} data-key="1" data-value="1_T" />
+                                                                <input type="range" defaultValue={this.renderMaxTotal() || 999999999} max={this.renderMaxTotal() || 999999999} min={this.renderMinTotal() || 0} step="1" onInput={this.handleMaxFilterTotal} onChange={this.handleFilterTotal} data-key="2" data-value="2_T" />
+                                                            </div>
+                                                        </div>
+                                                    </div></div>
+                                            </div>
+                                        </aside></div>
+                                </div>
+
+
+
+                            </div>
+                            <div className="result-content w-full px-4 flex flex-col gap-3 ">
+                                <div className="sort-box hotel flex flex-col  gap-3">
                                     <span className="sort-title whitespace-nowrap">مرتب سازی براساس :</span>
                                     <ul className="sort-items  clicker-list sort-by flex gap-3 items-center">
                                         <li className={`h-12 text-zinc-500 bg-zinc-50 border rounded-[50px] border-zinc-400 w-[114px] flex justify-center items-center cursor-pointer hover:bg-primary-100 hover:border-primary-400 hover:text-zinc-900 gap-2 after-notactive ${this.state.activedefault}`} data-type="default" data-key="0" onClick={((e) => this.handleChange(e))}> پیشفرض</li>
@@ -776,25 +781,40 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div className="w-[270px] flex flex-col gap-4">
+                            <div className="w-full px-4 flex flex-col gap-4">
+                                <a target="_blank" href="[##cms.host.advertisement-r1##]" rel="nofollow" className="w-full hover:shadow-lg flex h-[186px] rounded-xl overflow-hidden">
+                                    <img src="[##cms.cms.cdn##]/images/advertisement-r1.jpg" alt="advertisement-r1" />
+                                </a>
+                                <a target="_blank" href="[##cms.host.advertisement-r2##]" rel="nofollow" className="w-full hover:shadow-lg flex h-[186px] rounded-xl overflow-hidden">
+                                    <img src="[##cms.cms.cdn##]/images/advertisement-r2.jpg" alt="advertisement-r2" />
+                                </a>
+                                <a target="_blank" href="[##cms.host.advertisement-r3##]" rel="nofollow" className="w-full hover:shadow-lg flex h-[186px] rounded-xl overflow-hidden">
+                                    <img src="[##cms.cms.cdn##]/images/advertisement-r3.jpg" alt="advertisement-r3" />
+                                </a>
+                                <a target="_blank" href="[##cms.host.advertisement-r4##]" rel="nofollow" className="w-full hover:shadow-lg flex h-[186px] rounded-xl overflow-hidden">
+                                    <img src="[##cms.cms.cdn##]/images/advertisement-r4.jpg" alt="advertisement-r4" />
+                                </a>
+                                <a target="_blank" href="[##cms.host.advertisement-r5##]" rel="nofollow" className="w-full hover:shadow-lg flex h-[186px] rounded-xl overflow-hidden">
+                                    <img src="[##cms.cms.cdn##]/images/advertisement-r5.jpg" alt="advertisement-r5" />
+                                </a>
                                 <a target="_blank" href="[##cms.host.advertisement-l1##]" rel="nofollow" className="w-full hover:shadow-lg flex h-[561px] rounded-xl overflow-hidden">
-                                    <img src="[##cms.cms.cdn##]/images/advertisement-l1.jpg" className="w-full h-full object-cover" alt="advertisement-l1" />
+                                    <img src="[##cms.cms.cdn##]/images/advertisement-l1.jpg" alt="advertisement-l1" />
                                 </a>
 
                                 <a target="_blank" href="[##cms.host.advertisement-l2##]" rel="nofollow" className="w-full hover:shadow-lg flex h-[349px] rounded-xl overflow-hidden">
-                                    <img src="[##cms.cms.cdn##]/images/advertisement-l2.jpg" className="w-full h-full object-cover" alt="advertisement-l2" />
+                                    <img src="[##cms.cms.cdn##]/images/advertisement-l2.jpg" alt="advertisement-l2" />
                                 </a>
                                 <a target="_blank" href="[##cms.host.advertisement-l3##]" rel="nofollow" className="w-full hover:shadow-lg flex h-[349px] rounded-xl overflow-hidden">
-                                    <img src="[##cms.cms.cdn##]/images/advertisement-l3.jpg" className="w-full h-full object-cover" alt="advertisement-l3" />
+                                    <img src="[##cms.cms.cdn##]/images/advertisement-l3.jpg" alt="advertisement-l3" />
                                 </a>
                                 <a target="_blank" href="[##cms.host.advertisement-l4##]" rel="nofollow" className="w-full hover:shadow-lg flex h-[349px] rounded-xl overflow-hidden">
-                                    <img src="[##cms.cms.cdn##]/images/advertisement-l4.jpg" className="w-full h-full object-cover" alt="advertisement-l4" />
+                                    <img src="[##cms.cms.cdn##]/images/advertisement-l4.jpg" alt="advertisement-l4" />
                                 </a>
                                 <a target="_blank" href="[##cms.host.advertisement-l5##]" rel="nofollow" className="w-full hover:shadow-lg flex h-[349px] rounded-xl overflow-hidden">
-                                    <img src="[##cms.cms.cdn##]/images/advertisement-l5.jpg" className="w-full h-full object-cover" alt="advertisement-l5" />
+                                    <img src="[##cms.cms.cdn##]/images/advertisement-l5.jpg" alt="advertisement-l5" />
                                 </a>
                                 <a target="_blank" href="[##cms.host.advertisement-l6##]" rel="nofollow" className="w-full hover:shadow-lg flex h-[349px] rounded-xl overflow-hidden">
-                                    <img src="[##cms.cms.cdn##]/images/advertisement-l6.jpg" className="w-full h-full object-cover" alt="advertisement-l6" />
+                                    <img src="[##cms.cms.cdn##]/images/advertisement-l6.jpg" alt="advertisement-l6" />
                                 </a>
                             </div>
 
@@ -964,7 +984,7 @@
                 }
             }
             handleChange = (event) => {
-                const sElement = document.querySelector("#search-box");
+                const sElement = document.querySelector("#app");
                 if (sElement) {
                     window.scrollTo({
                         top: sElement.offsetTop,
@@ -1045,6 +1065,20 @@
                 return location.reload()
             }
 
+            handleClickPopUp = () => {
+                const popup = document.querySelector(".filter-popup");
+                if (popup) {
+                    popup.classList.remove("hidden");
+                    popup.classList.add("flex");
+                }
+            };
+            closeFilterPopUp = () => {
+                const popup = document.querySelector(".filter-popup");
+                if (popup) {
+                    popup.classList.add("hidden");
+                    popup.classList.remove("flex");
+                }
+            }
             showLoading = (e, elem, val) => {
                 this.setState(prevState => ({
                     loadingVisible: { ...prevState.loadingVisible, [val]: !prevState.loadingVisible[val] }
@@ -1123,21 +1157,13 @@
                                 <input type="hidden" value="[##cms.form.tdate##]" name="tdate" />
                                 <input type="hidden" value={element[j].totalPrice} name="amount" />
                                 <div className="d-flex w-full flex-col  gap-4">
-                                    <div className="w-full flex items-center justify-between">
-                                        <div className="flex items-center gap-2">
-                                            <div className=" pl-2 border-l border-zinc-600">
-                                                <img src={element[j].provider_configs?.image
-                                                    ? element[j].provider_configs.image
-                                                    : "[##cms.cms.cdn##]/images/without-logo.png"} alt={element[j].provider_configs?.displayName || "provider-logo"} className="w-[82px]" />
-                                            </div>
-                                            <div className="flex items-center">
-                                                <span className="text-sm text-zinc-600">تامین کننده :</span>
-                                                <p className="font-bold text-zinc-900">{element[j].provider_configs?.displayName}</p>
-                                            </div>
-                                        </div>
+                                    <div className="w-full flex flex-col gap-3">
+                                        {this.renderProviderConfigs
+                                            (element[j])}
 
-                                        <div className=''>
-                                            <span className="details-btn text-secondary-1-500 group hover:text-zinc-500 flex items-center gap-2 cursor-pointer btn-rule"
+                                        <div class=''>
+                                            <span className="details-btn text-secondary-1-500 group hover:text-zinc-500 text-xs flex items-center gap-2  
+                                    cursor-pointer btn-rule"
                                                 key={index}
                                                 onClick={e => this.handleruleRoom(e, element[j], index)}>
                                                 <img className="group-hover:grayscale" src="[##cms.cms.cdn##]/images/Board menu.svg" alt="BoardMenu" width="24" height="24" />
@@ -1146,7 +1172,7 @@
 
                                     </div>
                                     <div className="col-details-row w-full font_12">
-                                        <ul >
+                                        <ul>
                                             <li>{this.renderRoomtype(element[j])}<span className="answer-services">({this.renderserviceName(element[j].services)})</span></li>
                                             <li>{this.renderavailability(element[j])}</li>
                                             {this.renderviewnameRooms(element[j])}
@@ -1156,14 +1182,17 @@
                                         </ul>
                                     </div>
                                     <div className="w-full flex justify-between">
-                                        <div className="flex items-center gap-1">
+                                        <div className="flex flex-col gap-1">
                                             <span className="text-sm text-secondary-2-600">مبلغ قابل پرداخت:</span>
-                                            <b>{new Intl.NumberFormat('en-US').format(this.renderTotal(element[j].totalCom, this.state.state_currency_cost, this.state.state_floatdigit))}</b>
-                                            <b>{this.renderUnit(item.moneytype, this.state.state_currency_unit)}</b>
+                                            <div className="flex items-center gap-1">
+                                                <b>{new Intl.NumberFormat('en-US').format(this.renderTotal(element[j].totalCom, this.state.state_currency_cost, this.state.state_floatdigit))}</b>
+                                                <b>{this.renderUnit(item.moneytype, this.state.state_currency_unit)}</b></div>
                                         </div>
+                                        {this.renderProviderLink
+                                            (element[j])}
 
-                                        <a href="" className="w-[117px]  h-11 flex justify-center items-center rounded-lg border border-primary-700 bg-primary-700 text-sm hover:bg-transparent hover:border-secondary-2-600 hover:text-secondary-2-700 hover:font-bold">رزرو
-                                            اتاق</a></div>
+
+                                    </div>
                                 </div>
 
 
@@ -1209,7 +1238,7 @@
                 let imghotel_garanti = element.hotelinfo.hotelsearch.hotelimage
                 let imghotel_ws = element.hotelinfo.hotelsearch.webserviceimage
                 if (imghotel_garanti == '') {
-                    return <div className="image-container">
+                    return <div className="image-container w-full">
                         <form method="post" action='/Client_Hotel_Information.bc?lid=1' target="_blank">
                             {this.renderproviderid_hotelInfo(element)}
                             <input type="hidden" value={element.families[0].optionId} name="optionId-hotel" />
@@ -1222,7 +1251,7 @@
                             {this.renderpassengerscount(element)}
                             {this.hotel_information_moneytype(element)}
                             <input type="hidden" value="" name="chagencyuser" />
-                            <button type="submit" class=' cursor-pointer rounded-xl w-[230px] linear2 h-[230px] p-[4px]'>
+                            <button type="submit" class=' cursor-pointer rounded-xl w-full linear2 h-[230px] p-[4px]'>
                                 <div className="w-full h-full bg-white rounded-[11px] p-2">
                                     <img src={imghotel_ws} width="190" height="190" alt="" className="rounded-xl w-full h-full shadow-2 object-cover" />
                                     <div className="overlay p-absolute"><span className="expand p-absolute">+</span>
@@ -1232,7 +1261,7 @@
                         </form>
                     </div>
                 } else {
-                    return <div className="image-container">
+                    return <div className="image-container w-full">
                         <form method="post" action='/Client_Hotel_Information.bc?lid=1' target="_blank">
                             {this.renderproviderid_hotelInfo(element)}
                             <input type="hidden" value={element.families[0].optionId} name="optionId-hotel" />
@@ -1245,7 +1274,7 @@
                             {this.renderpassengerscount(element)}
                             {this.hotel_information_moneytype(element)}
                             <input type="hidden" value="" name="chagencyuser" />
-                            <button type="submit" class=' cursor-pointer rounded-xl w-[230px] linear2 h-[230px] p-[4px]'>
+                            <button type="submit" class=' cursor-pointer rounded-xl w-full linear2 h-[230px] p-[4px]'>
                                 <div className="w-full h-full bg-white rounded-[11px] p-2">
                                     <img src={imghotel_garanti} width="190" height="190" alt="" className="rounded-xl w-full h-full shadow-2 object-cover" />
                                     <div className="overlay p-absolute">
@@ -1284,6 +1313,39 @@
                 if (moneytype !== undefined) {
                     return <input type="hidden" value={moneytype} name="moneytype" />;
                 }
+            }
+            renderProviderLink(element) {
+                if (element.provider_configs) {
+                    return (
+                        <a href={element.provider_configs.link} className="w-[117px]  h-11 flex justify-center items-center rounded-lg border border-primary-700 bg-primary-700 text-sm hover:bg-transparent hover:border-secondary-2-600 hover:text-secondary-2-700 hover:font-bold">رزرو
+                            اتاق
+                        </a>
+                    )
+                } else {
+                    return (
+                        <button disabled className="w-[117px] z-10 h-11 flex justify-center items-center rounded-lg border border-primary-700 bg-primary-700 text-sm hover:bg-transparent hover:border-secondary-2-600 hover:text-secondary-2-700 hover:font-bold">رزرو
+                            اتاق
+                        </button>)
+                }
+            }
+            renderProviderConfigs(element) {
+                if (element.provider_configs) {
+                    return (
+                        <div className="flex items-center gap-2">
+                            <div className=" pl-2 border-l border-zinc-600">
+                                <img src={element.provider_configs.image} alt={element.provider_configs.displayName} className="w-[82px]" />
+                            </div>
+                            <div className="flex items-center">
+                                <span className="text-sm text-zinc-600">تامین کننده :</span>
+                                <p className="font-bold text-zinc-900">{element.provider_configs.displayName}</p>
+                            </div>
+                        </div>
+                    )
+                }
+                else {
+                    return (<img src="[##cms.cms.cdn##]/images/no-picture.jpg" alt="no-picture" className="w-[82px] rounded-lg" />)
+                }
+
             }
             renderRoomtype(element) {
                 let lenavailablerooms = element.availablerooms.length
@@ -1385,9 +1447,9 @@
                 if (element.commissioncost !== 0) {
                     return <span><span className="commission-rooms"><span className="color_gray font_12">قیمت برای {element.nights} شب اقامت :</span>
                         <span className="font_14">{new Intl.NumberFormat('en-US').format(this.renderTotal(element.totalPrice, this.state.state_currency_cost, this.state.state_floatdigit))}</span><span
-                            className="color_gray font-bold unit">{this.renderUnit(moneytype, this.state.state_currency_unit)}</span></span><span className="commission-rooms">-</span><span className="commission-rooms"><span className="color_gray font_12">کمیسیون :</span>
+                            className="color_gray font_11 unit">{this.renderUnit(moneytype, this.state.state_currency_unit)}</span></span><span className="commission-rooms">-</span><span className="commission-rooms"><span className="color_gray font_12">کمیسیون :</span>
                             <span className="font_14">{new Intl.NumberFormat('en-US').format(this.renderTotal(element.commissioncost, this.state.state_currency_cost, this.state.state_floatdigit))}</span><span
-                                className="color_gray font-bold unit">{this.renderUnit(moneytype, this.state.state_currency_unit)}</span></span></span>;
+                                className="color_gray font_11 unit">{this.renderUnit(moneytype, this.state.state_currency_unit)}</span></span></span>;
                 }
             }
 
@@ -1704,12 +1766,12 @@
             }
             renderCommission(element, i) {
                 if (element.commissioncost == 0) {
-                    return <div className="cost-item middle text-center">
+                    return <div className="cost-item middle w-fit">
                         <div>
                             <div className="color_gray font_11">قیمت برای {element.nights} شب اقامت :</div>
                             <span
                                 className="item-cost color_5 font_20 font-weight">{new Intl.NumberFormat('en-US').format(this.renderTotal(element.total, this.state.state_currency_cost, this.state.state_floatdigit))}</span><span
-                                    className="color_gray font-bold unit">{this.renderUnit(element.moneytype, this.state.state_currency_unit)}</span></div>
+                                    className=" font-bold   unit">{this.renderUnit(element.moneytype, this.state.state_currency_unit)}</span></div>
 
                         <div className="btn-item has-margin_">
 
@@ -1723,14 +1785,14 @@
                             <div className="color_gray font_11">قیمت برای {element.nights} شب اقامت :</div>
                             <span
                                 className="item-cost color_5 font_20 font-weight">{new Intl.NumberFormat('en-US').format(this.renderTotal(element.total, this.state.state_currency_cost, this.state.state_floatdigit))}</span><span
-                                    className="color_gray font-bold unit">{this.renderUnit(element.moneytype, this.state.state_currency_unit)}</span></div>
+                                    className="color_gray font_11 unit">{this.renderUnit(element.moneytype, this.state.state_currency_unit)}</span></div>
                         <div>
                             <span className="color_gray font_11">کمیسیون :</span><span
                                 className="item-cost color_5 font_20 font-weight">{new Intl.NumberFormat('en-US').format(this.renderTotal(element.commissioncost, this.state.state_currency_cost, this.state.state_floatdigit))}</span><span
-                                    className="color_gray font-bold unit">{this.renderUnit(element.moneytype, this.state.state_currency_unit)}</span></div><div>
+                                    className="color_gray font_11 unit">{this.renderUnit(element.moneytype, this.state.state_currency_unit)}</span></div><div>
                             <span className="color_gray font_11">مبلغ قابل پرداخت :</span><span
                                 className="item-cost color_5 font_20 font-weight">{new Intl.NumberFormat('en-US').format(this.renderTotal(element.totalCom, this.state.state_currency_cost, this.state.state_floatdigit))}</span><span
-                                    className="color_gray font-bold unit">{this.renderUnit(element.moneytype, this.state.state_currency_unit)}</span></div>
+                                    className="color_gray font_11 unit">{this.renderUnit(element.moneytype, this.state.state_currency_unit)}</span></div>
 
                         <div className="btn-item has-margin_">
                             <button type="button" data-active={`${this.state.state_active_btn[i] ? "1" : "0"}`} onClick={e => this.select_room(e, element, i)}

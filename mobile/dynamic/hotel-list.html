@@ -800,7 +800,7 @@
 
                     }
                     return library[currentPage - 1].map((item, i) => (
-                        <div className="result-item w-full   flex flex-col gap-2 bg-zinc-50 p-3 h-[516px] rounded-xl border border-zinc-300">
+                        <div className="result-item w-full   flex flex-col gap-2 bg-zinc-50 p-3   rounded-xl border border-zinc-300">
                             <form class='w-full' method="post" action="/Client_Show_Hotel_ver.2.bc?lid=1" key={item._id}>
                                 <input type="hidden" value={this.state.state_currency_unit} name="rate-unit" className="rate-unit" />
                                 <input type="hidden" value={this.state.state_currency_cost} name="rate-cost" className="rate-cost" />
@@ -831,14 +831,14 @@
                                             <div className="img-item text-center">
                                                 {this.renderImgHotel(item)}
                                             </div>
-                                            <div className="infoes-item rounded-xl border border-zinc-200 p-2 flex flex-col justify-between w-full h-[254px] bg-white">
+                                            <div className="infoes-item rounded-xl border border-zinc-200 p-2 flex flex-col justify-between w-full   bg-white">
                                                 <span className="title font-bold text-zinc-900">{item.hotelinfo.name}</span>
-                                                <div class="flex w-full items-center gap-[34px]">
-                                                    <div class="flex whitespace-nowrap items-center text-zinc-900 text-sm gap-2">
+                                                <div className="flex w-full items-center gap-[34px]">
+                                                    <div className="flex whitespace-nowrap items-center text-zinc-900 text-sm gap-2">
                                                         <img loading='lazy' src="[##cms.cms.cdn##]/images/Star.svg" alt="star" width="30" height="30" />
                                                         {item.hotelinfo.hotelsearch.star} ستاره
                                                     </div>
-                                                    <div class="flex items-center text-zinc-900 text-sm gap-2">
+                                                    <div className="flex items-center text-zinc-900 text-sm gap-2">
                                                         <img loading='lazy' src="[##cms.cms.cdn##]/images/Hot Drink.svg" alt="Hot Drink" width="30" height="30" />
                                                         {this.renderservicesFirst(item)}
                                                     </div>
@@ -847,11 +847,9 @@
                                                 <ul className="brief-info">
                                                     <li>
                                                         <div className="hotel-location 
-                                                    ">
-
-                                                            <span>{item.hotelinfo.hotelsearch.countryname}</span><span>
+                                                    "><span>{item.hotelinfo.hotelsearch.countryname}</span><span>
                                                                 ,</span><span>{item.hotelinfo.hotelsearch.cityname}</span></div></li>
-                                                    <li>{this.renderRoomtypeFirst(item)}
+                                                    <li className="flex flex-col">{this.renderRoomtypeFirst(item)}
                                                         <span className="answer-services"></span></li>
                                                     <li>{this.renderavailabFirst(item)}</li>
                                                     {this.renderviewnameFirst(item.hotelinfo.information.viewname)}
@@ -859,13 +857,13 @@
                                                     {this.renderProviderName(item)}
                                                     {this.renderSupplierName(item)}
                                                 </ul>
-                                                <div class="w-full flex flex-col  justify-between">
-                                                    <div class="flex flex-col">
-                                                        <div class="text-sm text-zinc-900"> {this.renderCommission(item, i)} </div>
-                                                        <div class="font-bold text-zinc-900">   {this.renderEnablePoint(item)} </div>
+                                                <div className="w-full flex flex-col  justify-between">
+                                                    <div className="flex flex-col">
+                                                        <div className="text-sm text-zinc-900"> {this.renderCommission(item, i)} </div>
+                                                        <div className="font-bold text-zinc-900">   {this.renderEnablePoint(item)} </div>
                                                     </div>
                                                     <button data-active={`${this.state.state_active_btn[i] ? "1" : "0"}`}
-                                                        onClick={e => this.select_room(e, item, i)} type="button" class="w-full show-list h-11 flex justify-center items-center rounded-lg border border-primary-700 bg-primary-700 text-sm hover:bg-transparent hover:border-secondary-2-600 hover:text-secondary-2-700 hover:font-bold" aria-label="show-list">لیست تامین کننده ها</button>
+                                                        onClick={e => this.select_room(e, item, i)} type="button" className="w-full show-list h-11 flex justify-center items-center rounded-lg border border-primary-700 bg-primary-700 text-sm hover:bg-transparent hover:border-secondary-2-600 hover:text-secondary-2-700 hover:font-bold" aria-label="show-list">لیست تامین کننده ها</button>
                                                 </div>
                                                 <div className="clr"></div>
                                             </div>
@@ -888,19 +886,19 @@
                                     </div>
                                     <div key={i} className={`details-row fixed justify-center items-end z-[60] w-screen h-screen top-0 left-0 bg-[#0404049C] ${!this.state.visibleRoom[i] ? "unvisible" : "visible"}`}>
                                         <div className="details-item pb-[35px] bg-white w-full h-[83vh] p-4 !overflow-hidden rounded-t-xl text-zinc-900" >
-                                            <img loading="lazy" src="[##cms.cms.cdn##]/images/adv7.jpg" alt="adv7" class="w-full h-[114px] object-cover rounded-xl" />
-                                            <div class="w-full flex items-center my-4 justify-between">
-                                                <p class="font-bold text-zinc-900">لیست اتاق ها</p>
-                                                <button class="group close-btn" onClick={() => this.closeRooms(i)} type="button"  >
+                                            <img loading="lazy" src="[##cms.cms.cdn##]/images/adv7.jpg" alt="adv7" className="w-full h-[114px] object-cover rounded-xl" />
+                                            <div className="w-full flex items-center my-4 justify-between">
+                                                <p className="font-bold text-zinc-900">لیست اتاق ها</p>
+                                                <button className="group close-btn" onClick={() => this.closeRooms(i)} type="button"  >
                                                     <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M26.6455 21.6294L21.8535 26.4214" stroke="#71717A" stroke-width="1.5" stroke-linecap="square" class="group-hover:stroke-secondary-1-700"></path>
-                                                        <path d="M26.6456 26.4244L21.8496 21.6274" stroke="#71717A" stroke-width="1.5" stroke-linecap="square" class="group-hover:stroke-secondary-1-700"></path>
-                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M24.25 33.2847C29.3586 33.2847 33.5 29.1433 33.5 24.0347C33.5 18.926 29.3586 14.7847 24.25 14.7847C19.1414 14.7847 15 18.926 15 24.0347C15 29.1433 19.1414 33.2847 24.25 33.2847Z" stroke="#71717A" stroke-width="1.5" stroke-linecap="round" class="group-hover:stroke-secondary-1-700"></path>
+                                                        <path d="M26.6455 21.6294L21.8535 26.4214" stroke="#71717A" stroke-width="1.5" stroke-linecap="square" className="group-hover:stroke-secondary-1-700"></path>
+                                                        <path d="M26.6456 26.4244L21.8496 21.6274" stroke="#71717A" stroke-width="1.5" stroke-linecap="square" className="group-hover:stroke-secondary-1-700"></path>
+                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M24.25 33.2847C29.3586 33.2847 33.5 29.1433 33.5 24.0347C33.5 18.926 29.3586 14.7847 24.25 14.7847C19.1414 14.7847 15 18.926 15 24.0347C15 29.1433 19.1414 33.2847 24.25 33.2847Z" stroke="#71717A" stroke-width="1.5" stroke-linecap="round" className="group-hover:stroke-secondary-1-700"></path>
                                                     </svg>
                                                 </button>
                                             </div>
                                             <div className="clr"></div>
-                                            <div class="w-full overflow-y-auto h-[37vh]">
+                                            <div className="w-full overflow-y-auto h-[37vh]">
                                                 {
                                                     this.show_rooms(i, item)}</div>
 
@@ -946,10 +944,10 @@
                                 <div className="currency-selected cursor-pointer" data-active="0" onClick={() => this.currency_selected_list()}><span>{this.localStorage_getCurrency()}{this.localStorage_expire()}</span></div>
                                 {this.renderCurrencyRate()}
                             </div>
-                            <div class="flex   flex-col gap-3">
-                                <div class="w-full px-4 sticky-element flex items-center justify-between ">
+                            <div className="flex   flex-col gap-3">
+                                <div className="w-full px-4 sticky-element flex items-center justify-between ">
                                     <p><span className="font-weight result-count text-zinc-400">{this.renderCount()}</span> مورد پیدا شد.</p>
-                                    <button onClick={() => this.handleClickPopUp()} type="button" aria-label="filter" id="filter-section" class="flex justify-center gap1 items-center bg-zinc-50 border border-zinc-400 text-zinc-500 w-[106px] h-12 rounded-[50px]">
+                                    <button onClick={() => this.handleClickPopUp()} type="button" aria-label="filter" id="filter-section" className="flex justify-center gap1 items-center bg-zinc-50 border border-zinc-400 text-zinc-500 w-[106px] h-12 rounded-[50px]">
                                         <img src="[##cms.cms.cdn##]/images/filter.svg" alt="filter" width="48" height="48" />
 
                                         فیلتر
@@ -957,14 +955,14 @@
                                     </button>
                                 </div>
 
-                                <div class="bg-[#0404049C] filter-popup fixed justify-end items-end z-[60] w-screen h-screen top-0 left-0 hidden">
-                                    <div class="w-full h-[83vh] overflow-hidden">
-                                        <div class="w-full linear2 p-[4px] rounded-t-2xl">
+                                <div className="bg-[#0404049C] filter-popup fixed justify-end items-end z-[60] w-screen h-screen top-0 left-0 hidden">
+                                    <div className="w-full h-[83vh] overflow-hidden">
+                                        <div className="w-full linear2 p-[4px] rounded-t-2xl">
                                             <aside className="sidebar-content flex w-full flex-col gap-5 bg-primary-50  overflow-y-auto h-[83vh] py-[19px] px-[11px] rounded-[14px]">
                                                 <div className="filters-container ">
-                                                    <div class="flex w-full flex-col gap-5  py-[19px] px-[11px] rounded-[14px]">
-                                                        <div class="w-full flex items-center justify-between">
-                                                            <span class="text-sm text-zinc-900">فیلتر </span>
+                                                    <div className="flex w-full flex-col gap-5  py-[19px] px-[11px] rounded-[14px]">
+                                                        <div className="w-full flex items-center justify-between">
+                                                            <span className="text-sm text-zinc-900">فیلتر </span>
                                                             <p className='hidden'><span className="font-weight result-count">{this.renderCount()}</span> هتل پیدا شد.</p>
                                                             <button type="button" onClick={() => this.closeFilterPopUp()} aria-label="close-filterbox">
                                                                 <img src="[##cms.cms.cdn##]/images/close.svg" alt="close" width="48" height="48" />
@@ -1053,8 +1051,8 @@
                                                                         <div className="range-length background-color_1"></div>
                                                                         <span className="thumb-range thumb-range1"></span>
                                                                         <span className="thumb-range thumb-range2"></span>
-                                                                        <div class="rangevalFirst_2 p-absolute font_11">{defaultRangeTotalF}<span class="font_10 unit_content">{this.ShowUnit_filter()}</span></div>
-                                                                        <div class="rangevalSecond_2 p-absolute font_11">{defaultRangeTotalS}<span class="font_10 unit_content">{this.ShowUnit_filter()}</span></div>
+                                                                        <div className="rangevalFirst_2 p-absolute font_11">{defaultRangeTotalF}<span className="font_10 unit_content">{this.ShowUnit_filter()}</span></div>
+                                                                        <div className="rangevalSecond_2 p-absolute font_11">{defaultRangeTotalS}<span className="font_10 unit_content">{this.ShowUnit_filter()}</span></div>
                                                                     </div>
                                                                     <input type="range" defaultValue={this.renderMinTotal() || 0} max={this.renderMaxTotal() || 999999999} min={this.renderMinTotal() || 0} step="1" onInput={this.handleMinFilterTotal} onChange={this.handleFilterTotal} data-key="1" data-value="1_T" />
                                                                     <input type="range" defaultValue={this.renderMaxTotal() || 999999999} max={this.renderMaxTotal() || 999999999} min={this.renderMinTotal() || 0} step="1" onInput={this.handleMaxFilterTotal} onChange={this.handleFilterTotal} data-key="2" data-value="2_T" />
@@ -1102,39 +1100,39 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="w-full px-4 flex flex-col gap-4">
-                                    <a target="_blank" href="[##cms.host.advertisement-r1##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[186px] rounded-xl overflow-hidden">
+                                <div className="w-full px-4 flex flex-col gap-4">
+                                    <a target="_blank" href="[##cms.host.advertisement-r1##]" rel="nofollow" className="w-full hover:shadow-lg flex h-[186px] rounded-xl overflow-hidden">
                                         <img src="[##cms.cms.cdn##]/images/advertisement-r1.jpg" alt="advertisement-r1" />
                                     </a>
-                                    <a target="_blank" href="[##cms.host.advertisement-r2##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[186px] rounded-xl overflow-hidden">
+                                    <a target="_blank" href="[##cms.host.advertisement-r2##]" rel="nofollow" className="w-full hover:shadow-lg flex h-[186px] rounded-xl overflow-hidden">
                                         <img src="[##cms.cms.cdn##]/images/advertisement-r2.jpg" alt="advertisement-r2" />
                                     </a>
-                                    <a target="_blank" href="[##cms.host.advertisement-r3##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[186px] rounded-xl overflow-hidden">
+                                    <a target="_blank" href="[##cms.host.advertisement-r3##]" rel="nofollow" className="w-full hover:shadow-lg flex h-[186px] rounded-xl overflow-hidden">
                                         <img src="[##cms.cms.cdn##]/images/advertisement-r3.jpg" alt="advertisement-r3" />
                                     </a>
-                                    <a target="_blank" href="[##cms.host.advertisement-r4##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[186px] rounded-xl overflow-hidden">
+                                    <a target="_blank" href="[##cms.host.advertisement-r4##]" rel="nofollow" className="w-full hover:shadow-lg flex h-[186px] rounded-xl overflow-hidden">
                                         <img src="[##cms.cms.cdn##]/images/advertisement-r4.jpg" alt="advertisement-r4" />
                                     </a>
-                                    <a target="_blank" href="[##cms.host.advertisement-r5##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[186px] rounded-xl overflow-hidden">
+                                    <a target="_blank" href="[##cms.host.advertisement-r5##]" rel="nofollow" className="w-full hover:shadow-lg flex h-[186px] rounded-xl overflow-hidden">
                                         <img src="[##cms.cms.cdn##]/images/advertisement-r5.jpg" alt="advertisement-r5" />
                                     </a>
-                                    <a target="_blank" href="[##cms.host.advertisement-l1##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[561px] rounded-xl overflow-hidden">
+                                    <a target="_blank" href="[##cms.host.advertisement-l1##]" rel="nofollow" className="w-full hover:shadow-lg flex h-[561px] rounded-xl overflow-hidden">
                                         <img src="[##cms.cms.cdn##]/images/advertisement-l1.jpg" alt="advertisement-l1" />
                                     </a>
 
-                                    <a target="_blank" href="[##cms.host.advertisement-l2##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[349px] rounded-xl overflow-hidden">
+                                    <a target="_blank" href="[##cms.host.advertisement-l2##]" rel="nofollow" className="w-full hover:shadow-lg flex h-[349px] rounded-xl overflow-hidden">
                                         <img src="[##cms.cms.cdn##]/images/advertisement-l2.jpg" alt="advertisement-l2" />
                                     </a>
-                                    <a target="_blank" href="[##cms.host.advertisement-l3##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[349px] rounded-xl overflow-hidden">
+                                    <a target="_blank" href="[##cms.host.advertisement-l3##]" rel="nofollow" className="w-full hover:shadow-lg flex h-[349px] rounded-xl overflow-hidden">
                                         <img src="[##cms.cms.cdn##]/images/advertisement-l3.jpg" alt="advertisement-l3" />
                                     </a>
-                                    <a target="_blank" href="[##cms.host.advertisement-l4##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[349px] rounded-xl overflow-hidden">
+                                    <a target="_blank" href="[##cms.host.advertisement-l4##]" rel="nofollow" className="w-full hover:shadow-lg flex h-[349px] rounded-xl overflow-hidden">
                                         <img src="[##cms.cms.cdn##]/images/advertisement-l4.jpg" alt="advertisement-l4" />
                                     </a>
-                                    <a target="_blank" href="[##cms.host.advertisement-l5##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[349px] rounded-xl overflow-hidden">
+                                    <a target="_blank" href="[##cms.host.advertisement-l5##]" rel="nofollow" className="w-full hover:shadow-lg flex h-[349px] rounded-xl overflow-hidden">
                                         <img src="[##cms.cms.cdn##]/images/advertisement-l5.jpg" alt="advertisement-l5" />
                                     </a>
-                                    <a target="_blank" href="[##cms.host.advertisement-l6##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[349px] rounded-xl overflow-hidden">
+                                    <a target="_blank" href="[##cms.host.advertisement-l6##]" rel="nofollow" className="w-full hover:shadow-lg flex h-[349px] rounded-xl overflow-hidden">
                                         <img src="[##cms.cms.cdn##]/images/advertisement-l6.jpg" alt="advertisement-l6" />
                                     </a>
                                 </div>
@@ -1478,7 +1476,7 @@
                                     <input type="hidden" value="[##cms.form.tdate##]" name="tdate" />
                                     <input type="hidden" value={element[j].totalPrice} name="amount" />
                                     <div className="d-flex w-full flex-col  gap-4">
-                                        <div class="w-full flex flex-col gap-3">
+                                        <div className="w-full flex flex-col gap-3">
                                             {this.renderProviderConfigs
                                                 (element[j])}
 
@@ -1487,7 +1485,7 @@
                                     cursor-pointer btn-rule"
                                                     key={index}
                                                     onClick={e => this.handleruleRoom(e, element[j], index)}>
-                                                    <img class="group-hover:grayscale" src="[##cms.cms.cdn##]/images/Board menu.svg" alt="BoardMenu" width="24" height="24" />
+                                                    <img className="group-hover:grayscale" src="[##cms.cms.cdn##]/images/Board menu.svg" alt="BoardMenu" width="24" height="24" />
                                                     شرایط و قوانین</span>
                                             </div>
 
@@ -1502,16 +1500,18 @@
                                                 {this.renderEnablePointRooms(element[j])}
                                             </ul>
                                         </div>
-                                        <div class="w-full flex justify-between">
-                                            <div class="flex flex-col gap-1">
-                                                <span class="text-sm text-secondary-2-600">مبلغ قابل پرداخت:</span>
-                                                <div class="flex items-center gap-1">
+                                        <div className="w-full flex justify-between">
+                                            <div className="flex flex-col gap-1">
+                                                <span className="text-sm text-secondary-2-600">مبلغ قابل پرداخت:</span>
+                                                <div className="flex items-center gap-1">
                                                     <b>{new Intl.NumberFormat('en-US').format(this.renderTotal(element[j].totalCom, this.state.state_currency_cost, this.state.state_floatdigit))}</b>
                                                     <b>{this.renderUnit(item.moneytype, this.state.state_currency_unit)}</b></div>
                                             </div>
+                                            {this.renderProviderLink
+                                                (element[j])}
 
-                                            <a href="" class="w-[117px]  h-11 flex justify-center items-center rounded-lg border border-primary-700 bg-primary-700 text-sm hover:bg-transparent hover:border-secondary-2-600 hover:text-secondary-2-700 hover:font-bold">رزرو
-                                                اتاق</a></div>
+
+                                        </div>
                                     </div>
 
 
@@ -1531,7 +1531,7 @@
                                         <div id="ballsWaveG_8" className="ballsWaveG"></div>
                                     </div>
                                 </div>
-                                <div key={index} className={`close-btn relative z-10 cursor-pointer ${!this.state.loadingVisibleBtnClose[index] ? "unvisible" : "visible"}`} onClick={() => this.CloseRuleRoom(index)}><svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M26.6455 21.6294L21.8535 26.4214" stroke="#71717A" stroke-width="1.5" stroke-linecap="square" class="group-hover:stroke-secondary-1-700"></path><path d="M26.6456 26.4244L21.8496 21.6274" stroke="#71717A" stroke-width="1.5" stroke-linecap="square" class="group-hover:stroke-secondary-1-700"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M24.25 33.2847C29.3586 33.2847 33.5 29.1433 33.5 24.0347C33.5 18.926 29.3586 14.7847 24.25 14.7847C19.1414 14.7847 15 18.926 15 24.0347C15 29.1433 19.1414 33.2847 24.25 33.2847Z" stroke="#71717A" stroke-width="1.5" stroke-linecap="round" class="group-hover:stroke-secondary-1-700"></path></svg></div>
+                                <div key={index} className={`close-btn relative z-10 cursor-pointer ${!this.state.loadingVisibleBtnClose[index] ? "unvisible" : "visible"}`} onClick={() => this.CloseRuleRoom(index)}><svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M26.6455 21.6294L21.8535 26.4214" stroke="#71717A" stroke-width="1.5" stroke-linecap="square" className="group-hover:stroke-secondary-1-700"></path><path d="M26.6456 26.4244L21.8496 21.6274" stroke="#71717A" stroke-width="1.5" stroke-linecap="square" className="group-hover:stroke-secondary-1-700"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M24.25 33.2847C29.3586 33.2847 33.5 29.1433 33.5 24.0347C33.5 18.926 29.3586 14.7847 24.25 14.7847C19.1414 14.7847 15 18.926 15 24.0347C15 29.1433 19.1414 33.2847 24.25 33.2847Z" stroke="#71717A" stroke-width="1.5" stroke-linecap="round" className="group-hover:stroke-secondary-1-700"></path></svg></div>
                                 <div className="clr"></div>
                                 <div dir="auto" key={index} className={`text-justify font_13 max-height Rule-indx roomRule-${index}`}>{this.state.roomRule[index]}</div>
                             </div>
@@ -1571,8 +1571,8 @@
                                 {this.hotel_information_moneytype(element)}
                                 <input type="hidden" value="" name="chagencyuser" />
                                 <button type="submit" class=' cursor-pointer rounded-xl w-full linear2 h-[230px] p-[4px]'>
-                                    <div class="w-full h-full bg-white rounded-[11px] p-2">
-                                        <img src={imghotel_ws} width="190" height="190" alt="" class="rounded-xl w-full h-full shadow-2 object-cover" />
+                                    <div className="w-full h-full bg-white rounded-[11px] p-2">
+                                        <img src={imghotel_ws} width="190" height="190" alt="" className="rounded-xl w-full h-full shadow-2 object-cover" />
                                         <div className="overlay p-absolute"><span className="expand p-absolute">+</span>
                                         </div></div>
 
@@ -1594,8 +1594,8 @@
                                 {this.hotel_information_moneytype(element)}
                                 <input type="hidden" value="" name="chagencyuser" />
                                 <button type="submit" class=' cursor-pointer rounded-xl w-full linear2 h-[230px] p-[4px]'>
-                                    <div class="w-full h-full bg-white rounded-[11px] p-2">
-                                        <img src={imghotel_garanti} width="190" height="190" alt="" class="rounded-xl w-full h-full shadow-2 object-cover" />
+                                    <div className="w-full h-full bg-white rounded-[11px] p-2">
+                                        <img src={imghotel_garanti} width="190" height="190" alt="" className="rounded-xl w-full h-full shadow-2 object-cover" />
                                         <div className="overlay p-absolute">
                                             <span className="expand p-absolute">+</span>
                                         </div>
@@ -1633,16 +1633,30 @@
                         return <input type="hidden" value={moneytype} name="moneytype" />;
                     }
                 }
+                renderProviderLink(element) {
+                    if (element.provider_configs) {
+                        return (
+                            <a href={element.provider_configs.link} className="w-[117px]  h-11 flex justify-center items-center rounded-lg border border-primary-700 bg-primary-700 text-sm hover:bg-transparent hover:border-secondary-2-600 hover:text-secondary-2-700 hover:font-bold">رزرو
+                                اتاق
+                            </a>
+                        )
+                    } else {
+                        return (
+                            <button disabled className="w-[117px] z-10 h-11 flex justify-center items-center rounded-lg border border-primary-700 bg-primary-700 text-sm hover:bg-transparent hover:border-secondary-2-600 hover:text-secondary-2-700 hover:font-bold">رزرو
+                                اتاق
+                            </button>)
+                    }
+                }
                 renderProviderConfigs(element) {
                     if (element.provider_configs) {
                         return (
                             <div className="flex items-center gap-2">
                                 <div className=" pl-2 border-l border-zinc-600">
-                                    <img src={element[j].provider_configs.image} alt={element[j].provider_configs.displayName} className="w-[82px]" />
+                                    <img src={element.provider_configs.image} alt={element.provider_configs.displayName} className="w-[82px]" />
                                 </div>
                                 <div className="flex items-center">
                                     <span className="text-sm text-zinc-600">تامین کننده :</span>
-                                    <p className="font-bold text-zinc-900">{element[j].provider_configs.displayName}</p>
+                                    <p className="font-bold text-zinc-900">{element.provider_configs.displayName}</p>
                                 </div>
                             </div>
                         )

@@ -708,13 +708,22 @@ body:has(.filter-popup.flex) {
 .cost-item .color_gray.font_11 {
   text-align: right !important;
 }
-.brief-info li,
+.brief-info li:not(.flex),
 .answer-service,
 .filter-service li label .text p {
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
+}
+button[disabled] {
+  cursor: not-allowed !important;
+}
+button[disabled]:hover {
+  border: 1px solid var(--primary-700) !important;
+  background-color: var(--primary-700) !important;
+  color: var(--zinc-900) !important;
+  font-weight: normal !important;
 }
 .w-200px {
   width: 200px;

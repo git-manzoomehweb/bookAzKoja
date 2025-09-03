@@ -1520,8 +1520,10 @@
                                                 <b>{this.renderUnit(item.moneytype, this.state.state_currency_unit)}</b>
                                             </div>
 
-                                            <a href="" className="w-[117px]  h-11 flex justify-center items-center rounded-lg border border-primary-700 bg-primary-700 text-sm hover:bg-transparent hover:border-secondary-2-600 hover:text-secondary-2-700 hover:font-bold">رزرو
-                                                اتاق</a></div>
+                                            {this.renderProviderLink
+                                                (element[j])}
+
+                                        </div>
                                     </div>
 
 
@@ -1643,16 +1645,30 @@
                         return <input type="hidden" value={moneytype} name="moneytype" />;
                     }
                 }
+                renderProviderLink(element) {
+                    if (element.provider_configs) {
+                        return (
+                            <a href={element.provider_configs.link} class="w-[117px]  h-11 flex justify-center items-center rounded-lg border border-primary-700 bg-primary-700 text-sm hover:bg-transparent hover:border-secondary-2-600 hover:text-secondary-2-700 hover:font-bold">رزرو
+                                اتاق
+                            </a>
+                        )
+                    } else {
+                        return (
+                            <button disabled class="w-[117px] z-10 h-11 flex justify-center items-center rounded-lg border border-primary-700 bg-primary-700 text-sm hover:bg-transparent hover:border-secondary-2-600 hover:text-secondary-2-700 hover:font-bold">رزرو
+                                اتاق
+                            </button>)
+                    }
+                }
                 renderProviderConfigs(element) {
                     if (element.provider_configs) {
                         return (
                             <div className="flex items-center gap-2">
                                 <div className=" pl-2 border-l border-zinc-600">
-                                    <img src={element[j].provider_configs.image} alt={element[j].provider_configs.displayName} className="w-[82px]" />
+                                    <img src={element.provider_configs.image} alt={element.provider_configs.displayName} className="w-[82px]" />
                                 </div>
                                 <div className="flex items-center">
                                     <span className="text-sm text-zinc-600">تامین کننده :</span>
-                                    <p className="font-bold text-zinc-900">{element[j].provider_configs.displayName}</p>
+                                    <p className="font-bold text-zinc-900">{element.provider_configs.displayName}</p>
                                 </div>
                             </div>
                         )
