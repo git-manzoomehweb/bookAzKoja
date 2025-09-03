@@ -1912,8 +1912,6 @@ li:has(input[name="star"]:checked) label {
 .set-before-3::before {
   background: var(--primary-700);
 }
- 
- 
 
 .placeholder\:text-zinc-500::-moz-placeholder {
   color: var(--zinc-500);
@@ -2317,6 +2315,9 @@ li:has(input[name="star"]:checked) label {
 }
 
 @media (min-width: 1280px) {
+  header a.flex.text-zinc-600.relative.group span.absolute {
+    left: -10px !important;
+  }
   .xl\:\!w-\[1280px\] {
     width: 1280px !important;
   }

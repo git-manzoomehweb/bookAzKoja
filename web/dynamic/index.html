@@ -58,7 +58,7 @@
 
 <body>
   <basis core="call" file="header.inc" />
-  <main  class="mt-40 mb-14">
+  <main class="mt-40 mb-14">
     <h1 class="sr-only">بوک از کجا</h1>
     <section class="w-full flex justify-center">
       <div class="px-4 w-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col gap-[30px]">
@@ -161,14 +161,17 @@
                 <img loading="lazy" width="257" height="81" src="[##cms.cms.cdn##]/images/logo.png"
                   alt="bookazkoja-logo" class="!w-[130px]" />
               </div>
-              <basis core="print" datamembername="db.about-us">
-                <face filter="TypeID=129">
-                  <div class="text-sm line-clamp-[13] text-zinc-900">
-                    @largetext
-                  </div>
-                </face>
-              </basis>
-              <a href="/درباره-ما" class="text-sm text-secondary-2-600">مطالعه بیشتر...</a>
+              <div class="w-full flex flex-col gap-2">
+                <basis core="print" datamembername="db.about-us">
+                  <face filter="TypeID=129">
+                    <div class="text-sm text line-clamp-[13] text-zinc-900">
+                      @largetext
+                    </div>
+                  </face>
+                </basis>
+                <button type="button" id="desktop-about-us" class="w-fit text-sm text-secondary-2-600">مطالعه
+                  بیشتر...</button>
+              </div>
             </div>
           </div>
         </div>

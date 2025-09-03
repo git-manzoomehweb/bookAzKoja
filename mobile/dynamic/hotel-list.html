@@ -30,11 +30,11 @@
     <basis core="call" file="header.inc" />
 
     <main class="mt-32 mb-14 flex flex-col   items-center">
-   <span class="hidden hotel-elmentsssss">[##cms.form.coHotel##]</span>
+        <span class="hidden hotel-elmentsssss">[##cms.form.coHotel##]</span>
         <span class="hidden city-elmentsssss">[##cms.form.cityid##]</span>
-         <span class="hidden fdate-elmentsssss">[##cms.form.fdate##]</span>
-         <span class="hidden tdate-elmentsssss">[##cms.form.tdate##]</span>
-         <span class="hidden passengers-container-s">[##cms.json.header|cms.form.roomSearch##]</span>
+        <span class="hidden fdate-elmentsssss">[##cms.form.fdate##]</span>
+        <span class="hidden tdate-elmentsssss">[##cms.form.tdate##]</span>
+        <span class="hidden passengers-container-s">[##cms.json.header|cms.form.roomSearch##]</span>
         <div id="bg-popup" class="unvisible"></div>
         <div class="message-box unvisible">
             <i class="icon-message-box">
@@ -261,14 +261,18 @@
                                     </basis>
                                 </div>
                             </div>
-                            <basis core="print" datamembername="db.about-us">
-                                <face filter="TypeID=129">
-                                    <div class="text-xs line-clamp-[11] text-zinc-900">
-                                        @largetext
-                                    </div>
-                                </face>
-                            </basis>
-                            <a href="/درباره-ما" class="text-xs mt-5 text-secondary-2-600">مطالعه بیشتر...</a>
+                            <div class="flex w-full flex-col">
+                                <basis core="print" datamembername="db.about-us">
+                                    <face filter="TypeID=129">
+                                        <div class="text-xs text line-clamp-[13] text-zinc-900">
+                                            @largetext
+                                        </div>
+                                    </face>
+                                </basis>
+                                <button type="button" id="desktop-about-us"
+                                    class="w-fit text-sm text-secondary-2-600">مطالعه
+                                    بیشتر...</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1099,38 +1103,38 @@
                                     </div>
                                 </div>
                                 <div class="w-full px-4 flex flex-col gap-4">
-                                    <a  target="_blank"   href="[##cms.host.advertisement-r1##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[186px] rounded-xl overflow-hidden">
+                                    <a target="_blank" href="[##cms.host.advertisement-r1##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[186px] rounded-xl overflow-hidden">
                                         <img src="[##cms.cms.cdn##]/images/advertisement-r1.jpg" alt="advertisement-r1" />
                                     </a>
-                                    <a  target="_blank"   href="[##cms.host.advertisement-r2##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[186px] rounded-xl overflow-hidden">
+                                    <a target="_blank" href="[##cms.host.advertisement-r2##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[186px] rounded-xl overflow-hidden">
                                         <img src="[##cms.cms.cdn##]/images/advertisement-r2.jpg" alt="advertisement-r2" />
                                     </a>
-                                    <a  target="_blank"   href="[##cms.host.advertisement-r3##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[186px] rounded-xl overflow-hidden">
+                                    <a target="_blank" href="[##cms.host.advertisement-r3##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[186px] rounded-xl overflow-hidden">
                                         <img src="[##cms.cms.cdn##]/images/advertisement-r3.jpg" alt="advertisement-r3" />
                                     </a>
-                                    <a  target="_blank"   href="[##cms.host.advertisement-r4##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[186px] rounded-xl overflow-hidden">
+                                    <a target="_blank" href="[##cms.host.advertisement-r4##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[186px] rounded-xl overflow-hidden">
                                         <img src="[##cms.cms.cdn##]/images/advertisement-r4.jpg" alt="advertisement-r4" />
                                     </a>
-                                    <a  target="_blank"   href="[##cms.host.advertisement-r5##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[186px] rounded-xl overflow-hidden">
+                                    <a target="_blank" href="[##cms.host.advertisement-r5##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[186px] rounded-xl overflow-hidden">
                                         <img src="[##cms.cms.cdn##]/images/advertisement-r5.jpg" alt="advertisement-r5" />
                                     </a>
-                                    <a  target="_blank"   href="[##cms.host.advertisement-l1##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[561px] rounded-xl overflow-hidden">
+                                    <a target="_blank" href="[##cms.host.advertisement-l1##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[561px] rounded-xl overflow-hidden">
                                         <img src="[##cms.cms.cdn##]/images/advertisement-l1.jpg" alt="advertisement-l1" />
                                     </a>
 
-                                    <a  target="_blank"   href="[##cms.host.advertisement-l2##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[349px] rounded-xl overflow-hidden">
+                                    <a target="_blank" href="[##cms.host.advertisement-l2##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[349px] rounded-xl overflow-hidden">
                                         <img src="[##cms.cms.cdn##]/images/advertisement-l2.jpg" alt="advertisement-l2" />
                                     </a>
-                                    <a  target="_blank"   href="[##cms.host.advertisement-l3##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[349px] rounded-xl overflow-hidden">
+                                    <a target="_blank" href="[##cms.host.advertisement-l3##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[349px] rounded-xl overflow-hidden">
                                         <img src="[##cms.cms.cdn##]/images/advertisement-l3.jpg" alt="advertisement-l3" />
                                     </a>
-                                    <a  target="_blank"   href="[##cms.host.advertisement-l4##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[349px] rounded-xl overflow-hidden">
+                                    <a target="_blank" href="[##cms.host.advertisement-l4##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[349px] rounded-xl overflow-hidden">
                                         <img src="[##cms.cms.cdn##]/images/advertisement-l4.jpg" alt="advertisement-l4" />
                                     </a>
-                                    <a  target="_blank"   href="[##cms.host.advertisement-l5##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[349px] rounded-xl overflow-hidden">
+                                    <a target="_blank" href="[##cms.host.advertisement-l5##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[349px] rounded-xl overflow-hidden">
                                         <img src="[##cms.cms.cdn##]/images/advertisement-l5.jpg" alt="advertisement-l5" />
                                     </a>
-                                    <a  target="_blank"   href="[##cms.host.advertisement-l6##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[349px] rounded-xl overflow-hidden">
+                                    <a target="_blank" href="[##cms.host.advertisement-l6##]" rel="nofollow" class="w-full hover:shadow-lg flex h-[349px] rounded-xl overflow-hidden">
                                         <img src="[##cms.cms.cdn##]/images/advertisement-l6.jpg" alt="advertisement-l6" />
                                     </a>
                                 </div>
@@ -1301,13 +1305,13 @@
                     }
                 }
                 handleChange = (event) => {
-                     const sElement = document.querySelector("#app");
-  if (sElement) {
-    window.scrollTo({
-      top: sElement.offsetTop,
-      behavior: "smooth",
-    });
-  }
+                    const sElement = document.querySelector("#app");
+                    if (sElement) {
+                        window.scrollTo({
+                            top: sElement.offsetTop,
+                            behavior: "smooth",
+                        });
+                    }
                     this.handleReset(event);
                     let checktype = event.target.getAttribute("data-type")
                     let checkkey = event.target.getAttribute("data-key")
@@ -1475,15 +1479,8 @@
                                     <input type="hidden" value={element[j].totalPrice} name="amount" />
                                     <div className="d-flex w-full flex-col  gap-4">
                                         <div class="w-full flex flex-col gap-3">
-                                            <div class="flex items-center gap-2">
-                                                <div class=" pl-2 border-l border-zinc-600">
-                                                    <img src="[##cms.cms.cdn##]/images/eqamat.png" alt="tamin-logo" class="w-[82px]" />
-                                                </div>
-                                                <div class="flex items-center">
-                                                    <span class="text-sm text-zinc-600">تامین کننده :</span>
-                                                    <p class="font-bold text-zinc-900">اقامت 24</p>
-                                                </div>
-                                            </div>
+                                            {this.renderProviderConfigs
+                                                (element[j])}
 
                                             <div class=''>
                                                 <span className="details-btn text-secondary-1-500 group hover:text-zinc-500 text-xs flex items-center gap-2  
@@ -1635,6 +1632,25 @@
                     if (moneytype !== undefined) {
                         return <input type="hidden" value={moneytype} name="moneytype" />;
                     }
+                }
+                renderProviderConfigs(element) {
+                    if (element.provider_configs) {
+                        return (
+                            <div className="flex items-center gap-2">
+                                <div className=" pl-2 border-l border-zinc-600">
+                                    <img src={element[j].provider_configs.image} alt={element[j].provider_configs.displayName} className="w-[82px]" />
+                                </div>
+                                <div className="flex items-center">
+                                    <span className="text-sm text-zinc-600">تامین کننده :</span>
+                                    <p className="font-bold text-zinc-900">{element[j].provider_configs.displayName}</p>
+                                </div>
+                            </div>
+                        )
+                    }
+                    else {
+                        return (<img src="[##cms.cms.cdn##]/images/no-picture.jpg" alt="no-picture" className="w-[82px] rounded-lg" />)
+                    }
+
                 }
                 renderRoomtype(element) {
                     let lenavailablerooms = element.availablerooms.length

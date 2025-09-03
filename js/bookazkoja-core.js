@@ -4,68 +4,109 @@ function changeLabels() {
   document.querySelector("#r-hotel .label-passengers-hotel span").innerHTML =
     "مسافران";
 }
-function buildPassengerRooms() {
-  const dataEl = document.querySelector(".hidden.passengers-container-s");
-  if (!dataEl) return;
-  const data = JSON.parse(dataEl.textContent.trim());
-  const rooms = data.rooms;
 
-  const totalRooms = rooms.length;
-  let totalAdults = 0;
-  let totalChildren = 0;
+function observeChildCount() {
+  const childCountContainer = document.querySelector(
+    ".passenger-counts.child-count"
+  );
+  if (!childCountContainer) {
+    return;
+  }
 
-  rooms.forEach(room => {
-    totalAdults += parseInt(room.adultcount, 10);
-    if (room.childcountandage && room.childcountandage !== "0") {
-      const firstChild = parseInt(room.childcountandage.split(",")[0], 10);
-      totalChildren += firstChild;
+  const countSpan = childCountContainer.querySelector(".count");
+  if (!countSpan) {
+    return;
+  }
+
+  // تابع بررسی و اعمال hidden
+  const updateChildVisibility = () => {
+    const val = parseInt(countSpan.textContent || "0", 10);
+    if (isNaN(val)) {
+      return;
+    }
+
+    if (val > 0) {
+      if (childCountContainer.classList.contains("hidden")) {
+        childCountContainer.classList.remove("hidden");
+      }
+    } else {
+      if (!childCountContainer.classList.contains("hidden")) {
+        childCountContainer.classList.add("hidden");
+      }
+    }
+  };
+
+  updateChildVisibility();
+
+  const observer = new MutationObserver((mutationsList) => {
+    for (const mutation of mutationsList) {
+      if (mutation.type === "childList" || mutation.type === "characterData") {
+        updateChildVisibility();
+      }
     }
   });
 
-  // بخش بالایی
-  document.querySelector(".passenger-counts.room-count .count").textContent = totalRooms;
-  document.querySelector(".passenger-counts.adult-count .count").textContent = totalAdults;
-  document.querySelector(".passenger-counts.child-count .count").textContent = totalChildren;
+  observer.observe(countSpan, {
+    characterData: true,
+    subtree: true,
+    childList: true,
+  });
+}
 
-  // نمایش یا مخفی کردن کودک
-  const childCountEl = document.querySelector(".passenger-counts.child-count");
-  const childCountVal = parseInt(document.querySelector(".passenger-counts.child-count .count").textContent, 10);
-  if (childCountVal > 0) {
-    childCountEl.classList.remove("hidden");
-  } else {
-    childCountEl.classList.add("hidden");
+function buildPassengerRooms() {
+  const dataEl = document.querySelector(".hidden.passengers-container-s");
+  if (!dataEl) {
+    return;
   }
 
-  // input تعداد اتاق
-  const roomCountInput = document.querySelector("#passenger-roomcount1");
-  if (roomCountInput) {
-    roomCountInput.value = totalRooms;
-
+  let data;
+  try {
+    data = JSON.parse(dataEl.textContent.trim());
+  } catch (e) {
+    return;
   }
 
-  // گرفتن template اولیه
+  const rooms = Array.isArray(data?.rooms) ? data.rooms : [];
+
   const roomsContainer = document.querySelector(".Rooms");
-  if (!roomsContainer) return;
+  if (!roomsContainer) {
+    return;
+  }
 
   const templateRoom = roomsContainer.querySelector(".contentRoom");
-  if (!templateRoom) return;
+  if (!templateRoom) {
+    return;
+  }
 
-  // خالی کردن container برای ساخت داینامیک
   roomsContainer.innerHTML = "";
 
-  // ساخت اتاق‌ها
   rooms.forEach((roomData, index) => {
-    const roomClone = templateRoom.cloneNode(true);
     const roomIndex = index + 1;
+    const roomClone = templateRoom.cloneNode(true);
+
+    // ====== آپدیت data-room-index ======
+    roomClone.setAttribute("data-room-index", roomIndex);
 
     // شماره اتاق
     const roomNumberEl = roomClone.querySelector(".numberOfRoom");
     if (roomNumberEl) {
       roomNumberEl.textContent = `اتاق ${roomIndex}`;
+      roomNumberEl.classList.remove("w-full");
+      roomNumberEl.classList.add("w-1/2");
     }
 
+    // دکمه حذف
+    const deleteDiv = document.createElement("div");
+    deleteDiv.className =
+      "deleteRoom text-sm warningColor-100 float-left w-1/2 mb-4 text-left cursor-pointer hover:text-remove-room-hover-color";
+    deleteDiv.setAttribute("onclick", "remove_Room(this)");
+    deleteDiv.textContent = "حذف اتاق";
+    roomNumberEl?.insertAdjacentElement("afterend", deleteDiv);
+
     // بزرگسال
-    const adultInput = roomClone.querySelector(".adult-passenger-item input.adultcount");
+    const adultInput = roomClone.querySelector(
+      ".adult-passenger-item input.adultcount"
+    );
     if (adultInput) {
       adultInput.value = roomData.adultcount;
       adultInput.name = `_root.rooms__${roomIndex}.adultcount`;
@@ -73,10 +114,12 @@ function buildPassengerRooms() {
     }
 
     // کودک → فقط عدد اول
-    const childInput = roomClone.querySelector(".child-passenger-item input.childcount");
+    const childInput = roomClone.querySelector(
+      ".child-passenger-item input.childcount"
+    );
     let childCount = 0;
     if (roomData.childcountandage && roomData.childcountandage !== "0") {
-      childCount = parseInt(roomData.childcountandage.split(",")[0], 10);
+      childCount = parseInt(roomData.childcountandage.split(",")[0], 10) || 0;
     }
     if (childInput) {
       childInput.value = childCount;
@@ -87,20 +130,15 @@ function buildPassengerRooms() {
     // hidden input childcountandage
     const childAgeInput = roomClone.querySelector("input.childcountandage");
     if (childAgeInput) {
-      childAgeInput.value = roomData.childcountandage;
+      childAgeInput.value = roomData.childcountandage ?? "0";
       childAgeInput.name = `_root.rooms__${roomIndex}.childcountandage`;
       childAgeInput.id = `passenger-room-childcountandage${roomIndex}`;
     }
 
-    // اضافه کردن clone به DOM
     roomsContainer.appendChild(roomClone);
   });
-
-  // console.log("تمام contentRoomها با داده‌های JSON ساخته شدند (با name و id یونیک).");
+  observeChildCount();
 }
-
-
-
 
 document.addEventListener("DOMContentLoaded", function () {
   const requiredFiles = ["bookazkoja.ui.min.css"];
@@ -128,10 +166,6 @@ document.addEventListener("DOMContentLoaded", function () {
               .querySelector(".reservation-item .hotel-btn")
               .classList.add("active-module");
 
-
-               
-
-
             if (document.querySelector(".hotel-elmentsssss")) {
               // پاک کردن مقدار انتخاب قبلی اگر در localStorage وجود داشت
               if (localStorage.getItem("selectedHotel")) {
@@ -148,25 +182,8 @@ document.addEventListener("DOMContentLoaded", function () {
               const tDateValue =
                 document.querySelector(".tdate-elmentsssss")?.innerText || "";
 
+              buildPassengerRooms();
 
-
-                buildPassengerRooms()
-              
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-  
               const observer = new MutationObserver(
                 (mutationsList, observer) => {
                   const depInput = document.querySelector(
@@ -175,14 +192,25 @@ document.addEventListener("DOMContentLoaded", function () {
                   const idInput = document.querySelector(
                     "#r-hotel .departure-route .locationId"
                   );
-                  const fDateInput=document.querySelector("#r-hotel .Basis_Date_Box .departure-date input.Basis_Date");
-                  const tDateInput=document.querySelector("#r-hotel .Basis_Date_Box .return-date input.Basis_Date");
+                  const fDateInput = document.querySelector(
+                    "#r-hotel .Basis_Date_Box .departure-date input.Basis_Date"
+                  );
+                  const tDateInput = document.querySelector(
+                    "#r-hotel .Basis_Date_Box .return-date input.Basis_Date"
+                  );
                   // فقط اگر همه چیز آماده بود مقدار ست کن
-                  if (depInput && idInput && hotelValue && cityValue && fDateInput &&tDateInput) {
+                  if (
+                    depInput &&
+                    idInput &&
+                    hotelValue &&
+                    cityValue &&
+                    fDateInput &&
+                    tDateInput
+                  ) {
                     depInput.value = hotelValue;
                     idInput.value = cityValue;
-                    fDateInput.value=fDateValue;
-                    tDateInput.value=tDateValue;
+                    fDateInput.value = fDateValue;
+                    tDateInput.value = tDateValue;
 
                     // تریگر رویدادها برای اینکه اسکریپت‌های دیگر متوجه تغییر بشن
                     idInput.dispatchEvent(
@@ -198,7 +226,6 @@ document.addEventListener("DOMContentLoaded", function () {
                       new Event("change", { bubbles: true })
                     );
 
-
                     fDateInput.dispatchEvent(
                       new Event("input", { bubbles: true })
                     );
@@ -212,8 +239,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     tDateInput.dispatchEvent(
                       new Event("change", { bubbles: true })
                     );
-
-                   
 
                     // فقط همین یک بار، observer رو قطع کن
                     observer.disconnect();
@@ -222,9 +247,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     setTimeout(() => {
                       depInput.value = hotelValue;
                       idInput.value = cityValue;
-                      fDateInput.value=fDateValue;
-                      tDateInput.value=tDateValue;
-                      
+                      fDateInput.value = fDateValue;
+                      tDateInput.value = tDateValue;
                     }, 900);
                   }
                 }
@@ -399,6 +423,17 @@ document.addEventListener("DOMContentLoaded", function () {
 // _______________________________
 // _______________________________
 // _______________________________
+const aboutDBtn = document.querySelector("#desktop-about-us");
+aboutDBtn?.addEventListener("click", () => {
+  const text = aboutDBtn.parentElement.querySelector(".text");
+  if (text.classList.contains("line-clamp-[13]")) {
+    text.classList.remove("line-clamp-[13]");
+    aboutDBtn.innerText = "پنهان ...";
+  } else {
+    text.classList.add("line-clamp-[13]");
+    aboutDBtn.innerText = "مطالعه بیشتر ...";
+  }
+});
 
 // ---------------------------------
 // ____________________________________
@@ -569,39 +604,6 @@ document.querySelector("#close-filterbox")?.addEventListener("click", () => {
 // _________________________________________
 // _________________________________________
 // _________________________________________
-// if (document.querySelector(".hotels-container")) {
-//   const hotels = document.querySelectorAll(".hotels-container p");
-
-//   hotels.forEach((hotel) => {
-//     const hotelId = hotel.getAttribute("data-id");
-//     const hotelName = hotel.innerText;
-//     const target = document.querySelector("main");
-
-//     hotel.addEventListener("click", () => {
-//       if (document.querySelector("#search-box")) {
-//         const depInput = document.querySelector(
-//           "#r-hotel .departure-route input.departure"
-//         );
-//         const idInput = document.querySelector(
-//           "#r-hotel .departure-route input.locationId"
-//         );
-
-//         if (depInput && idInput) {
-//           console.log("Setting input values directly:", hotelName, hotelId);
-//           depInput.value = hotelName;
-//           idInput.value = hotelId;
-//           target.scrollIntoView({ behavior: "smooth" });
-//         } else {
-//           console.log("Inputs not found, cannot set values yet.");
-//         }
-//       } else {
-//         const hotelData = { id: hotelId, name: hotelName };
-//         localStorage.setItem("selectedHotel", JSON.stringify(hotelData));
-//         window.location.href = "/";
-//       }
-//     });
-//   });
-// }
 
 // _________________________________________
 // _________________________________________
@@ -686,8 +688,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
           // اضافه کردن لینک به href
           slide.setAttribute("href", link);
-
-          // console.log(`لینک برای catid=${catid} -> ${link}`);
         })
         .catch((err) => {
           console.error(`خطا در دریافت اطلاعات برای catid=${catid}`, err);

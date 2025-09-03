@@ -552,8 +552,8 @@ body:has(.hotel-elmentsssss) .searchHistory-content {
   display: flex !important;
   backdrop-filter: blur(4px);
 }
-.filter-popup{
-    backdrop-filter: blur(4px);
+.filter-popup {
+  backdrop-filter: blur(4px);
 }
 .details-item .close-btn {
   background: transparent !important;
@@ -672,8 +672,8 @@ body:has(.filter-popup.flex) {
 .h-\[87vh\] {
   height: 87vh;
 }
-.overflow-auto::-webkit-scrollbar-thumb{
-background: linear-gradient(to bottom, #fa911e 0, #eaeaea 100%) !important;
+.overflow-auto::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #fa911e 0, #eaeaea 100%) !important;
 }
 @media (min-width: 1024px) {
   .more-rooms-link {
@@ -702,43 +702,60 @@ background: linear-gradient(to bottom, #fa911e 0, #eaeaea 100%) !important;
   border-left: none !important;
   padding-left: 0 !important;
 }
-.hotel-element .answer-info::before{
-background-color: var(--primary) !important;
+.hotel-element .answer-info::before {
+  background-color: var(--primary) !important;
 }
-.cost-item .color_gray.font_11{
+.cost-item .color_gray.font_11 {
   text-align: right !important;
-
 }
-  .brief-info li,.answer-service ,.filter-service li label .text p {
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 1;
-  }
-  .w-200px{
-    width: 200px;
-  }
-  .filter-service li label .text {
-    width: calc(100% - 28px) !important;
-  }
-    .filter-service li label .text p{
-      text-align: right !important;
-    }
+.brief-info li,
+.answer-service,
+.filter-service li label .text p {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+.w-200px {
+  width: 200px;
+}
+.filter-service li label .text {
+  width: calc(100% - 28px) !important;
+}
+.filter-service li label .text p {
+  text-align: right !important;
+}
+.Rooms .contentRoom:first-child .deleteRoom {
+  display: none !important;
+}
+body:has(input.childcount[value="1"]) .child-count {
+  display: inline-block !important;
+}
+body:has(input.childcount[value="2"]) .child-count {
+  display: inline-block !important;
+}
+body:has(input.childcount[value="3"]) .child-count {
+  display: inline-block !important;
+}
+body:has(input.childcount[value="4"]) .child-count {
+  display: inline-block !important;
+}
 @media not all and (min-width: 1024px) {
-  .filter-popup.flex,.details-row.fixed.visible {
+  .filter-popup.flex,
+  .details-row.fixed.visible {
     transition: all 0.6s ease-in-out;
-     animation: 0.6s linear goUp;
-}
- @keyframes goUp {
-  from {
-    opacity: 0;
-    transform: translateY(1000vh);
+    animation: 0.6s linear goUp;
   }
-  to {
-    opacity: 1;
+  @keyframes goUp {
+    from {
+      opacity: 0;
+      transform: translateY(1000vh);
+    }
+    to {
+      opacity: 1;
       transform: translateY(0);
+    }
   }
-}
   .hotel_stracture .stract-img-item,
   .hotel_stracture .stract-infoes-item {
     width: 100% !important;
