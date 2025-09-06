@@ -877,7 +877,7 @@
                                             <div className="img-item text-center">
                                                 {this.renderImgHotel(item)}
                                             </div>
-                                            <div className="infoes-item rounded-xl border border-zinc-200 p-4 flex flex-col justify-between w-[calc(100%-240px)] h-[230px] bg-white">
+                                            <div className="infoes-item rounded-xl border border-zinc-200 p-4 flex flex-col justify-between h-[230px] w-[calc(100%-240px)]  bg-white">
                                                 <span className="title font-bold text-zinc-900">{item.hotelinfo.name}</span>
                                                 <div className="flex w-full items-center gap-[34px]">
                                                     <div className="flex whitespace-nowrap items-center text-zinc-900 text-sm gap-2">
@@ -888,22 +888,28 @@
                                                         <img loading='lazy' src="[##cms.cms.cdn##]/images/Hot Drink.svg" alt="Hot Drink" width="30" height="30" />
                                                         {this.renderservicesFirst(item)}
                                                     </div>
+
                                                 </div>
 
                                                 <ul className="brief-info">
-                                                    <li>
-                                                        <div className="hotel-location 
+                                                    <div className="flex w-full justify-between items-center">
+                                                        <li>
+                                                            <div className="hotel-location 
                                                     ">
 
-                                                            <span>{item.hotelinfo.hotelsearch.countryname}</span><span>
-                                                                ,</span><span>{item.hotelinfo.hotelsearch.cityname}</span></div></li>
+                                                                <span>{item.hotelinfo.hotelsearch.countryname}</span><span>
+                                                                    ,</span><span>{item.hotelinfo.hotelsearch.cityname}</span></div>
+                                                        </li>
+                                                        {this.renderProviderName(item)}
+                                                        {this.renderSupplierName(item)}
+                                                    </div>
                                                     <li>{this.renderRoomtypeFirst(item)}
                                                         <span className="answer-services"></span></li>
                                                     <li>{this.renderavailabFirst(item)}</li>
                                                     {this.renderviewnameFirst(item.hotelinfo.information.viewname)}
                                                     {this.renderArea(item.hotelinfo.hotelsearch)}
-                                                    {this.renderProviderName(item)}
-                                                    {this.renderSupplierName(item)}
+
+
                                                 </ul>
                                                 <div className="w-full flex items-center justify-between">
                                                     <div className="flex flex-col">
@@ -1455,6 +1461,7 @@
                     let element = this.state.show_rooms_data[i];
                     if (!element) return null;
                     if (element.length > 0) {
+                        console.log(element);
 
                         let indents = [];
                         for (let j = 0; j < element.length; j++) {
@@ -1743,7 +1750,9 @@
                                 const supplierName = this.state.data_supplier
                                     .filter((x) => x.id === parseInt(element.infoForMapping.hotelDmnid))
                                     .map((x) => x.name);
-                                return <li className="supplier-content"><span className="answer-info">{supplierName}</span></li>;
+                                return <li className="supplier-content">
+                                    <span className="answer-info">{supplierName}</span>
+                                </li>;
                             } else {
                                 return ''
                             }

@@ -1,0 +1,20 @@
+<basis core="external.fly.ws" source="cmsDbService5" procedurename="dbsource" name="db">
+    <member name="showAllRooms" method="hotel"
+        postsql="select replace(replace(replace(replace(replace(replace(replace(replace(result,'None','null'),'undefined','null'),'\xa0',' '),'/x',' '),'\x',' '),'nan','null'),' inf','null'),' -inf' , 'null') as 'result' from [db.showAllRooms]"
+        query=' {
+        "name": "db",
+        "mid": "20",
+        "member": [
+            {
+                "type": "list",
+                "name": "hotel",
+                "request": "showAllRooms",
+                "offered": "[##cms.form.optionId##]",
+                "trackingNo": "[##cms.cookie.trackingid##]",
+                "lid": "[##cms.query.clid|(1)##]",
+                "unit": "10"
+            }
+        ]
+    } ' preview="" />
+</basis>
+[##db.showAllRooms.result##]
