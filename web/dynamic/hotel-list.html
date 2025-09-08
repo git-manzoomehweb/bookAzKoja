@@ -959,7 +959,7 @@
                                                 {
                                                     this.show_rooms(i, item)}</div>
 
-                                            <form method="post" action='/Client_Hotel_Information.bc?lid=1' className="text-center more-rooms--content" target="_blank">
+                                            <form method="post" action='/Client_Hotel_Information_test.bc?lid=1' className="text-center more-rooms--content" target="_blank">
                                                 {this.renderproviderid_hotelInfo(item)}
                                                 <input type="hidden" value={item.families[0].optionId} name="optionId-hotel" />
                                                 <input type="hidden" value={item.hotelinfo.hotelsearch.hotelid} name="hotelid" />
@@ -1580,7 +1580,7 @@
                     let imghotel_ws = element.hotelinfo.hotelsearch.webserviceimage
                     if (imghotel_garanti == '') {
                         return <div className="image-container">
-                            <form method="post" action='/Client_Hotel_Information.bc?lid=1' target="_blank">
+                            <form method="post" action='/Client_Hotel_Information_test.bc?lid=1' target="_blank">
                                 {this.renderproviderid_hotelInfo(element)}
                                 <input type="hidden" value={element.families[0].optionId} name="optionId-hotel" />
                                 <input type="hidden" value={element.hotelinfo.hotelsearch.hotelid} name="hotelid" />
@@ -1603,7 +1603,7 @@
                         </div>
                     } else {
                         return <div className="image-container">
-                            <form method="post" action='/Client_Hotel_Information.bc?lid=1' target="_blank">
+                            <form method="post" action='/Client_Hotel_Information_test.bc?lid=1' target="_blank">
                                 {this.renderproviderid_hotelInfo(element)}
                                 <input type="hidden" value={element.families[0].optionId} name="optionId-hotel" />
                                 <input type="hidden" value={element.hotelinfo.hotelsearch.hotelid} name="hotelid" />

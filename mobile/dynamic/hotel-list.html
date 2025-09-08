@@ -289,9 +289,9 @@
 
 
 
-    <script type="text/javascript">
+      <script type="text/javascript">
         $(document).ready(function () {
-            fetch("/Client_Hotel_Json.bc", {
+            fetch("/testSahar", {
                 method: "POST",
                 body: 'lid=1&hotelid=[##cms.form.hotelid##]&cityid=[##cms.form.cityid##]&fdate=[##cms.form.fdate##]&tdate=[##cms.form.tdate##]&rooms=[##cms.json.header|cms.form.roomSearch##]&sid=[##cms.query.sid##]'
             }).then(response => response.text()).then(text => {
@@ -905,7 +905,7 @@
                                                 {
                                                     this.show_rooms(i, item)}</div>
 
-                                            <form method="post" action='/Client_Hotel_Information.bc?lid=1' className="text-center more-rooms--content" target="_blank">
+                                            <form method="post" action='/Client_Hotel_Information_test.bc?lid=1' className="text-center more-rooms--content" target="_blank">
                                                 {this.renderproviderid_hotelInfo(item)}
                                                 <input type="hidden" value={item.families[0].optionId} name="optionId-hotel" />
                                                 <input type="hidden" value={item.hotelinfo.hotelsearch.hotelid} name="hotelid" />
@@ -1416,13 +1416,13 @@
                     } else {
                         mainprovider = element.id.provider
                     }
-                    if (active_btn == '' || active_btn == undefined) {
+                     if (active_btn == '' || active_btn == undefined) {
                         this.setState(prevState => ({
                             state_active_btn: { ...prevState.state_active_btn, [i]: !prevState.state_active_btn[i] },
                         }))
                         this.showLoading(e, element, i);
                         setTimeout(() => {
-                            fetch('/Client_Hotel_ShowAllRooms.bc?lid=1', {
+                            fetch('/Client_Hotel_ShowAllRooms-test.bc?lid=1', {
                                 method: 'POST',
                                 body: `sid=[##cms.query.sid##]&mainprovider=${JSON.stringify(mainprovider)}&optionId=${encodeURIComponent(optionId)} `
                             })
@@ -1561,7 +1561,7 @@
                     let imghotel_ws = element.hotelinfo.hotelsearch.webserviceimage
                     if (imghotel_garanti == '') {
                         return <div className="image-container w-full">
-                            <form method="post" action='/Client_Hotel_Information.bc?lid=1' target="_blank">
+                            <form method="post" action='/Client_Hotel_Information_test.bc?lid=1' target="_blank">
                                 {this.renderproviderid_hotelInfo(element)}
                                 <input type="hidden" value={element.families[0].optionId} name="optionId-hotel" />
                                 <input type="hidden" value={element.hotelinfo.hotelsearch.hotelid} name="hotelid" />
@@ -1584,7 +1584,7 @@
                         </div>
                     } else {
                         return <div className="image-container w-full">
-                            <form method="post" action='/Client_Hotel_Information.bc?lid=1' target="_blank">
+                            <form method="post" action='/Client_Hotel_Information_test.bc?lid=1' target="_blank">
                                 {this.renderproviderid_hotelInfo(element)}
                                 <input type="hidden" value={element.families[0].optionId} name="optionId-hotel" />
                                 <input type="hidden" value={element.hotelinfo.hotelsearch.hotelid} name="hotelid" />
