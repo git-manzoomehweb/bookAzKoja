@@ -563,7 +563,7 @@ body:has(.hotel-elmentsssss) .searchHistory-content {
   height: fit-content !important;
 }
 .item-details-hotel:not(:last-child) {
-  border-bottom: none !important;
+  /* border-bottom: none !important; */
   margin: 0.5em 0;
 }
 .action-loading {
@@ -751,6 +751,44 @@ body:has(input.childcount[value="3"]) .child-count {
 }
 body:has(input.childcount[value="4"]) .child-count {
   display: inline-block !important;
+}
+.loading-container {
+  display: none !important;
+}
+.loading-text {
+  animation: 1.6s fader infinite;
+}
+@keyframes fader {
+  from {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.hotels-status-f li {
+  border: 1px solid black;
+}
+.hotel-crds {
+  border-style: dashed !important;
+  border-radius: 12px !important;
+  border-width: 1px !important;
+  border-top-color: #0c8ade;
+  border-left-color: #0c8ade;
+  border-right-color: #ffc700 !important;
+  border-bottom-color: #0c8ade !important;
+}
+.brief-info * {
+  font-size: 14px !important;
+}
+.supplier-content .answer-info::before {
+  display: none !important;
+}
+.hotels-status-f li:has(.active) {
+  border: 1px solid var(--primary-700) !important;
+}
+.hotels-status-f li:hover {
+  border: 1px solid var(--primary-300) !important;
 }
 @media not all and (min-width: 1024px) {
   .provider-content {

@@ -33,12 +33,12 @@
     <basis core="call" file="header.inc" />
 
     <main class="mt-40 mb-14 flex flex-col   items-center">
-        <span class="hidden hotel-elmentsssss">[##cms.form.coHotel##]</span>
-        <span class="hidden city-elmentsssss">[##cms.form.cityid##]</span>
-        <span class="hidden fdate-elmentsssss">[##cms.form.fdate##]</span>
-        <span class="hidden tdate-elmentsssss">[##cms.form.tdate##]</span>
-        <span class="hidden passengers-container-s">[##cms.json.header|cms.form.roomSearch##]</span>
-
+        <div><span class="hidden hotel-elmentsssss">[##cms.form.coHotel##]</span>
+            <span class="hidden city-elmentsssss">[##cms.form.cityid##]</span>
+            <span class="hidden fdate-elmentsssss">[##cms.form.fdate##]</span>
+            <span class="hidden tdate-elmentsssss">[##cms.form.tdate##]</span>
+            <span class="hidden passengers-container-s">[##cms.json.header|cms.form.roomSearch##]</span>
+        </div>
 
         <div id="bg-popup" class="unvisible"></div>
         <div class="message-box unvisible">
@@ -84,8 +84,7 @@
         </div>
         <section class="w-full flex justify-center">
             <div class="px-4 w-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col gap-[30px]">
-                <img width="1280" height="200" src="[##cms.cms.cdn##]/images/search-bg.jpg" alt="search-bg"
-                    class="w-full object-cover h-[200px] rounded-xl" />
+
                 <div class="w-full flex flex-col">
                     <img loading="lazy" src="[##cms.cms.cdn##]/images/polygan.svg" width="1280" height="81"
                         alt="polygan" class="w-full" />
@@ -895,7 +894,7 @@
                                                 </div>
 
                                                 <ul className="brief-info">
-                                                    <div className="flex w-full justify-between items-center">
+                                                    <div className="flex w-full justify-between flex-col">
                                                         <li>
                                                             <div className="hotel-location 
                                                     ">
@@ -1277,7 +1276,11 @@
                         return <p className="has-not"><div className="icon hidden"><i className="fa fa-coffee"></i><i className="far fa-spoon"></i></div>بدون وعده غذایی</p>
                     } else if (element == 'B.B' || element == 'BB') {
                         return <p><div className="icon hidden"><i className="fa fa-coffee"></i></div>با صبحانه</p>
-                    } else if (element == 'H.B' || element == 'HB') {
+                    }
+                    else if (element == 'F.B' || element == 'FB') {
+                        return <p><div className="icon hidden"><i className="fa fa-coffee"></i></div>FB </p>
+                    }
+                    else if (element == 'H.B' || element == 'HB') {
                         return <p><div className="icon hidden"><i className="fa fa-coffee"></i><i className="far fa-spoon"></i></div>با صبحانه و نهار </p>
                     } else {
                         return <p><div className="icon hidden"><i className="fa fa-hotel"></i></div>{element}</p>
@@ -1475,7 +1478,7 @@
                             let stingS = numS.toString();
 
                             index = stingF + stingS
-                            indents.push(<div className="item-details-hotel hotel-element relative   p-[2px] rounded-xl">
+                            indents.push(<div className="item-details-hotel  hotel-crds relative   p-[2px] rounded-xl">
                                 <form method="post" action="/Client_Show_Hotel_ver.2.bc?lid=1" className='z-10   relative p-3 flex flex-col gap-3 justify-between  '>
                                     <input type="hidden" value={this.state.state_currency_unit} name="rate-unit" className="rate-unit" />
                                     <input type="hidden" value={this.state.state_currency_cost} name="rate-cost" className="rate-cost" />
