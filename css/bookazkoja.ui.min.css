@@ -1773,3 +1773,9 @@ button.search-hotel:hover {
   }
 }
 /* __________________________ */
+.label-hotels-t {
+  height: 23px;
+}
+.label-hotels-t span {
+  padding-right: 13px;
+}

@@ -525,6 +525,7 @@ body:has(.hotel-elmentsssss) .searchHistory-content {
   width: 100% !important;
   height: 100% !important;
   border-radius: 0.75rem !important;
+  max-width: unset !important;
 }
 
 .img-item::before {
@@ -551,6 +552,7 @@ body:has(.hotel-elmentsssss) .searchHistory-content {
 .details-row.fixed.visible {
   display: flex !important;
   backdrop-filter: blur(4px);
+  z-index: 999;
 }
 .filter-popup {
   backdrop-filter: blur(4px);
@@ -830,7 +832,7 @@ body:has(input.childcount[value="4"]) .child-count {
 
   .sticky-element {
     position: sticky;
-    top: 95px;
+    top: 45px;
     padding-top: 10px;
     padding-bottom: 10px;
     background: #fff;
@@ -885,4 +887,26 @@ body:has(input.childcount[value="4"]) .child-count {
 }
 .h-\[37vh\] {
   height: 40vh;
+}
+main a.adv-tag:hover img {
+  transform: unset !important;
+}
+.search-box-container.fixed-search-box {
+  position: fixed;
+  top: 68px;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  padding: 0;
+}
+@media (max-width: 1024px) {
+  .search-box-container.fixed-search-box {
+    top: 45px;
+  }
+}
+.text-primary-900 {
+  color: var(--primary-900);
+}
+.mt-32 {
+  margin-top: 6rem !important;
 }

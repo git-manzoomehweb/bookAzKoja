@@ -84,11 +84,12 @@
         </div>
         <section class="w-full flex justify-center">
             <div class="px-4 w-full lg:px-4 xl:!w-[1280px] xl:!px-0 flex flex-col gap-[30px]">
-
+                <img width="1280" height="200" src="[##cms.cms.cdn##]/images/search-bg.jpg" alt="search-bg"
+                    class="w-full object-cover h-[200px] rounded-xl" />
                 <div class="w-full flex flex-col">
                     <img loading="lazy" src="[##cms.cms.cdn##]/images/polygan.svg" width="1280" height="81"
-                        alt="polygan" class="w-full" />
-                    <div class="w-full px-6 mt-[-210px] fa search-box-container">
+                        alt="polygan" class="w-full hidden" />
+                    <div class="w-full px-6 fa search-box-container">
                         <div class="w-full linear1 min-h-[207px] rounded-xl p-[4px]">
                             <div
                                 class="w-full min-h-[207px] bg-white rounded-xl justify-center px-4 flex flex-col gap-3">
@@ -103,7 +104,7 @@
                                     <basis core="print" datamembername="db.info">
                                         <face filter="TypeID=240 and valueID=4181587">
                                             <a href="tel:@text"
-                                                class="flex hover:shadow-lg text-secondary-2-700 group items-center text-sm hover:text-white hover:bg-secondary-2-700 rounded-md pl-2">
+                                                class="flex hover:shadow-lg text-secondary-2-700 group items-center text-sm hover:text-white hover:bg-secondary-2-700 rounded-md pl-2 hidden">
                                                 <svg width="48" height="48" viewBox="0 0 48 48" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <g opacity="0.4">
@@ -336,7 +337,7 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
-            fetch("/testSahar", {
+            fetch("/Client_Hotel_Json.bc", {
                 method: "POST",
                 body: 'lid=1&hotelid=[##cms.form.hotelid##]&cityid=[##cms.form.cityid##]&fdate=[##cms.form.fdate##]&tdate=[##cms.form.tdate##]&rooms=[##cms.json.header|cms.form.roomSearch##]&sid=[##cms.query.sid##]'
             }).then(response => response.text()).then(text => {
@@ -958,7 +959,7 @@
                                                 {
                                                     this.show_rooms(i, item)}</div>
 
-                                            <form method="post" action='/Client_Hotel_Information_test.bc?lid=1' className="text-center more-rooms--content" target="_blank">
+                                            <form method="post" action='/Client_Hotel_Information.bc?lid=1' className="text-center more-rooms--content" target="_blank">
                                                 {this.renderproviderid_hotelInfo(item)}
                                                 <input type="hidden" value={item.families[0].optionId} name="optionId-hotel" />
                                                 <input type="hidden" value={item.hotelinfo.hotelsearch.hotelid} name="hotelid" />
@@ -1099,19 +1100,19 @@
                                         </div>
                                     </aside>
 
-                                    <a target="_blank" href="[##cms.host.advertisement-r1##]" rel="nofollow" className="w-full hover:shadow-lg flex h-[186px] rounded-xl overflow-hidden">
+                                    <a target="_blank" href="[##cms.host.advertisement-r1##]" rel="nofollow" className="adv-tag w-full hover:shadow-lg flex h-[186px] rounded-xl overflow-hidden">
                                         <img src="[##cms.cms.cdn##]/images/advertisement-r1.jpg" className="w-full h-full object-cover" alt="advertisement-r1" />
                                     </a>
-                                    <a target="_blank" href="[##cms.host.advertisement-r2##]" rel="nofollow" className="w-full hover:shadow-lg flex h-[186px] rounded-xl overflow-hidden">
+                                    <a target="_blank" href="[##cms.host.advertisement-r2##]" rel="nofollow" className="adv-tag w-full hover:shadow-lg flex h-[186px] rounded-xl overflow-hidden">
                                         <img src="[##cms.cms.cdn##]/images/advertisement-r2.jpg" className="w-full h-full object-cover" alt="advertisement-r2" />
                                     </a>
-                                    <a target="_blank" href="[##cms.host.advertisement-r3##]" rel="nofollow" className="w-full hover:shadow-lg flex h-[186px] rounded-xl overflow-hidden">
+                                    <a target="_blank" href="[##cms.host.advertisement-r3##]" rel="nofollow" className="adv-tag w-full hover:shadow-lg flex h-[186px] rounded-xl overflow-hidden">
                                         <img src="[##cms.cms.cdn##]/images/advertisement-r3.jpg" className="w-full h-full object-cover" alt="advertisement-r3" />
                                     </a>
-                                    <a target="_blank" href="[##cms.host.advertisement-r4##]" rel="nofollow" className="w-full hover:shadow-lg flex h-[186px] rounded-xl overflow-hidden">
+                                    <a target="_blank" href="[##cms.host.advertisement-r4##]" rel="nofollow" className="adv-tag w-full hover:shadow-lg flex h-[186px] rounded-xl overflow-hidden">
                                         <img src="[##cms.cms.cdn##]/images/advertisement-r4.jpg" className="w-full h-full object-cover" alt="advertisement-r4" />
                                     </a>
-                                    <a target="_blank" href="[##cms.host.advertisement-r5##]" rel="nofollow" className="w-full hover:shadow-lg flex h-[186px] rounded-xl overflow-hidden">
+                                    <a target="_blank" href="[##cms.host.advertisement-r5##]" rel="nofollow" className="adv-tag w-full hover:shadow-lg flex h-[186px] rounded-xl overflow-hidden">
                                         <img src="[##cms.cms.cdn##]/images/advertisement-r5.jpg" className="w-full h-full object-cover" alt="advertisement-r5" />
                                     </a>
                                 </div>
@@ -1150,23 +1151,23 @@
                                     </div>
                                 </div>
                                 <div className="w-[270px] flex flex-col gap-4">
-                                    <a target="_blank" href="[##cms.host.advertisement-l1##]" rel="nofollow" className="w-full hover:shadow-lg flex h-[561px] rounded-xl overflow-hidden">
+                                    <a target="_blank" href="[##cms.host.advertisement-l1##]" rel="nofollow" className="adv-tag w-full hover:shadow-lg flex h-[561px] rounded-xl overflow-hidden">
                                         <img src="[##cms.cms.cdn##]/images/advertisement-l1.jpg" className="w-full h-full object-cover" alt="advertisement-l1" />
                                     </a>
 
-                                    <a target="_blank" href="[##cms.host.advertisement-l2##]" rel="nofollow" className="w-full hover:shadow-lg flex h-[349px] rounded-xl overflow-hidden">
+                                    <a target="_blank" href="[##cms.host.advertisement-l2##]" rel="nofollow" className="adv-tag w-full hover:shadow-lg flex h-[349px] rounded-xl overflow-hidden">
                                         <img src="[##cms.cms.cdn##]/images/advertisement-l2.jpg" className="w-full h-full object-cover" alt="advertisement-l2" />
                                     </a>
-                                    <a target="_blank" href="[##cms.host.advertisement-l3##]" rel="nofollow" className="w-full hover:shadow-lg flex h-[349px] rounded-xl overflow-hidden">
+                                    <a target="_blank" href="[##cms.host.advertisement-l3##]" rel="nofollow" className="adv-tag w-full hover:shadow-lg flex h-[349px] rounded-xl overflow-hidden">
                                         <img src="[##cms.cms.cdn##]/images/advertisement-l3.jpg" className="w-full h-full object-cover" alt="advertisement-l3" />
                                     </a>
-                                    <a target="_blank" href="[##cms.host.advertisement-l4##]" rel="nofollow" className="w-full hover:shadow-lg flex h-[349px] rounded-xl overflow-hidden">
+                                    <a target="_blank" href="[##cms.host.advertisement-l4##]" rel="nofollow" className="adv-tag w-full hover:shadow-lg flex h-[349px] rounded-xl overflow-hidden">
                                         <img src="[##cms.cms.cdn##]/images/advertisement-l4.jpg" className="w-full h-full object-cover" alt="advertisement-l4" />
                                     </a>
-                                    <a target="_blank" href="[##cms.host.advertisement-l5##]" rel="nofollow" className="w-full hover:shadow-lg flex h-[349px] rounded-xl overflow-hidden">
+                                    <a target="_blank" href="[##cms.host.advertisement-l5##]" rel="nofollow" className="adv-tag w-full hover:shadow-lg flex h-[349px] rounded-xl overflow-hidden">
                                         <img src="[##cms.cms.cdn##]/images/advertisement-l5.jpg" className="w-full h-full object-cover" alt="advertisement-l5" />
                                     </a>
-                                    <a target="_blank" href="[##cms.host.advertisement-l6##]" rel="nofollow" className="w-full hover:shadow-lg flex h-[349px] rounded-xl overflow-hidden">
+                                    <a target="_blank" href="[##cms.host.advertisement-l6##]" rel="nofollow" className="adv-tag w-full hover:shadow-lg flex h-[349px] rounded-xl overflow-hidden">
                                         <img src="[##cms.cms.cdn##]/images/advertisement-l6.jpg" className="w-full h-full object-cover" alt="advertisement-l6" />
                                     </a>
                                 </div>
@@ -1443,7 +1444,7 @@
                         }))
                         this.showLoading(e, element, i);
                         setTimeout(() => {
-                            fetch('/Client_Hotel_ShowAllRooms-test.bc?lid=1', {
+                            fetch('/Client_Hotel_ShowAllRooms.bc?lid=1', {
                                 method: 'POST',
                                 body: `sid=[##cms.query.sid##]&mainprovider=${JSON.stringify(mainprovider)}&optionId=${encodeURIComponent(optionId)} `
                             })
@@ -1507,13 +1508,7 @@
                                             {this.renderProviderConfigs
                                                 (element[j])}
 
-                                            <div className=''>
-                                                <span className="details-btn text-secondary-1-500 group hover:text-zinc-500 flex items-center gap-2 cursor-pointer btn-rule"
-                                                    key={index}
-                                                    onClick={e => this.handleruleRoom(e, element[j], index)}>
-                                                    <img className="group-hover:grayscale" src="[##cms.cms.cdn##]/images/Board menu.svg" alt="BoardMenu" width="24" height="24" />
-                                                    شرایط و قوانین</span>
-                                            </div>
+                                            {this.renderLabels(element[j])}
 
                                         </div>
                                         <div className="col-details-row w-full font_12">
@@ -1533,8 +1528,17 @@
                                                 <b>{this.renderUnit(item.moneytype, this.state.state_currency_unit)}</b>
                                             </div>
 
-                                            {this.renderProviderLink
-                                                (element[j])}
+                                            <div className="flex items-center gap-3">
+                                                <div className=''>
+                                                    <span className="details-btn text-primary-900 group hover:text-zinc-500 flex items-center gap-2 cursor-pointer btn-rule"
+                                                        key={index}
+                                                        onClick={e => this.handleruleRoom(e, element[j], index)}>
+                                                        <img className="group-hover:grayscale" src="[##cms.cms.cdn##]/images/Board menu.svg" alt="BoardMenu" width="24" height="24" />
+                                                        شرایط و قوانین</span>
+                                                </div>
+                                                {this.renderProviderLink
+                                                    (element[j])}
+                                            </div>
 
                                         </div>
                                     </div>
@@ -1583,7 +1587,7 @@
                     let imghotel_ws = element.hotelinfo.hotelsearch.webserviceimage
                     if (imghotel_garanti == '') {
                         return <div className="image-container">
-                            <form method="post" action='/Client_Hotel_Information_test.bc?lid=1' target="_blank">
+                            <form method="post" action='/Client_Hotel_Information.bc?lid=1' target="_blank">
                                 {this.renderproviderid_hotelInfo(element)}
                                 <input type="hidden" value={element.families[0].optionId} name="optionId-hotel" />
                                 <input type="hidden" value={element.hotelinfo.hotelsearch.hotelid} name="hotelid" />
@@ -1606,7 +1610,7 @@
                         </div>
                     } else {
                         return <div className="image-container">
-                            <form method="post" action='/Client_Hotel_Information_test.bc?lid=1' target="_blank">
+                            <form method="post" action='/Client_Hotel_Information.bc?lid=1' target="_blank">
                                 {this.renderproviderid_hotelInfo(element)}
                                 <input type="hidden" value={element.families[0].optionId} name="optionId-hotel" />
                                 <input type="hidden" value={element.hotelinfo.hotelsearch.hotelid} name="hotelid" />
@@ -1672,6 +1676,30 @@
                             </button>)
                     }
                 }
+                renderLabels(element) {
+                    if (
+                        element.provider_configs &&
+                        element.provider_configs.labels &&
+                        element.provider_configs.labels.length > 0
+                    ) {
+                        return (
+                            <div className="flex items-center gap-3">
+                                {element.provider_configs.labels.map((item, index) => (
+                                    <div
+                                        key={index}
+                                        className="px-2 label-hotels-t flex justify-center items-center py-1 text-center text-white  text-xs  relative"
+                                    >
+                                        <img width='69' height='23' className='absolute w-full z-0 top-0 left-0' src="[##cms.cms.cdn##]/images/Union-lable.png" alt="labels" />
+                                        <span class="z-10 relative ">{item.label}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        );
+                    } else {
+                        return null;
+                    }
+                }
+
                 renderProviderConfigs(element) {
                     if (element.provider_configs) {
                         return (
@@ -2267,6 +2295,17 @@
             }
             ReactDOM.render(<App />, document.getElementById('app'))
         }
+    </script>
+    <script>
+        window.addEventListener("scroll", function () {
+            const searchBox = document.querySelector(".search-box-container");
+            const scrollY = window.scrollY;
+            if (scrollY > 300) {
+                searchBox.classList.add("fixed-search-box");
+            } else {
+                searchBox.classList.remove("fixed-search-box");
+            }
+        });
     </script>
 </body>
 

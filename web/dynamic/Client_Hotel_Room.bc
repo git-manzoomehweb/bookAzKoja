@@ -1,0 +1,764 @@
+<div id="app"></div>
+<script defer src="https://cdn.basiscore.net/basisfly.com/js/reservation_react.production.min.js"></script>
+<script defer src="https://cdn.basiscore.net/basisfly.com/js/reservation_react_dom.production.min.js"></script>
+<script defer src="https://cdn.basiscore.net/basisfly.com/js/reservation_babel.min.js"></script>
+<script defer src="https://cdn.basiscore.net/basisfly.com/js/reservation_react_paging.js"></script>
+<script type="text/babel">
+    class App extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {
+                data: [],
+                data_provider: [],
+                library: null,
+                librarySecond: null,
+                perPage: 20,
+                currentPage: 1,
+                currentPage2: 2,
+                currentPage3: 3,
+                maxPage: null,
+                loader: {},
+                room_rule: {},
+                room_rule_popUp: {},
+                state_currency_unit: "",
+                state_currency_cost: 1,
+                state_floatdigit: "",
+                filterRoomName: "",
+                state_service: ""
+            };
+            this.service = [];
+        }
+        componentDidMount() {
+            var xhr = new XMLHttpRequest();
+            xhr.addEventListener("readystatechange", () => {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        var response = xhr.responseText,
+                            json = JSON.parse(response.replace(/\'/g, '"'));
+                        this.setState(state => ({
+                            ...state,
+                            data: json.msg ? json : json.families
+                        }), () => {
+
+                            this.reorganiseLibrary();
+                            $(".loading-hotel-RoomList").hide();
+                            $("#app").show()
+
+
+                        })
+
+                    }
+                }
+            })
+            var mainprovider = '[##cms.form.mainprovider##]'
+            var optionId = '[##cms.form.optionId-hotel##]'
+            var IdFlight = '[##cms.form.Flight_Id|cms.form.productid##]'
+            let clid = '[##cms.form.clid|(1)##]';
+            if ('[##cms.form.type_module|cms.form.key##]' == 6) {
+                var params = 'idproduct=' + IdFlight + '&optionId=' + encodeURIComponent(optionId) + ''
+                xhr.open("POST", "/Client_FlightHotel_ShowAllRooms.bc", true);
+                xhr.send(params);
+            } else {
+                var params = 'optionId=' + encodeURIComponent(optionId) + ''
+                xhr.open("POST", "/Client_Hotel_ShowAllRooms.bc?clid=[##cms.form.clid|(1)##]", true);
+                xhr.send(params);
+            }
+            let getCurrencyObject = localStorage.getItem('currencyObject');
+            let jsonCurrency = JSON.parse(getCurrencyObject);
+            if (jsonCurrency) {
+                this.setState({
+                    state_currency_unit: jsonCurrency.currency_unit,
+                    state_currency_cost: jsonCurrency.currency_cost,
+                    state_floatdigit: jsonCurrency.floatdigit,
+                })
+            }
+            $(document).on('update_result', (event, service) => {
+                this.reorganiseLibrary(service)
+            })
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${'rkey'}=`);
+            if (parts.length === 2) {
+                fetch('/Client_User_Type.inc')
+                    .then(response => response.text())
+                    .then(user => {
+
+                        if (user == 1) {
+                            fetch('/Client_Provider_Library.bc')
+                                .then(response => response.json())
+                                .then(provider => {
+                                    this.setState({ data_provider: provider })
+                                }).catch(error => console.error(error));
+
+                        }
+                    }).catch(error => console.error(error))
+            }
+        }
+        componentDidUpdate() {
+            $('.room_rule').each(function () {
+                if ($(this).closest(".info-Hotel").find(".provider").val() == 0) {
+                    $(this).addClass("notactive_rule")
+                } else {
+                    $(this).addClass("active_rule")
+                }
+            })
+        }
+        reorganiseLibrary = (service) => {
+            const { filterRoomName, perPage, data } = this.state;
+            let library = data;
+            let librarySecond = data;
+            librarySecond = _.chunk(librarySecond, perPage);
+            this.setState({
+                librarySecond,
+                currentPage: 1,
+                maxPage: librarySecond.length === 0 ? 1 : librarySecond.length
+            })
+
+            if (filterRoomName !== "") {
+                library = library.filter(item => {
+                    if (this.renderRoomName(item.availablerooms).includes(filterRoomName))
+                        return item
+                }
+                )
+
+            }
+            if (service !== undefined) {
+                if (service !== "") {
+                    library = library.filter(item => {
+                        if (service.includes(item.services)) return item;
+                    })
+                }
+            }
+            library = _.chunk(library, perPage);
+            this.setState({
+                library,
+                currentPage: 1,
+                maxPage: library.length === 0 ? 1 : library.length
+            })
+        }
+        renderRoomName(element) {
+            let elementAdd = ""
+            for (let i = 0; i < element.length; i++) {
+                elementAdd += element[i].info.room.toLowerCase() + ','
+            }
+            return elementAdd
+        }
+
+        // Previous Page
+        previousPage = event => {
+            this.setState({
+                currentPage: this.state.currentPage - 1,
+                currentPage2: this.state.currentPage2 - 1,
+                currentPage3: this.state.currentPage3 - 1
+            })
+        }
+
+        // Next Page 
+        nextPage = event => {
+            this.setState({
+                currentPage: this.state.currentPage + 1,
+                currentPage2: this.state.currentPage2 + 1,
+                currentPage3: this.state.currentPage3 + 1
+            })
+        }
+
+        // Next Page3
+        nextPage3 = event => {
+            this.setState({
+                currentPage: this.state.currentPage3,
+                currentPage2: this.state.currentPage3 + 1,
+                currentPage3: this.state.currentPage3 + 2
+            })
+        }
+
+        // handler per page
+        handlePerPage = (evt) =>
+            this.setState({
+                perPage: evt.target.value
+            }, () => this.reorganiseLibrary());
+
+        // handler render of library
+
+        // handle filter name
+        handlefilterRoomName = (event) => {
+            const { state_service } = this.state;
+            this.setState(
+                {
+                    filterRoomName: event.target.value.toLowerCase()
+                },
+                () => {
+                    this.reorganiseLibrary(state_service);
+                }
+            )
+
+
+        }
+        renderLibrary = () => {
+            const { library, currentPage } = this.state;
+            if (!library || (library && library.length === 0)) {
+                let clid = '[##cms.form.clid|(1)##]';
+                if (clid == 1) {
+                    return <div className="empty_list">نتیجه ای یافت نشد</div>
+                } else if (clid == 2) {
+                    return <div className="empty_list">No Result</div>
+                } else if (clid == 3) {
+                    return <div className="empty_list">لا توجد نتيجة</div>
+                }
+            }
+            return library[currentPage - 1].map((item, i) => {
+               
+                return (<form method="post" action={this.renderAction(item)} className="info-Hotel"><span className="hover_effect"></span>{this.renderOptionId(item)}
+                    {this.renderadults(item)}
+                    {this.renderchildwithbed(item)}
+                    {this.renderchildwithoutbed(item)}
+                    {this.renderinfant(item)}
+                    {this.renderroomid(item)}
+                    {this.renderid(item)}
+                    {this.renderproviderId(item)}
+                    {this.renderprovider(item)}
+                    {this.renderhotelidRooms(item)}
+                    {this.rendernightsRooms(item)}
+                    {this.rendersupplierRooms(item)}
+                    {this.renderFlightIdOtherRooms('[##cms.form.FlightId|cms.form.idProduct##]')}
+                    <input type="hidden" value={this.state.state_currency_unit} name="rate-unit" className="rate-unit" />
+                    <input type="hidden" value={this.state.state_currency_cost} name="rate-cost" className="rate-cost" />
+                    <input type="hidden" value={this.state.state_floatdigit} name="rate-floatdigit" className="rate-floatdigit" />
+                    <input type="hidden" value='[##cms.form.inscountry##]' name="inscountry" />
+                    <input type="hidden" value='[##cms.form.fsupplier##]' name="fsupplier" />
+                    <input type="hidden" value='[##cms.form.hsupplier##]' name="hsupplier" />
+                    <input type="hidden" value="[##cms.form.checkin##]" name="checkin" />
+                    <input type="hidden" value="[##cms.form.checkout##]" name="checkout" />
+                    <input type="hidden" value="[##cms.form.from##]" name="from" />
+                    <input type="hidden" value="[##cms.form.to##]" name="to" />
+                    <input type="hidden" value="[##cms.form.DepartureCity##]" name="DepartureCity" />
+                    <input type="hidden" value="[##cms.form.DestinationCity##]" name="DestinationCity" />
+                    <input type="hidden" value="[##cms.form.Hotel-Date|(0)##]" name="Hotel-Date" />
+                    <input type="hidden" value="[##cms.form.FlightClass##]" name="FlightClass" />
+                    <input type="hidden" value="[##cms.form.cityid##]" name="cityid" />
+                    <input type="hidden" value="[##cms.form.coHotel##]" name="coHotel" />
+                    <input type="hidden" value='[##cms.json.header|cms.form.roomSearch##]' name="roomSearch" />
+                    <input type="hidden" value="[##cms.form.fdate##]" name="fdate" />
+                    <input type="hidden" value="[##cms.form.tdate##]" name="tdate" /><div className="eachroom"><div className="first_part"><div className="room_type"><span className="fa fa-bed"></span><span className="Roomtype_section">{this.renderRoomtype(item)}</span></div>
+                        <div className="room_viewname"><span>{this.renderviewnameRooms(item)}</span></div><div className="room_availability">{this.renderavailability(item)}
+                        </div>
+                        <div className="room_service">{item.services}</div>
+                        {this.renderProviderName(item)}
+                    </div><div className="room_rule">
+                            <span className="fa fa-info-o" key={i} data-active="0" onClick={e => this.handleruleRoom(e, item, i)}></span>
+                            <span className="ruleRoom_txt" key={i} data-active="0" onClick={e => this.handleruleRoom(e, item, i)}>{this.renderTextLang_rule(item)}</span>
+                        </div><div className="last_part">
+                            <div className="cost_part">
+                                {this.renderCommissionRooms(item, this.renderUnit(this.state.state_currency_unit))}
+                                <div><span>{this.renderPriceTitle()}</span>
+                                    <span class="totalPrice">{new Intl.NumberFormat().format(this.rendertotalPrice(item.totalCom, this.state.state_currency_cost, this.state.state_floatdigit))}</span>
+                                    <span className="moneytype">{this.renderUnit(this.state.state_currency_unit)}</span></div>
+
+                            </div>
+
+                            <div className="btn_part">{this.renderTextLang_btn(item)}</div> </div><div className="clr"></div>
+                    </div>
+                    <div key={i} className={`popup-ruleRoom ${!this.state.room_rule_popUp[i] ? "unvisible" : "visible"}`}>
+                        <div className="room_rule_section">
+                            <div className="room_rule_header"><span>{this.renderTextLang_rule(item)}</span><span className="fa fa-close" onClick={() => this.closeruleRoom(i)}></span></div>
+                            <div key={i} className={`loader-rule ${!this.state.loader[i] ? "unvisible" : "visible"}`}>
+                                <div id="ballsWaveG">
+                                    <div id="ballsWaveG_1" className="ballsWaveG"></div>
+                                    <div id="ballsWaveG_2" className="ballsWaveG"></div>
+                                    <div id="ballsWaveG_3" className="ballsWaveG"></div>
+                                    <div id="ballsWaveG_4" className="ballsWaveG"></div>
+                                    <div id="ballsWaveG_5" className="ballsWaveG"></div>
+                                    <div id="ballsWaveG_6" className="ballsWaveG"></div>
+                                    <div id="ballsWaveG_7" className="ballsWaveG"></div>
+                                    <div id="ballsWaveG_8" className="ballsWaveG"></div>
+                                </div>
+                            </div>
+                            <div className="room_rule_text" key={i} dangerouslySetInnerHTML={{ __html: this.state.room_rule[i] }}></div>
+                        </div>
+                    </div>
+                </form>)
+            })
+        }
+
+
+        render() {
+            const { library, currentPage, perPage, maxPage, librarySecond } = this.state;
+            return (
+                <div className="hotel-RoomList section_hotel_info">
+                    <div className="hotel-filter">
+                        {this.renderfilterlang()}
+                        <div className="filter-row">
+                            {this.renderroomnamelang()}
+                            <input value={this.state.filterRoomName} onChange={((e) => this.handlefilterRoomName(e))} placeholder={this.renderRoomPlaceholderLang()} className="" />
+                        </div>
+                        {this.ShowFilterRoom()}
+                    </div>
+
+                    {this.renderLibrary()}
+                    <ul id="page-numbers">
+                        <li className="nexprev">
+                            {currentPage !== 1 && (
+                                <button onClick={this.previousPage}><i className="fa fa-backward"></i></button>
+                            )}
+                        </li>
+                        <li className="controls-active background-color_2 font-weight">{this.state.currentPage}</li>
+                        {(this.state.currentPage2 < maxPage) && (<li className="controls" onClick={this.nextPage}>{this.state.currentPage2}</li>
+                        )}
+                        {(this.state.currentPage3 < maxPage) && (<li className="controls" onClick={this.nextPage3}>{this.state.currentPage3}</li>
+                        )}
+                        <li className="restControls">...</li>
+                        <li className="controls">{this.state.maxPage}</li>
+                        <li className="nexprev">
+                            {(this.state.currentPage < maxPage) && (<button onClick={this.nextPage}><i className="fa fa-forward"></i></button>
+                            )}
+                        </li>
+                    </ul>
+
+                </div>
+
+            )
+        }
+        renderfilterlang() {
+            let clid = '[##cms.form.clid|(1)##]'
+            if (clid == 1) {
+                return <span>فیلتر براساس :</span>
+            } else if (clid == 2) {
+                return <span>Filter By :</span>
+            } else if (clid == 3) {
+                return <span>تصفية حسب :</span>
+            }
+        }
+        renderroomnamelang() {
+            let clid = '[##cms.form.clid|(1)##]'
+            if (clid == 1) {
+                return <span className="question">نام اتاق</span>
+            } else if (clid == 2) {
+                return <span className="question">Room Name</span>
+            } else if (clid == 3) {
+                return <span className="question">اسم الغرفة</span>
+            }
+        }
+        renderRoomPlaceholderLang() {
+            let clid = '[##cms.form.clid|(1)##]'
+            if (clid == 1) {
+                return "نام اتاق را وارد کنید"
+            } else if (clid == 2) {
+                return "Enter Room Name"
+            } else if (clid == 3) {
+                return "أدخل اسم الغرفة"
+            }
+        }
+        ShowFilterRoom() {
+            let clid = '[##cms.form.clid|(1)##]'
+            let element = this.state.data;
+            if (!element) return null;
+            else {
+                if (clid == 1) {
+                    return <div className="filter-row"><span className="question">خدمات اتاق</span><select onChange={(e) => this.handleChange(e)}>{this.renderservice(element)}</select></div>
+                } else if (clid == 2) {
+                    return <div className="filter-row"><span className="question">Room Service</span><select onChange={(e) => this.handleChange(e)}>{this.renderservice(element)}</select></div>
+                } else if (clid == 3) {
+                    return <div className="filter-row"><span className="question">خدمة الغرف</span><select onChange={(e) => this.handleChange(e)}>{this.renderservice(element)}</select></div>
+                }
+            }
+        }
+        renderservice(element) {
+            if (element.length !== undefined) {
+                let sentences = [...(new Set(element.map(d => d['services'])))]
+                let singleSentence = sentences.map(s => <React.Fragment><option value={s}>{s}</option></React.Fragment>);
+                return (singleSentence)
+            }
+        }
+        handleChange = (event) => {
+            this.service = []
+            this.service.push(event.target.value)
+            $(document).trigger('update_result', [this.service]);
+            this.setState({
+                state_service: this.service,
+            })
+        }
+
+
+
+
+
+
+        renderAction(element) {
+            let type_module = '[##cms.form.type_module|cms.form.key##]'
+            let clid = '[##cms.form.clid|(1)##]'
+            if (type_module == 6) {
+                if (clid == 1) {
+                    return "/Client_Show_FH_ver.2.bc"
+                } else if (clid == 2) {
+                    return "/Client_Show_FH_En_ver.2.bc"
+                } else if (clid == 3) {
+                    return "/Client_Show_FH_Ar_ver.2.bc"
+                }
+
+            } else {
+                if (clid == 1) {
+                    return "/Client_Show_Hotel_ver.2.bc"
+                } else if (clid == 2) {
+                    return "/Client_Show_Hotel_En_ver.2.bc"
+                } else if (clid == 3) {
+                    return "/Client_Show_Hotel_Ar_ver.2.bc"
+                }
+
+            }
+        }
+        renderTextLang_rule(element) {
+            let clid = '[##cms.form.clid|(1)##]'
+            if (clid == 1) {
+                return 'قوانین اتاق'
+            } else if (clid == 2) {
+                return 'Room rules'
+            } else if (clid == 3) {
+                return 'قواعد الغرفة'
+            }
+        }
+        renderTextLang_btn(element) {
+            let clid = '[##cms.form.clid|(1)##]'
+            if (clid == 1) {
+                if (element.provider_configs) {
+                    return (
+                        <a href={element.provider_configs.link} className="link">رزرو هتل</a>
+                    )
+                }
+                else {
+                    return (<button type="submit">رزرو هتل</button>)
+                }
+            } else if (clid == 2) {
+                if (element.provider_configs) {
+                    return (
+                        <a href={element.provider_configs.link} className="link"> Reserve</a>
+                    )
+                }
+                else {
+                    return <button type="submit">Reserve</button>
+                }
+            } else if (clid == 3) {
+                if (element.provider_configs) {
+                    return (
+                        <a href={element.provider_configs.link} className="link">حجز فندقي</a>
+                    )
+                }
+                else {
+                    return <button type="submit">حجز فندقي</button>
+
+                }
+            }
+        }
+        renderFlightIdOtherRooms(element) {
+            if (element == '') {
+                return ''
+            } else {
+                if (element.indexOf('value') > -1) {
+                    return <span><input type="hidden" value={element} name="idws" /><input type="hidden" value={JSON.parse(element).value} name="idvalue" /><input type="hidden" value={JSON.parse(element).provider.provider_id} name="fprovider" /><input type="hidden" value={JSON.stringify(JSON.parse(element).provider)} name="fmainprovider" /></span>
+                } else {
+                    return <span><input type="hidden" value={element} name="idnows" /><input type="hidden" value="0" name="fprovider" /></span>
+                }
+            }
+
+        }
+        renderRoomtype(element) {
+            let lenavailablerooms = element.availablerooms.length
+            let indents = [];
+            for (let i = 0; i < lenavailablerooms; i++) {
+                indents.push(<span className="room">{element.availablerooms[i].info.room}</span>)
+            }
+            return (
+                indents
+            )
+        }
+        renderavailability(element) {
+            let lenavailablerooms = element.availablerooms.length
+            let indents = [];
+            for (let i = 0; i < lenavailablerooms; i++) {
+                let elem = element.availablerooms[i].info.availability
+                indents.push(<span className="availability">{element.availablerooms[i].info.availability}</span>)
+            }
+            return (
+                indents
+            )
+
+        }
+
+        renderOptionId(element) {
+            return <input type="hidden" value={element.optionId} name="optionId" />
+        }
+        rendertotalPrice(element, currency_cost, floatdigit) {
+            if (floatdigit == '') {
+                return element * currency_cost;
+            } else {
+                let toString_element = (element * currency_cost).toString();
+                if (toString_element.indexOf('.') > -1) {
+                    let parseFloat_element = parseFloat(toString_element).toFixed(floatdigit).toString();
+                    let parseFloat_element_split = parseFloat_element.split('.');
+                    if (parseFloat_element_split[1].indexOf('0') > -1) {
+                        return parseFloat(element * currency_cost).toFixed(1).toString();
+                    } else {
+                        return parseFloat(element * currency_cost).toFixed(floatdigit).toString();
+                    }
+                } else {
+                    return parseFloat(element * currency_cost).toFixed(floatdigit).toString();
+                }
+            }
+        }
+        renderPriceTitle() {
+            let clid = '[##cms.form.clid|(1)##]';
+
+            if (clid == 1) {
+                return "قیمت نهایی :";
+            }
+            else if (clid == 2) {
+                return "Final price :";
+            } else if (clid == 3) {
+                return "السعر النهائي :";
+
+            }
+        }
+        renderCommissionRooms(element, moneytype) {
+            let clid = '[##cms.form.clid|(1)##]';
+            let textCommission = "کمیسیون";
+            let textTotalCom = "قیمت بدون کمیسیون"
+            if (clid == 2) {
+                textCommission = "commission";
+                textTotalCom = "Price without commission"
+            } else if (clid == 3) {
+                textCommission = "عمولة";
+                textTotalCom = "السعر بدون عمولة"
+
+            }
+            if (element.commissioncost !== 0) {
+                return <div><span className="renderCommissionRooms"><span style={{ fontSize: "12px" }}>{textCommission} :</span>
+                    <span className="commissioncost">{new Intl.NumberFormat().format(this.rendertotalPrice(element.commissioncost, this.state.state_currency_cost, this.state.state_floatdigit))}</span>
+                    <span className="moneytype">{moneytype}</span></span><span style={{ margin: "0 5px" }}>-</span><span className="renderCommissionRooms"><span style={{ fontSize: "12px" }}>{textTotalCom} :</span>
+                        <span className="commissioncost">{new Intl.NumberFormat().format(this.rendertotalPrice(element.totalPrice, this.state.state_currency_cost, this.state.state_floatdigit))}</span>
+                        <span className="moneytype">{moneytype}</span></span> </div>
+
+
+            }
+        }
+        renderUnit(currency_unit) {
+            if (currency_unit == '') {
+                let moneytype = '[##cms.form.moneytype##]'
+                return moneytype;
+            } else {
+                return currency_unit;
+            }
+
+        }
+        renderadults(element) {
+            let lenavailablerooms = element.availablerooms.length
+            let indents = [];
+            for (let i = 0; i < lenavailablerooms; i++) {
+                let idx = i
+                indents.push(<input type="hidden" name={`_root.rooms__${idx}.adults`} value={element.availablerooms[i].info.adults} />)
+            }
+            return (
+                indents
+            )
+
+        }
+        renderchildwithbed(element) {
+            let lenavailablerooms = element.availablerooms.length
+            let indents = [];
+            for (let i = 0; i < lenavailablerooms; i++) {
+                let idx = i
+                indents.push(<input type="hidden" name={`_root.rooms__${idx}.childwithbed`} value={element.availablerooms[i].info.withbed} />)
+            }
+            return (
+                indents
+            )
+
+        }
+        renderchildwithoutbed(element) {
+            let lenavailablerooms = element.availablerooms.length
+            let indents = [];
+            for (let i = 0; i < lenavailablerooms; i++) {
+                let idx = i
+                indents.push(<input type="hidden" name={`_root.rooms__${idx}.childwithoutbed`} value={element.availablerooms[i].info.withoutbed} />)
+            }
+            return (
+                indents
+            )
+        }
+        renderinfant(element) {
+            let lenavailablerooms = element.availablerooms.length
+            let indents = [];
+            for (let i = 0; i < lenavailablerooms; i++) {
+                let idx = i
+                indents.push(<input type="hidden" name={`_root.rooms__${idx}.infant`} value={element.availablerooms[i].info.infant} />)
+            }
+            return (
+                indents
+            )
+
+        }
+        renderroomid(element) {
+            let lenavailablerooms = element.availablerooms.length
+            let indents = [];
+            for (let i = 0; i < lenavailablerooms; i++) {
+                let idx = i
+                indents.push(<input type="hidden" name={`_root.rooms__${idx}.roomid`} value={element.availablerooms[i].info.roomid} />)
+            }
+            return (
+                indents
+            )
+
+        }
+        renderprovider(element) {
+            let provider = element.id.provider
+            if (provider == undefined) {
+                return '';
+            } else {
+                return <input type="hidden" value={JSON.stringify(provider)} name="mainprovider" />
+            }
+        }
+        renderproviderId(element) {
+            let provider = element.id.provider
+            if (provider == undefined) {
+                return <input type="hidden" value="0" name="provider" className="provider" />;
+            }
+            else {
+                let providerId = element.id.provider.provider_id
+                return <input type="hidden" value={providerId} name="provider" className="provider" />;
+            }
+        }
+        renderid(element) {
+            let id = element.id
+            if (typeof id === 'string') {
+                return <input type="hidden" value={id} name="productid" />
+            } else if (typeof id === 'object') {
+                return <input type="hidden" value={id.hotelId} name="productid" />
+            }
+        }
+        renderhotelidRooms(element) {
+            let hotelIdFamily = element.id.hotelId
+            if (hotelIdFamily == undefined) {
+                return <input type="hidden" value={element.hotelid} name="hotelid" />
+            } else {
+                return <input type="hidden" value={hotelIdFamily} name="hotelid" />
+            }
+        }
+        rendernightsRooms(element) {
+            let hotelIdFamily = element.id.hotelId
+            if (hotelIdFamily == undefined) {
+                return <input type="hidden" value={element.nights} name="nightLink" />
+            } else {
+                return <input type="hidden" value={element.nights} name="nightLink" />
+            }
+        }
+        rendersupplierRooms(element) {
+            let hotelIdFamily = element.id.hotelId
+            if (hotelIdFamily == undefined) {
+                return <input type="hidden" value={element.supplier} name="supplier" />
+            } else {
+                return <input type="hidden" value={element.supplier} name="supplier" />
+            }
+        }
+        renderviewnameRooms(element) {
+            let lenavailablerooms = element.availablerooms.length
+            let indents = [];
+            for (let i = 0; i < lenavailablerooms; i++) {
+                let elem = element.availablerooms[i].info.viewname
+                indents.push(<span>{element.availablerooms[i].info.viewname}</span>)
+            }
+            return (
+                indents
+            )
+
+        }
+
+        renderProviderName(element) {
+            let clid = '[##cms.form.clid|(1)##]'
+            if (this.state.data_provider.length == 0) {
+                return ''
+            } else {
+                if (element.id.provider == undefined) {
+                    const providerName = this.state.data_provider
+                        .filter((x) => x.id === 0)
+                        .map((x) => x.name);
+                    if (clid == 1) {
+                        return <div className="room_webservice"><span className="question-info">وب سرویس</span><span className="answer-info">{providerName}</span></div>
+                    } else if (clid == 2) {
+                        return <div className="room_webservice"><span className="question-info">webservice</span><span className="answer-info">{providerName}</span></div>
+                    } else if (clid == 3) {
+                        return <div className="room_webservice"><span className="question-info">خدمة الويب</span><span className="answer-info">{providerName}</span></div>
+                    }
+                } else {
+                    const providerName = this.state.data_provider
+                        .filter((x) => x.id === parseInt(element.id.provider.provider_id))
+                        .map((x) => x.name);
+                    if (clid == 1) {
+                        return <div className="room_webservice"><span className="question-info">وب سرویس</span><span className="answer-info">{providerName}</span></div>
+                    } else if (clid == 2) {
+                        return <div className="room_webservice"><span className="question-info">webservice</span><span className="answer-info">{providerName}</span></div>
+                    } else if (clid == 3) {
+                        return <div className="room_webservice"><span className="question-info">خدمة الويب</span><span className="answer-info">{providerName}</span></div>
+                    }
+                }
+            }
+        }
+        showLoading = (e, elem, val) => {
+            this.setState(prevState => ({
+                loader: { ...prevState.loader, [val]: !prevState.loader[val] }
+            }))
+        };
+
+        showPopup = (e, elem, val) => {
+            this.setState(prevState => ({
+                room_rule_popUp: { ...prevState.room_rule_popUp, [val]: !prevState.room_rule_popUp[val] }
+            }))
+        };
+
+        handleruleRoom = (e, element, index) => {
+            let dataActive = e.target.getAttribute("data-active")
+            let provider = element.id.provider
+            let optionId = element.optionId
+            let mainprovider = 0
+            if (provider == undefined) {
+                mainprovider = "0"
+            } else {
+                mainprovider = element.id.provider
+            }
+            if (dataActive == 0) {
+                this.showLoading(e, element, index);
+                this.showPopup(e, element, index);
+                e.target.setAttribute("data-active", "1")
+                setTimeout(() => {
+                    let return_rule = function () {
+                        let tmp = null;
+                        $.ajax({
+                            'async': false,
+                            'type': "POST",
+                            'global': false,
+                            'dataType': 'html',
+                            'url': "Client_Room_Rule.bc",
+                            'data': { 'mainprovider': JSON.stringify(mainprovider), 'optionId': optionId, },
+                            'success': (response) => {
+                                tmp = response;
+                            }
+                        });
+
+                        return tmp;
+                    }();
+                    return this.setState(prevState => ({
+                        room_rule: { ...prevState.room_rule, [index]: return_rule },
+                        loader: { ...prevState.loader, [index]: "" }
+                    }))
+
+                }, 1000);
+            } else {
+                this.showPopup(e, element, index);
+            }
+
+
+        }
+        closeruleRoom = (index) => {
+            this.setState(prevState => ({
+                room_rule_popUp: { [index]: !prevState.room_rule_popUp[index] }
+            }))
+        }
+    }
+    ReactDOM.render(<App />, document.getElementById('app'))
+
+</script>
