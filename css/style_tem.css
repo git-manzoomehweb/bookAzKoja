@@ -892,12 +892,12 @@ main a.adv-tag:hover img {
   transform: unset !important;
 }
 .search-box-container.fixed-search-box {
-  position: fixed;
-  top: 68px;
+  /* position: fixed; */
+  /* top: 68px; */
   left: 0;
   right: 0;
-  z-index: 999;
-  padding: 0;
+  /* z-index: 999; */
+  /* padding: 0; */
 }
 @media (max-width: 1024px) {
   .search-box-container.fixed-search-box {
@@ -909,4 +909,9 @@ main a.adv-tag:hover img {
 }
 .mt-32 {
   margin-top: 6rem !important;
+}
+
+.searchList ul {
+  max-height: unset !important;
+  overflow: unset !important;
 }
