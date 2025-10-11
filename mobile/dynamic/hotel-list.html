@@ -450,6 +450,10 @@
                     }
                 }
                 reorganiseLibrary = (service, stars, availability, area, checktype, checkkey) => {
+                    if (!checktype) {
+                        checktype = 'default';
+                        checkkey = 0;
+                    }
                     const { filterName, filterTotalF, filterTotalS, perPage, data } = this.state;
                     let library = data;
                     let librarySecond = data;

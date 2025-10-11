@@ -471,6 +471,10 @@
                     }
                 }
                 reorganiseLibrary = (service, stars, availability, area, checktype, checkkey) => {
+                    if (!checktype) {
+                        checktype = 'default';
+                        checkkey = 0;
+                    }
                     const { filterName, filterTotalF, filterTotalS, perPage, data } = this.state;
                     let library = data;
                     let librarySecond = data;
@@ -501,7 +505,10 @@
                     }
 
                     if (checktype == 'default') {
+
                         library.sort((a, b) => a.total - b.total);
+                        console.log(library[0]);
+
                         this.setState({ activedefault: "active" })
                         this.setState({ activeprice: "" })
                         this.setState({ activestar: "" })

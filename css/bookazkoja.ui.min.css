@@ -1546,6 +1546,15 @@ button.search-hotel:hover {
   --tw-grayscale: grayscale(0);
 }
 @media (min-width: 1024px) {
+  .search-box-container .mb-4 {
+    margin-bottom: 0rem !important;
+  }
+  .fixed-search-box {
+    box-shadow: rgba(0, 0, 0, 0.119) 0px 3px 8px;
+  }
+  body:has(.fixed-search-box) header.fixed {
+    position: unset !important;
+  }
   .lg\:\!w-\[27\%\] {
     width: 27% !important;
   }
