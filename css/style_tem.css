@@ -684,7 +684,7 @@ body:has(.filter-popup.flex) {
   .fixed-search-box .Basis_Calendar_Box {
     top: 102.4px !important;
   }
- 
+
   .more-rooms-link {
     transform: translateY(-18px) scale(0.87) !important;
   }
@@ -916,4 +916,19 @@ main a.adv-tag:hover img {
 .searchList ul {
   max-height: unset !important;
   overflow: unset !important;
+}
+.details-item .pagination .bg-blue-600 {
+  background-color: var(--secondary-2-800);
+  border: 1px solid var(--secondary-2-800) !important;
+}
+.details-item .pagination .bg-gray-100 {
+  background-color: var(--zinc-100);
+  border: 1px solid var(--zinc-300);
+}
+.disabled\:opacity-50:disabled {
+  opacity: 0.5;
+}
+.py-1 {
+  padding-top: 4px;
+  padding-bottom: 4px;
 }

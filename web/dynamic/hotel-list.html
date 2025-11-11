@@ -362,6 +362,8 @@
                         loadingVisibleBtnClose: {},
                         roomRule: {},
                         show_rooms_data: {},
+                        currentPage_rooms: 1,
+                        itemsPerPage_rooms: 10,
                         priceS: {},
                         defaultactive: {},
                         priceactive: {},
@@ -921,7 +923,7 @@
                                         <div className="details-item bg-white w-[706px] h-[87vh] p-4 !overflow-hidden rounded-xl text-zinc-900" >
                                             <img loading="lazy" src="[##cms.cms.cdn##]/images/adv7.jpg" alt="adv7" className="w-full h-[114px] object-cover rounded-xl" />
                                             <div className="w-full flex items-center my-4 justify-between">
-                                                <p className="font-bold text-zinc-900">لیست اتاق ها</p>
+                                                <p className="font-bold text-zinc-900">لیست اتاق ها - {item.hotelinfo.name}</p>
                                                 <button className="group close-btn" onClick={() => this.closeRooms(i)} type="button"  >
                                                     <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                         <path d="M26.6455 21.6294L21.8535 26.4214" stroke="#71717A" stroke-width="1.5" stroke-linecap="square" className="group-hover:stroke-secondary-1-700"></path>
@@ -935,7 +937,7 @@
                                                 {
                                                     this.show_rooms(i, item)}</div>
 
-                                            <form method="post" action='/Client_Hotel_Information.bc?lid=1' className="text-center more-rooms--content" target="_blank">
+                                            <form method="post" action='/Client_Hotel_Information.bc?lid=1' className="flex w-full justify-center mt-4" target="_blank">
                                                 {this.renderproviderid_hotelInfo(item)}
                                                 <input type="hidden" value={item.families[0].optionId} name="optionId-hotel" />
                                                 <input type="hidden" value={item.hotelinfo.hotelsearch.hotelid} name="hotelid" />
@@ -947,8 +949,9 @@
                                                 {this.renderpassengerscount(item)}
                                                 {this.hotel_information_moneytype(item)}
                                                 <input type="hidden" value="" name="chagencyuser" />
-                                                <button type="submit" className="cursor-pointer more-rooms-link  " >نمایش تمامی اتاق ها</button>
+                                                <button type="submit" className="cursor-pointer more-rooms-link" >نمایش تمامی اتاق ها</button>
                                             </form>
+
                                             <div className="clr"></div>
                                         </div>
                                     </div>
@@ -1444,8 +1447,6 @@
                     let element = this.state.show_rooms_data[i];
                     if (!element) return null;
                     if (element.length > 0) {
-                        console.log(element);
-
                         let indents = [];
                         for (let j = 0; j < element.length; j++) {
                             let index = 0;
@@ -1453,9 +1454,8 @@
                             let numS = j;
                             let stingF = numF.toString();
                             let stingS = numS.toString();
-
-                            index = stingF + stingS
-                            indents.push(<div className="item-details-hotel  hotel-crds relative   p-[2px] rounded-xl">
+                            index = stingF + stingS;
+                            indents.push(<div optionId={this.renderOptionId(element[j])} className="item-details-hotel  hotel-crds relative   p-[2px] rounded-xl">
                                 <form method="post" action="/Client_Show_Hotel_ver.2.bc?lid=1" className='z-10   relative p-3 flex flex-col gap-3 justify-between  '>
                                     <input type="hidden" value={this.state.state_currency_unit} name="rate-unit" className="rate-unit" />
                                     <input type="hidden" value={this.state.state_currency_cost} name="rate-cost" className="rate-cost" />
@@ -1551,7 +1551,60 @@
                         return null
                     }
                 }
+                handlePageChange(newPage) {
+                    this.setState({ currentPage_rooms: newPage });
+                }
+                renderPagination() {
+                    const { show_rooms_data, currentPage_rooms, itemsPerPage_rooms } = this.state;
+                    const totalItems = Object.values(show_rooms_data).flat().length;
+                    const totalPages = Math.ceil(totalItems / itemsPerPage_rooms);
 
+                    if (totalPages <= 1) return null;
+
+
+                    const pagesToShow = [currentPage_rooms];
+                    if (currentPage_rooms < totalPages) {
+                        pagesToShow.push(currentPage_rooms + 1);
+                    }
+
+                    const pageButtons = pagesToShow.map(page => (
+                        <button
+                            key={page}
+                            type="button"
+                            onClick={() => this.handlePageChange(page)}
+                            className={`px-3 py-1 rounded-md border transition ${currentPage_rooms === page
+                                ? "bg-blue-600 text-white border-blue-600"
+                                : "bg-gray-100 hover:bg-gray-200"
+                                }`}
+                        >
+                            {page}
+                        </button>
+                    ));
+
+                    return (
+                        <div className="pagination w-full flex justify-center items-center gap-2">
+                            <button
+                                type="button"
+                                onClick={() => this.handlePageChange(currentPage_rooms - 1)}
+                                disabled={currentPage_rooms === 1}
+                                className="px-3 py-1 border rounded-md bg-gray-100 hover:bg-gray-200 disabled:opacity-50"
+                            >
+                                قبلی
+                            </button>
+
+                            {pageButtons}
+
+                            <button
+                                type="button"
+                                onClick={() => this.handlePageChange(currentPage_rooms + 1)}
+                                disabled={currentPage_rooms === totalPages}
+                                className="px-3 py-1 border rounded-md bg-gray-100 hover:bg-gray-200 disabled:opacity-50"
+                            >
+                                بعدی
+                            </button>
+                        </div>
+                    );
+                }
                 closeRooms = (elem) => {
                     this.setState(prevState => ({
                         visibleRoom: { ...prevState.visibleRoom, [elem]: "" },
