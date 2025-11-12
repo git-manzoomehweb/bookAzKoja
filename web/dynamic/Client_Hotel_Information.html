@@ -1,0 +1,173 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="BasisCore">
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow, noarchive">
+
+    <style type="text/css">
+        <basis core="call" file="Client_Hotel_Information_css.inc" />
+    </style>
+    <script type="text/javascript">
+        <basis core = "call" file ="Client_Reservation_js.inc"/>
+    </script>
+</head>
+
+<body>
+    <div id="Container">
+        <div class="Bg">
+            <div class="no-date-box">
+                <div class="first-row">
+                    <div class="fa fa-clock-o"></div>
+                    <span class="no-date-text">مدت زمان شما به پایان رسیده است.</span>
+                </div>
+                <div class="second-row">
+                    <span class="no-date-text-two">لطفا جستجوی خود را از ابتدا انجام دهید.</span>
+                    <input class="homepage" value="صفحه اصلی" onclick="window.location='/'" type="button">
+                </div>
+            </div>
+        </div>
+
+        <div class="navigation">
+            <div class="inner-box">
+                <ul class="breadcrumb">
+                    <li><a href="/">صفحه اصلی</a></li>
+                    <li class="active"><span>نتیجه جزئیات هتل</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="Content">
+            <div class="hotel-info-box">
+                <div class="templateImg">
+                    <div class="hotel-details-images">
+                        <div class="hotel_image_box">
+                            <div class="img_original">##THUMBNAILORIGINal##</div>
+                            <div id="wrapper">
+                                <div class="demo-gallery">
+                                    <ul id="lightgallery" class="list-unstyled row">
+                                        ##THUMBNAIL##
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clr"></div>
+                </div>
+                <div class="templateInfo">
+                    <div class="hotel-details-header">
+                        <div class="hotel-details-headerR">
+                            <span>
+                                <h1>##HOTELNAME##</h1>
+                            </span>
+                            <span><img src="/images/##STAR##-rating.png" alt="rating" width="auto" height="16"></span>
+                        </div>
+                        <div class="hotel-details-headerR">
+                            ##COUNTRYNAME##
+                            ##CITYNAME##
+                        </div>
+                    </div>
+                    <div class="hotel-details-result">
+
+                        <div class="hotel-details-content">
+                            <div class="hotel-details-contact">
+                                <ul>##ADDRESS## ##CONTACT##</ul>
+                                <div class="clr"></div>
+                            </div>
+                            <div class="hotel-details-map">
+                                <div class="map-container">
+                                    <div id="map-canvas">##GPS##</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clr"></div>
+                    </div>
+                    <div class="wrapper_hotel_info bg-wrapper">
+                        <div class="section_hotel_info">
+                            ##OVERVIEWDISTANCES##
+                        </div>
+                        <div class="show_more_info" onclick="show_more(this)"><span class="text_show_content">نمایش
+                                بیشتر</span><span class="fa fa-arrow"></span></div>
+                    </div>
+
+                    <div class="wrapper_hotel_info bg-wrapper">
+                        <div class="hotel-facilities-group section_hotel_info">
+                            ##OVERVIEWFACILITIESWRAPPER##
+                            ##OVERVIEWSERVICESWRAPPER##
+                            ##OVERVIEWREFACILITIESWRAPPER##
+                            <div class="clr"></div>
+                        </div>
+                        <div class="show_more_info" onclick="show_more(this)"><span class="text_show_content">نمایش
+                                بیشتر</span><span class="fa fa-arrow"></span></div>
+                    </div>
+
+                    ##OVERVIEWMOREINFO##
+                    <div class="wrapper_hotel_info bg-wrapper">
+                        <div class="section_hotel_info ">
+                            ##OVERVIEWDISDRIPTION##
+                        </div>
+                        <div class="show_more_info" onclick="show_more(this)"><span class="text_show_content">نمایش
+                                بیشتر</span><span class="fa fa-arrow"></span></div>
+                    </div>
+
+                </div>
+                <div class="hotel-info-container"></div>
+                <div class="clr"></div>
+                <div class="hotel-RoomList section_hotel_info">
+                    <div class="posted-info"><span>تاریخ :</span>
+                        <p>[##cms.form.fdate##]</p> - <p>[##cms.form.tdate##]</p><span>تعداد اتاق :</span>
+                        [##cms.form.hotel_info_roomcount##]<span>تعداد بزرگسال :</span>
+                        [##cms.form.hotel_info_adultcount##]<span>تعداد کودک :</span>
+                        [##cms.form.hotel_info_childcount##]
+                    </div>
+                    <div class="wrapper_hotel_info">
+                        <div class="hotel-RoomList-wrapper">
+                            <div class="hotel-RoomList-copy">
+                                <div class="loading-hotel-RoomList">
+                                    <div class="lds-ripple">
+                                        <div></div>
+                                        <div></div>
+                                    </div>
+                                </div>
+                                <basis core="call" file="Client_Hotel_Room.inc" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clr"></div>
+        </div>
+        <div class="clr"></div>
+    </div>
+    <div class="clr"></div>
+    </div>
+    <div class="clr"></div>
+    </div>
+    <script type="text/javascript">
+        <basis core = "call" file ="Client_Hotel_Information_js.inc"/>
+    </script>
+    <script type="text/javascript">
+        window.userData = {
+            hotelid: '[##cms.form.hotelid##]',
+            sid: '[##cms.form.sid|(2)##]'
+        }
+        function show_more(element) {
+            $(element).closest(".wrapper_hotel_info").find(".section_hotel_info").toggleClass("set_height")
+            $(element).closest(".wrapper_hotel_info").find(".hotel_distance_shadow").toggle()
+            var text = $(element).closest(".wrapper_hotel_info").find(".text_show_content").text();
+            $(element).closest(".wrapper_hotel_info").find(".text_show_content").text(
+                text == "نمایش بیشتر" ? "نمایش کمتر" : "نمایش بیشتر");
+            var text_room = $(element).closest(".wrapper_hotel_info").find(".text_show_contentRoom").text();
+            $(element).closest(".wrapper_hotel_info").find(".text_show_contentRoom").text(
+                text_room == "نمایش همه اتاق ها" ? "نمایش کمتر" : "نمایش همه اتاق ها");
+
+        }
+
+    </script>
+</body>
+
+</html>

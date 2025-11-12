@@ -54,12 +54,15 @@
             var optionId = '[##cms.form.optionId-hotel##]'
             var IdFlight = '[##cms.form.Flight_Id|cms.form.productid##]'
             let clid = '[##cms.form.clid|(1)##]';
+            let sid = '[##cms.form.sid|(2)##]';
             if ('[##cms.form.type_module|cms.form.key##]' == 6) {
                 var params = 'idproduct=' + IdFlight + '&optionId=' + encodeURIComponent(optionId) + ''
                 xhr.open("POST", "/Client_FlightHotel_ShowAllRooms.bc", true);
                 xhr.send(params);
             } else {
-                var params = 'optionId=' + encodeURIComponent(optionId) + ''
+                var params = 'sid=' + encodeURIComponent(sid) +
+                    '&optionId=' + encodeURIComponent(optionId);
+
                 xhr.open("POST", "/Client_Hotel_ShowAllRooms.bc?clid=[##cms.form.clid|(1)##]", true);
                 xhr.send(params);
             }
@@ -205,7 +208,9 @@
                 }
             }
             return library[currentPage - 1].map((item, i) => {
-               
+                console.log(item);
+
+
                 return (<form method="post" action={this.renderAction(item)} className="info-Hotel"><span className="hover_effect"></span>{this.renderOptionId(item)}
                     {this.renderadults(item)}
                     {this.renderchildwithbed(item)}
@@ -222,6 +227,7 @@
                     <input type="hidden" value={this.state.state_currency_unit} name="rate-unit" className="rate-unit" />
                     <input type="hidden" value={this.state.state_currency_cost} name="rate-cost" className="rate-cost" />
                     <input type="hidden" value={this.state.state_floatdigit} name="rate-floatdigit" className="rate-floatdigit" />
+                    <input type="hidden" value="[##cms.form.sid|(2)##]" name="sid" />
                     <input type="hidden" value='[##cms.form.inscountry##]' name="inscountry" />
                     <input type="hidden" value='[##cms.form.fsupplier##]' name="fsupplier" />
                     <input type="hidden" value='[##cms.form.hsupplier##]' name="hsupplier" />
@@ -237,12 +243,18 @@
                     <input type="hidden" value="[##cms.form.coHotel##]" name="coHotel" />
                     <input type="hidden" value='[##cms.json.header|cms.form.roomSearch##]' name="roomSearch" />
                     <input type="hidden" value="[##cms.form.fdate##]" name="fdate" />
-                    <input type="hidden" value="[##cms.form.tdate##]" name="tdate" /><div className="eachroom"><div className="first_part"><div className="room_type"><span className="fa fa-bed"></span><span className="Roomtype_section">{this.renderRoomtype(item)}</span></div>
-                        <div className="room_viewname"><span>{this.renderviewnameRooms(item)}</span></div><div className="room_availability">{this.renderavailability(item)}
-                        </div>
-                        <div className="room_service">{item.services}</div>
-                        {this.renderProviderName(item)}
-                    </div><div className="room_rule">
+                    <input type="hidden" value="[##cms.form.tdate##]" name="tdate" />
+                    <div class="supplier">{this.renderSupplierInfo(item)}</div>
+                    <div className="eachroom">
+                        <div className="first_part">
+                            <div className="room_type">
+                                <span className="fa fa-bed">
+                                </span><span className="Roomtype_section">{this.renderRoomtype(item)}</span></div>
+                            <div className="room_viewname"><span>{this.renderviewnameRooms(item)}</span></div><div className="room_availability">{this.renderavailability(item)}
+                            </div>
+                            <div className="room_service">{item.services}</div>
+                            {this.renderProviderName(item)}
+                        </div><div className="room_rule">
                             <span className="fa fa-info-o" key={i} data-active="0" onClick={e => this.handleruleRoom(e, item, i)}></span>
                             <span className="ruleRoom_txt" key={i} data-active="0" onClick={e => this.handleruleRoom(e, item, i)}>{this.renderTextLang_rule(item)}</span>
                         </div><div className="last_part">
@@ -412,6 +424,19 @@
                 return 'Room rules'
             } else if (clid == 3) {
                 return 'قواعد الغرفة'
+            }
+        }
+        renderSupplierInfo(element) {
+            if (element.provider_configs) {
+                return (
+                    <div className='flex items-center gap-3'>
+                        <img src={element.provider_configs.image} alt={element.provider_configs.displayName} width='82' />
+                        <div className="flex gap-1 items-center supplier-name">
+                            تامین کننده :
+                            {element.provider_configs.displayName}
+                        </div>
+                    </div>
+                )
             }
         }
         renderTextLang_btn(element) {
@@ -715,6 +740,7 @@
             let provider = element.id.provider
             let optionId = element.optionId
             let mainprovider = 0
+            let sid = '[##cms.form.sid|(2)##]'
             if (provider == undefined) {
                 mainprovider = "0"
             } else {
@@ -733,7 +759,7 @@
                             'global': false,
                             'dataType': 'html',
                             'url': "Client_Room_Rule.bc",
-                            'data': { 'mainprovider': JSON.stringify(mainprovider), 'optionId': optionId, },
+                            'data': { 'sid': sid, 'mainprovider': JSON.stringify(mainprovider), 'optionId': optionId, },
                             'success': (response) => {
                                 tmp = response;
                             }

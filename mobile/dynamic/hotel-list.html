@@ -291,14 +291,7 @@
             }).then(response => response.text()).then(text => {
                 let Maindata = JSON.parse(text.replace(/\'/g, '"'));
 
-                if (Maindata.length !== undefined) {
 
-                    // if (Maindata.some(item => item.hotelinfo.hotelsearch?.countryid === 1002236)) {
-                    //     Maindata.sort((a, b) => (b.hotelinfo.hotelsearch?.star || 0) - (a.hotelinfo.hotelsearch?.star || 0));
-                    // } else {
-                    //     Maindata.sort((a, b) => a.total - b.total);
-                    // }
-                }
 
                 $('.waiting-search').hide();
                 $('#app').show();
@@ -368,9 +361,10 @@
                     this.area = [];
                     this.handleClick = this.handleClick.bind(this);
                     this.handleReset = this.handleReset.bind(this);
+                    this.originalLibrary = null;
                 }
                 componentDidMount() {
-
+                    this.originalLibrary = Array.isArray(load_data) ? load_data.slice() : [];
                     this.setState(state => ({
                         ...state,
                         data: load_data
@@ -455,6 +449,9 @@
                         checkkey = 0;
                     }
                     const { filterName, filterTotalF, filterTotalS, perPage, data } = this.state;
+                    if (!this.originalLibrary && Array.isArray(data)) {
+                        this.originalLibrary = data.slice();
+                    }
                     let library = data;
                     let librarySecond = data;
                     librarySecond = _.chunk(librarySecond, perPage);
@@ -484,7 +481,7 @@
                     }
 
                     if (checktype == 'default') {
-                        library.sort((a, b) => a.total - b.total);
+                        library.splice(0, library.length, ...this.originalLibrary);
                         this.setState({ activedefault: "active" })
                         this.setState({ activeprice: "" })
                         this.setState({ activestar: "" })
@@ -889,7 +886,7 @@
                                         <div className="details-item pb-[35px] bg-white w-full h-[83vh] p-4 !overflow-hidden rounded-t-xl text-zinc-900" >
                                             <img loading="lazy" src="[##cms.cms.cdn##]/images/adv7.jpg" alt="adv7" className="w-full h-[114px] object-cover rounded-xl" />
                                             <div className="w-full flex items-center my-4 justify-between">
-                                                <p className="font-bold text-zinc-900">لیست اتاق ها</p>
+                                                <p className="font-bold text-zinc-900">لیست اتاق ها - {item.hotelinfo.name}</p>
                                                 <button className="group close-btn" onClick={() => this.closeRooms(i)} type="button"  >
                                                     <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                         <path d="M26.6455 21.6294L21.8535 26.4214" stroke="#71717A" stroke-width="1.5" stroke-linecap="square" className="group-hover:stroke-secondary-1-700"></path>

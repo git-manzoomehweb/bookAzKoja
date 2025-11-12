@@ -311,16 +311,6 @@
                 body: 'lid=1&hotelid=[##cms.form.hotelid##]&cityid=[##cms.form.cityid##]&fdate=[##cms.form.fdate##]&tdate=[##cms.form.tdate##]&rooms=[##cms.json.header|cms.form.roomSearch##]&sid=[##cms.query.sid##]'
             }).then(response => response.text()).then(text => {
                 let Maindata = JSON.parse(text.replace(/\'/g, '"'));
-
-                if (Maindata.length !== undefined) {
-
-                    // if (Maindata.some(item => item.hotelinfo.hotelsearch?.countryid === 1002236)) {
-                    //     Maindata.sort((a, b) => (b.hotelinfo.hotelsearch?.star || 0) - (a.hotelinfo.hotelsearch?.star || 0));
-                    // } else {
-                    //     Maindata.sort((a, b) => a.total - b.total);
-                    // }
-                }
-
                 $('.waiting-search').hide();
                 $('#app').show();
                 load_data(Maindata);
@@ -391,9 +381,10 @@
                     this.area = [];
                     this.handleClick = this.handleClick.bind(this);
                     this.handleReset = this.handleReset.bind(this);
+                    this.originalLibrary = null;
                 }
                 componentDidMount() {
-
+                    this.originalLibrary = Array.isArray(load_data) ? load_data.slice() : [];
                     this.setState(state => ({
                         ...state,
                         data: load_data
@@ -473,13 +464,18 @@
                     }
                 }
                 reorganiseLibrary = (service, stars, availability, area, checktype, checkkey) => {
+
                     if (!checktype) {
-                        checktype = 'default';
+                        checktype = '';
                         checkkey = 0;
                     }
                     const { filterName, filterTotalF, filterTotalS, perPage, data } = this.state;
+                    if (!this.originalLibrary && Array.isArray(data)) {
+                        this.originalLibrary = data.slice();
+                    }
                     let library = data;
                     let librarySecond = data;
+
                     librarySecond = _.chunk(librarySecond, perPage);
                     this.setState({
                         librarySecond,
@@ -507,10 +503,7 @@
                     }
 
                     if (checktype == 'default') {
-
-                        library.sort((a, b) => a.total - b.total);
-                        console.log(library[0]);
-
+                        library.splice(0, library.length, ...this.originalLibrary);
                         this.setState({ activedefault: "active" })
                         this.setState({ activeprice: "" })
                         this.setState({ activestar: "" })
