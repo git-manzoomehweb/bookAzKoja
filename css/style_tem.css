@@ -932,3 +932,14 @@ main a.adv-tag:hover img {
   padding-top: 4px;
   padding-bottom: 4px;
 }
+.label-hotels-t[content=""] {
+  display: none !important;
+}
+
+.label-hotels-t {
+  min-width: 90px !important;
+  min-height: 30px !important;
+}
+.label-hotels-t img {
+  height: 100% !important;
+}

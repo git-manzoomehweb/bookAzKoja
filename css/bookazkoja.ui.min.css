@@ -1797,3 +1797,6 @@ button.search-hotel:hover {
 .searchHistory-content .sub-title svg {
   display: none !important;
 }
+.close-module-form{
+  display: none;
+}
